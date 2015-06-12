@@ -175,8 +175,8 @@ gulp.task('serve', ['styles'], () => {
 // Build and serve the output from the dist build
 gulp.task('serve:dist', ['default'], () => {
   browserSync({
-    notify: false,
-    logPrefix: 'WSK',
+    notify: true,
+    logPrefix: 'Indy',
     // Run as an https by uncommenting 'https: true'
     // Note: this uses an unsigned certificate which on first access
     //       will present a certificate warning in the browser.
