@@ -38,7 +38,7 @@ const reload = browserSync.reload;
 
 // Lint JavaScript
 gulp.task('jshint', () => {
-  return gulp.src('app/scripts/**/*.js')
+  return gulp.src('./src/js/*.js')
     .pipe(reload({stream: true, once: true}))
     .pipe($.jshint())
     .pipe($.jshint.reporter('jshint-stylish'))
@@ -47,31 +47,30 @@ gulp.task('jshint', () => {
 
 // Optimize images
 gulp.task('images', () => {
-  return gulp.src('app/images/**/*')
+  return gulp.src('./src/images/**/*')
     .pipe($.cache($.imagemin({
       progressive: true,
       interlaced: true
     })))
-    .pipe(gulp.dest('dist/images'))
+    .pipe(gulp.dest('./dist/images'))
     .pipe($.size({title: 'images'}));
 });
 
 // Copy all files at the root level (app)
 gulp.task('copy', () => {
   return gulp.src([
-    'app/*',
-    '!app/*.html',
+    './src/*',
     'node_modules/apache-server-configs/dist/.htaccess'
   ], {
     dot: true
-  }).pipe(gulp.dest('dist'))
+  }).pipe(gulp.dest('./dist'))
     .pipe($.size({title: 'copy'}));
 });
 
 // Copy web fonts to dist
 gulp.task('fonts', () => {
-  return gulp.src(['app/fonts/**'])
-    .pipe(gulp.dest('dist/fonts'))
+  return gulp.src(['./src/fonts/*'])
+    .pipe(gulp.dest('./dist/fonts'))
     .pipe($.size({title: 'fonts'}));
 });
 
@@ -91,8 +90,8 @@ gulp.task('styles', () => {
 
   // For best performance, don't add Sass partials to `gulp.src`
   return gulp.src([
-    'app/**/*.scss',
-    'app/styles/**/*.css'
+    './src/scss/*.scss',
+    './src/scss/**/*.css'
   ])
     .pipe($.changed('.tmp/styles', {extension: '.css'}))
     .pipe($.sourcemaps.init())
@@ -104,32 +103,32 @@ gulp.task('styles', () => {
     // Concatenate and minify styles
     .pipe($.if('*.css', $.csso()))
     .pipe($.sourcemaps.write())
-    .pipe(gulp.dest('dist'))
-    .pipe($.size({title: 'styles'}));
+    .pipe(gulp.dest('./dist/css'))
+    .pipe($.size({title: 'css'}));
 });
 
 // Concatenate and minify JavaScript
 gulp.task('scripts', () => {
-  return gulp.src(['./app/scripts/main.js'])
+  return gulp.src(['./src/js/main.js'])
     .pipe($.concat('main.min.js'))
     .pipe($.uglify({preserveComments: 'some'}))
     // Output files
-    .pipe(gulp.dest('dist/scripts'))
+    .pipe(gulp.dest('./dist/js'))
     .pipe($.size({title: 'scripts'}));
 });
 
 // Scan your HTML for assets & optimize them
 gulp.task('html', () => {
-  const assets = $.useref.assets({searchPath: '{.tmp,app}'});
+  const assets = $.useref.assets({searchPath: '{.tmp, ./src}'});
 
-  return gulp.src('app/**/**/*.html')
+  return gulp.src('./src/*.html')
     .pipe(assets)
     // Remove any unused CSS
     // Note: If not using the Style Guide, you can delete it from
     // the next line to only include styles your project uses.
     .pipe($.if('*.css', $.uncss({
       html: [
-        'app/dist/index.html'
+        './dist/index.html'
       ],
       // CSS Selectors for UnCSS to ignore
       ignore: [
@@ -147,12 +146,12 @@ gulp.task('html', () => {
     // Minify any HTML
     .pipe($.if('*.html', $.minifyHtml()))
     // Output files
-    .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest('./dist'))
     .pipe($.size({title: 'html'}));
 });
 
 // Clean output directory
-gulp.task('clean', () => del(['.tmp', 'dist/*', '!dist/.git'], {dot: true}));
+gulp.task('clean', () => del(['.tmp', './dist/*', '!dist/.git'], {dot: true}));
 
 // Watch files for changes & reload
 gulp.task('serve', ['styles'], () => {
@@ -164,13 +163,13 @@ gulp.task('serve', ['styles'], () => {
     // Note: this uses an unsigned certificate which on first access
     //       will present a certificate warning in the browser.
     // https: true,
-    server: ['.tmp', 'app']
+    server: ['.tmp', 'dist']
   });
 
-  gulp.watch(['app/**/*.html'], reload);
-  gulp.watch(['app/styles/**/*.{scss,css}'], ['styles', reload]);
-  gulp.watch(['app/scripts/**/*.js'], ['jshint']);
-  gulp.watch(['app/images/**/*'], reload);
+  gulp.watch(['./dist/**/*.html'], reload);
+  gulp.watch(['./dist/css/*.{scss,css}'], ['styles', reload]);
+  gulp.watch(['./dist/js/**/*.js'], ['jshint']);
+  gulp.watch(['./dist/images/**/*'], reload);
 });
 
 // Build and serve the output from the dist build
@@ -182,8 +181,8 @@ gulp.task('serve:dist', ['default'], () => {
     // Note: this uses an unsigned certificate which on first access
     //       will present a certificate warning in the browser.
     // https: true,
-    server: 'dist',
-    baseDir: 'dist'
+    server: './dist',
+    baseDir: ''
   });
 });
 
@@ -214,7 +213,7 @@ gulp.task('pagespeed', cb => {
 // local resources. This should only be done for the 'dist' directory, to allow
 // live reload to work as expected when serving from the 'app' directory.
 gulp.task('generate-service-worker', cb => {
-  const rootDir = 'dist';
+  const rootDir = './dist';
 
   swPrecache({
     // Used to avoid cache conflicts when serving on localhost.
@@ -233,9 +232,10 @@ gulp.task('generate-service-worker', cb => {
       // Add/remove glob patterns to match your directory setup.
       '${rootDir}/fonts/**/*.woff',
       '${rootDir}/images/**/*',
-      '${rootDir}/scripts/**/*.js',
-      '${rootDir}/styles/**/*.css',
-      '${rootDir}/*.{html,json}'
+      '${rootDir}/js/**/*.js',
+      '${rootDir}/css/**/*.css',
+      '${rootDir}/*.{html}',
+      '${rootDir}/data/*.{json}'
     ],
     // Translates a static file path to the relative URL that it's served from.
     stripPrefix: path.join(rootDir, path.sep)
