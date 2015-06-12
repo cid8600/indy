@@ -1,8 +1,8 @@
 {
-  "name": "indy",
+  "name": "Indy",
   "version": "1.0.0",
   "description": "Indy Social Hub",
-  "main": "gulpfile.babel.js",
+  "main": "gulpfile.js",
   "directories": {
     "doc": "docs"
   },
@@ -44,6 +44,7 @@
     "imagemin-pngcrush": "^4.1.0",
     "imagemin-pngquant": "^4.1.0",
     "jshint-stylish": "^2.0.0",
+    "npm-watch": "0.0.0",
     "path": "^0.11.14",
     "psi": "^1.0.6",
     "run-sequence": "^1.1.0",

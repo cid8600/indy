@@ -143,9 +143,9 @@ _gulp2['default'].task('clean', function () {
 // Watch files for changes & reload
 _gulp2['default'].task('serve', ['styles'], function () {
   (0, _browserSync2['default'])({
-    notify: false,
+    notify: true,
     // Customize the BrowserSync console logging prefix
-    logPrefix: 'WSK',
+    logPrefix: 'Indy',
     // Run as an https by uncommenting 'https: true'
     // Note: this uses an unsigned certificate which on first access
     //       will present a certificate warning in the browser.
@@ -153,10 +153,10 @@ _gulp2['default'].task('serve', ['styles'], function () {
     server: ['.tmp', 'dist']
   });
 
-  _gulp2['default'].watch(['./dist/**/*.html'], reload);
-  _gulp2['default'].watch(['./dist/css/*.{scss,css}'], ['styles', reload]);
-  _gulp2['default'].watch(['./dist/js/**/*.js'], ['jshint']);
-  _gulp2['default'].watch(['./dist/images/**/*'], reload);
+  _gulp2['default'].watch(['./src/**/*.html'], reload);
+  _gulp2['default'].watch(['./src/scss/*.{scss,css}'], ['styles', reload]);
+  _gulp2['default'].watch(['./src/js/**/*.js'], ['jshint']);
+  _gulp2['default'].watch(['./src/images/**/*'], reload);
 });
 
 // Build and serve the output from the dist build
@@ -167,7 +167,7 @@ _gulp2['default'].task('serve:dist', ['default'], function () {
     // Run as an https by uncommenting 'https: true'
     // Note: this uses an unsigned certificate which on first access
     //       will present a certificate warning in the browser.
-    // https: true,
+    https: true,
     server: './dist',
     baseDir: ''
   });

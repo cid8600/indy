@@ -156,9 +156,9 @@ gulp.task('clean', () => del(['.tmp', './dist/*', '!dist/.git'], {dot: true}));
 // Watch files for changes & reload
 gulp.task('serve', ['styles'], () => {
   browserSync({
-    notify: false,
+    notify: true,
     // Customize the BrowserSync console logging prefix
-    logPrefix: 'WSK',
+    logPrefix: 'Indy',
     // Run as an https by uncommenting 'https: true'
     // Note: this uses an unsigned certificate which on first access
     //       will present a certificate warning in the browser.
@@ -166,10 +166,10 @@ gulp.task('serve', ['styles'], () => {
     server: ['.tmp', 'dist']
   });
 
-  gulp.watch(['./dist/**/*.html'], reload);
-  gulp.watch(['./dist/css/*.{scss,css}'], ['styles', reload]);
-  gulp.watch(['./dist/js/**/*.js'], ['jshint']);
-  gulp.watch(['./dist/images/**/*'], reload);
+  gulp.watch(['./src/**/*.html'], reload);
+  gulp.watch(['./src/scss/*.{scss,css}'], ['styles', reload]);
+  gulp.watch(['./src/js/**/*.js'], ['jshint']);
+  gulp.watch(['./src/images/**/*'], reload);
 });
 
 // Build and serve the output from the dist build
@@ -180,7 +180,7 @@ gulp.task('serve:dist', ['default'], () => {
     // Run as an https by uncommenting 'https: true'
     // Note: this uses an unsigned certificate which on first access
     //       will present a certificate warning in the browser.
-    // https: true,
+    https: true,
     server: './dist',
     baseDir: ''
   });
