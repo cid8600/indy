@@ -231,11 +231,11 @@ gulp.task('generate-service-worker', cb => {
     },
     staticFileGlobs: [
       // Add/remove glob patterns to match your directory setup.
-      `${rootDir}/fonts/**/*.woff`,
-      `${rootDir}/images/**/*`,
-      `${rootDir}/scripts/**/*.js`,
-      `${rootDir}/styles/**/*.css`,
-      `${rootDir}/*.{html,json}`
+      '${rootDir}/fonts/**/*.woff',
+      '${rootDir}/images/**/*',
+      '${rootDir}/scripts/**/*.js',
+      '${rootDir}/styles/**/*.css',
+      '${rootDir}/*.{html,json}'
     ],
     // Translates a static file path to the relative URL that it's served from.
     stripPrefix: path.join(rootDir, path.sep)
@@ -260,3 +260,5 @@ gulp.task('generate-service-worker', cb => {
 
 // Load custom tasks from the `tasks` directory
 // try { require('require-dir')('tasks'); } catch (err) { console.error(err); }
+
+
