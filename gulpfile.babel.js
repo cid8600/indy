@@ -78,7 +78,7 @@ gulp.task('fonts', () => {
 // Compile and automatically prefix stylesheets
 gulp.task('styles', () => {
   const AUTOPREFIXER_BROWSERS = [
-    'ie >= 10',
+    'ie >= 9',
     'ie_mob >= 10',
     'ff >= 30',
     'chrome >= 34',
@@ -129,7 +129,7 @@ gulp.task('html', () => {
     // the next line to only include styles your project uses.
     .pipe($.if('*.css', $.uncss({
       html: [
-        'app/index.html'
+        'app/dist/index.html'
       ],
       // CSS Selectors for UnCSS to ignore
       ignore: [
@@ -260,5 +260,7 @@ gulp.task('generate-service-worker', cb => {
 
 // Load custom tasks from the `tasks` directory
 // try { require('require-dir')('tasks'); } catch (err) { console.error(err); }
+
+
 
 

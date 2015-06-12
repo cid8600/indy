@@ -94,7 +94,7 @@ _gulp2['default'].task('fonts', function () {
 
 // Compile and automatically prefix stylesheets
 _gulp2['default'].task('styles', function () {
-  var AUTOPREFIXER_BROWSERS = ['ie >= 10', 'ie_mob >= 10', 'ff >= 30', 'chrome >= 34', 'safari >= 7', 'opera >= 23', 'ios >= 7', 'android >= 4.4', 'bb >= 10'];
+  var AUTOPREFIXER_BROWSERS = ['ie >= 9', 'ie_mob >= 10', 'ff >= 30', 'chrome >= 34', 'safari >= 7', 'opera >= 23', 'ios >= 7', 'android >= 4.4', 'bb >= 10'];
 
   // For best performance, don't add Sass partials to `gulp.src`
   return _gulp2['default'].src(['app/**/*.scss', 'app/styles/**/*.css']).pipe($.changed('.tmp/styles', { extension: '.css' })).pipe($.sourcemaps.init()).pipe($.sass({
