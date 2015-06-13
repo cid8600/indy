@@ -157,12 +157,12 @@ _gulp2['default'].task('serve', ['styles'], function () {
     // Run as an https by uncommenting 'https: true'
     // Note: this uses an unsigned certificate which on first access
     //       will present a certificate warning in the browser.
-    https: true,
+    https: false,
     server: ['.tmp', './src']
   });
 
   _gulp2['default'].watch(['./src/**/*.html'], reload);
-  _gulp2['default'].watch(['./src/scss/*.{scss}'], ['styles', reload]);
+  _gulp2['default'].watch(['./src/scss/**/*.{scss, css}'], ['styles', reload]);
   _gulp2['default'].watch(['./src/js/**/*.js'], ['jshint']);
   _gulp2['default'].watch(['./src/images/**/*'], reload);
 });

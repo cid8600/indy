@@ -10,7 +10,7 @@ node_modules: package.json
 
 # Run a dev server
 serve:
-	gulp serve
+	babel gulpfile.babel.js --out-file gulpfile.js && gulp serve
 
 clean:
 	gulp clean

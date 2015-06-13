@@ -165,12 +165,12 @@ gulp.task('serve', ['styles'], () => {
     // Run as an https by uncommenting 'https: true'
     // Note: this uses an unsigned certificate which on first access
     //       will present a certificate warning in the browser.
-    https: true,
+    https: false,
     server: ['.tmp', './src']
   });
 
   gulp.watch(['./src/**/*.html'], reload);
-  gulp.watch(['./src/scss/*.{scss}'], ['styles', reload]);
+  gulp.watch(['./src/scss/**/*.{scss, css}'], ['styles', reload]);
   gulp.watch(['./src/js/**/*.js'], ['jshint']);
   gulp.watch(['./src/images/**/*'], reload);
 });
