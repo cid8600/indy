@@ -10,10 +10,13 @@ node_modules: package.json
 
 # Run a dev server
 serve:
-	babel gulpfile.babel.js --out-file gulpfile.js && gulp serve
+	gulp serve
 
 clean:
 	gulp clean
+
+dist:
+	gulp serve:dist
 
 clean-deps:
 	rm -rf node_modules

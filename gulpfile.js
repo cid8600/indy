@@ -26,6 +26,14 @@
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
+var _gulpDebug = require('gulp-debug');
+
+var _gulpDebug2 = _interopRequireDefault(_gulpDebug);
+
+var _bluebird = require('bluebird');
+
+var _bluebird2 = _interopRequireDefault(_bluebird);
+
 var _fs = require('fs');
 
 var _fs2 = _interopRequireDefault(_fs);
@@ -82,7 +90,7 @@ _gulp2['default'].task('images', function () {
 
 // Copy all files at the root level (app)
 _gulp2['default'].task('copy', function () {
-  return _gulp2['default'].src(['./src/*', 'node_modules/apache-server-configs/dist/.htaccess'], {
+  return _gulp2['default'].src(['./src/*', '!./src/scss', 'node_modules/apache-server-configs/dist/.htaccess'], {
     dot: true
   }).pipe(_gulp2['default'].dest('./dist')).pipe($.size({ title: 'copy' }));
 });
@@ -94,10 +102,10 @@ _gulp2['default'].task('fonts', function () {
 
 // Compile and automatically prefix stylesheets
 _gulp2['default'].task('styles', function () {
-  var AUTOPREFIXER_BROWSERS = ['ie >= 9', 'ie_mob >= 10', 'ff >= 30', 'chrome >= 34', 'safari >= 7', 'opera >= 23', 'ios >= 7', 'android >= 4.4', 'bb >= 10'];
+  var AUTOPREFIXER_BROWSERS = ['ie >= 10', 'ie_mob >= 10', 'ff >= 30', 'chrome >= 34', 'safari >= 7', 'opera >= 23', 'ios >= 7', 'android >= 4.4', 'bb >= 10'];
 
   // For best performance, don't add Sass partials to `gulp.src`
-  return _gulp2['default'].src(['./src/scss/*.scss', './src/scss/**/*.css']).pipe($.changed('.tmp/styles', { extension: '.css' })).pipe($.sourcemaps.init()).pipe($.sass({
+  return _gulp2['default'].src(['./src/scss/*.scss', './src/scss/**/*.css']).pipe($.changed('.tmp/css', { extension: '.css' })).pipe($.sourcemaps.init()).pipe($.sass({
     precision: 10
   }).on('error', $.sass.logError)).pipe($.autoprefixer(AUTOPREFIXER_BROWSERS)).pipe(_gulp2['default'].dest('.tmp'))
   // Concatenate and minify styles
@@ -149,12 +157,12 @@ _gulp2['default'].task('serve', ['styles'], function () {
     // Run as an https by uncommenting 'https: true'
     // Note: this uses an unsigned certificate which on first access
     //       will present a certificate warning in the browser.
-    // https: true,
-    server: ['.tmp', 'dist']
+    https: true,
+    server: ['.tmp', './src']
   });
 
   _gulp2['default'].watch(['./src/**/*.html'], reload);
-  _gulp2['default'].watch(['./src/scss/*.{scss,css}'], ['styles', reload]);
+  _gulp2['default'].watch(['./src/scss/*.{scss}'], ['styles', reload]);
   _gulp2['default'].watch(['./src/js/**/*.js'], ['jshint']);
   _gulp2['default'].watch(['./src/images/**/*'], reload);
 });
@@ -163,19 +171,18 @@ _gulp2['default'].task('serve', ['styles'], function () {
 _gulp2['default'].task('serve:dist', ['default'], function () {
   (0, _browserSync2['default'])({
     notify: false,
-    logPrefix: 'WSK',
+    logPrefix: 'Indy',
     // Run as an https by uncommenting 'https: true'
     // Note: this uses an unsigned certificate which on first access
     //       will present a certificate warning in the browser.
-    https: true,
-    server: './dist',
-    baseDir: ''
+    https: false,
+    server: './dist'
   });
 });
 
 // Build production files, the default task
 _gulp2['default'].task('default', ['clean'], function (cb) {
-  (0, _runSequence2['default'])('styles', ['jshint', 'html', 'scripts', 'images', 'fonts', 'copy'], 'generate-service-worker', cb);
+  (0, _runSequence2['default'])('styles', ['jshint', 'scripts', 'images', 'fonts', 'html'], 'copy', 'generate-service-worker', cb);
 });
 
 // Run PageSpeed Insights
@@ -192,7 +199,7 @@ _gulp2['default'].task('pagespeed', function (cb) {
 // local resources. This should only be done for the 'dist' directory, to allow
 // live reload to work as expected when serving from the 'app' directory.
 _gulp2['default'].task('generate-service-worker', function (cb) {
-  var rootDir = './dist';
+  var rootDir = 'dist';
 
   (0, _swPrecache2['default'])({
     // Used to avoid cache conflicts when serving on localhost.

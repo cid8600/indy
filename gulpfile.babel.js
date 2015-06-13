@@ -22,6 +22,8 @@
 // You can read more about the new JavaScript features here:
 // https://babeljs.io/docs/learn-es2015/
 
+import debug from 'gulp-debug';
+import bluebird from 'bluebird';
 import fs from 'fs';
 import path from 'path';
 import gulp from 'gulp';
@@ -60,6 +62,7 @@ gulp.task('images', () => {
 gulp.task('copy', () => {
   return gulp.src([
     './src/*',
+    '!./src/scss',
     'node_modules/apache-server-configs/dist/.htaccess'
   ], {
     dot: true
@@ -77,7 +80,7 @@ gulp.task('fonts', () => {
 // Compile and automatically prefix stylesheets
 gulp.task('styles', () => {
   const AUTOPREFIXER_BROWSERS = [
-    'ie >= 9',
+    'ie >= 10',
     'ie_mob >= 10',
     'ff >= 30',
     'chrome >= 34',
@@ -93,7 +96,7 @@ gulp.task('styles', () => {
     './src/scss/*.scss',
     './src/scss/**/*.css'
   ])
-    .pipe($.changed('.tmp/styles', {extension: '.css'}))
+    .pipe($.changed('.tmp/css', {extension: '.css'}))
     .pipe($.sourcemaps.init())
     .pipe($.sass({
       precision: 10
@@ -162,12 +165,12 @@ gulp.task('serve', ['styles'], () => {
     // Run as an https by uncommenting 'https: true'
     // Note: this uses an unsigned certificate which on first access
     //       will present a certificate warning in the browser.
-    // https: true,
-    server: ['.tmp', 'dist']
+    https: true,
+    server: ['.tmp', './src']
   });
 
   gulp.watch(['./src/**/*.html'], reload);
-  gulp.watch(['./src/scss/*.{scss,css}'], ['styles', reload]);
+  gulp.watch(['./src/scss/*.{scss}'], ['styles', reload]);
   gulp.watch(['./src/js/**/*.js'], ['jshint']);
   gulp.watch(['./src/images/**/*'], reload);
 });
@@ -175,14 +178,13 @@ gulp.task('serve', ['styles'], () => {
 // Build and serve the output from the dist build
 gulp.task('serve:dist', ['default'], () => {
   browserSync({
-    notify: true,
+    notify: false,
     logPrefix: 'Indy',
     // Run as an https by uncommenting 'https: true'
     // Note: this uses an unsigned certificate which on first access
     //       will present a certificate warning in the browser.
-    https: true,
-    server: './dist',
-    baseDir: ''
+    https: false,
+    server: './dist'
   });
 });
 
@@ -190,10 +192,10 @@ gulp.task('serve:dist', ['default'], () => {
 gulp.task('default', ['clean'], cb => {
   runSequence(
     'styles',
-    ['jshint', 'html', 'scripts', 'images', 'fonts', 'copy'],
+    ['jshint', 'scripts', 'images', 'fonts', 'html'],
+    'copy',
     'generate-service-worker',
-    cb
-  );
+    cb);
 });
 
 // Run PageSpeed Insights
@@ -213,7 +215,7 @@ gulp.task('pagespeed', cb => {
 // local resources. This should only be done for the 'dist' directory, to allow
 // live reload to work as expected when serving from the 'app' directory.
 gulp.task('generate-service-worker', cb => {
-  const rootDir = './dist';
+  const rootDir = 'dist';
 
   swPrecache({
     // Used to avoid cache conflicts when serving on localhost.
