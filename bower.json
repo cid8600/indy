@@ -19,5 +19,8 @@
   "dependencies": {
     "bootstrap": "~3.3.4",
     "jquery-1.11.1": "~2.1.4"
+  },
+  "devDependencies": {
+    "bourbon": "~4.2.3"
   }
 }
