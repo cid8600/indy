@@ -1,6 +1,6 @@
 .PHONY: watch dist clean
 
-default: gulp
+default: gulp default
 
 build: node_modules
 
