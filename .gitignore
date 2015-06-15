@@ -37,7 +37,7 @@ Thumbs.db
 bower_components
 node_modules
 dist/*
-.tmp
+.tmp/*
 src/scss/.sass-cache
 .codekit-cache/*
 .codekit-cache
