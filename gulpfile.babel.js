@@ -21,7 +21,7 @@
 // Babel handles this without us having to do anything. It just works.
 // You can read more about the new JavaScript features here:
 // https://babeljs.io/docs/learn-es2015/
-
+import fileinclude from 'gulp-file-include';
 import debug from 'gulp-debug';
 import bluebird from 'bluebird';
 import fs from 'fs';
@@ -120,6 +120,16 @@ gulp.task('scripts', () => {
     .pipe($.size({title: 'scripts'}));
 });
 
+gulp.task('fileinclude', () => {
+  gulp.src(['./src/index.html'])
+
+    .pipe(fileinclude({
+      prefix: '@@',
+      basepath: './src/templates'
+    }))
+    .pipe(gulp.dest('.tmp/'));
+});
+
 // Scan your HTML for assets & optimize them
 gulp.task('html', () => {
   const assets = $.useref.assets({searchPath: '{.tmp, ./src}'});
@@ -134,10 +144,7 @@ gulp.task('html', () => {
         './dist/index.html'
       ],
       // CSS Selectors for UnCSS to ignore
-      ignore: [
-        /.navdrawer-container.open/,
-        /.app-bar.open/
-      ]
+      ignore: []
     })))
 
     // Concatenate and minify styles
@@ -157,7 +164,7 @@ gulp.task('html', () => {
 gulp.task('clean', () => del(['.tmp', './dist/*', '!dist/.git'], {dot: true}));
 
 // Watch files for changes & reload
-gulp.task('serve', ['styles'], () => {
+gulp.task('serve', ['styles', 'fileinclude'], () => {
   browserSync({
     notify: true,
     // Customize the BrowserSync console logging prefix
@@ -169,7 +176,8 @@ gulp.task('serve', ['styles'], () => {
     server: ['.tmp', './src']
   });
 
-  gulp.watch(['./src/**/*.html'], reload);
+  gulp.watch(['.tmp/*.html'], reload);
+  gulp.watch(['./src/**/*.html'], ['fileinclude', reload]);
   gulp.watch(['./src/scss/**/*.{scss, css}'], ['styles', reload]);
   gulp.watch(['./src/js/**/*.js'], ['jshint']);
   gulp.watch(['./src/images/**/*'], reload);

@@ -21,10 +21,13 @@
 // Babel handles this without us having to do anything. It just works.
 // You can read more about the new JavaScript features here:
 // https://babeljs.io/docs/learn-es2015/
-
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _gulpFileInclude = require('gulp-file-include');
+
+var _gulpFileInclude2 = _interopRequireDefault(_gulpFileInclude);
 
 var _gulpDebug = require('gulp-debug');
 
@@ -119,6 +122,13 @@ _gulp2['default'].task('scripts', function () {
   .pipe(_gulp2['default'].dest('./dist/js')).pipe($.size({ title: 'scripts' }));
 });
 
+_gulp2['default'].task('fileinclude', function () {
+  _gulp2['default'].src(['./src/index.html']).pipe((0, _gulpFileInclude2['default'])({
+    prefix: '@@',
+    basepath: './src/templates'
+  })).pipe(_gulp2['default'].dest('.tmp/'));
+});
+
 // Scan your HTML for assets & optimize them
 _gulp2['default'].task('html', function () {
   var assets = $.useref.assets({ searchPath: '{.tmp, ./src}' });
@@ -130,7 +140,7 @@ _gulp2['default'].task('html', function () {
   .pipe($['if']('*.css', $.uncss({
     html: ['./dist/index.html'],
     // CSS Selectors for UnCSS to ignore
-    ignore: [/.navdrawer-container.open/, /.app-bar.open/]
+    ignore: []
   })))
 
   // Concatenate and minify styles
@@ -149,7 +159,7 @@ _gulp2['default'].task('clean', function () {
 });
 
 // Watch files for changes & reload
-_gulp2['default'].task('serve', ['styles'], function () {
+_gulp2['default'].task('serve', ['styles', 'fileinclude'], function () {
   (0, _browserSync2['default'])({
     notify: true,
     // Customize the BrowserSync console logging prefix
@@ -161,7 +171,8 @@ _gulp2['default'].task('serve', ['styles'], function () {
     server: ['.tmp', './src']
   });
 
-  _gulp2['default'].watch(['./src/**/*.html'], reload);
+  _gulp2['default'].watch(['.tmp/*.html'], reload);
+  _gulp2['default'].watch(['./src/**/*.html'], ['fileinclude', reload]);
   _gulp2['default'].watch(['./src/scss/**/*.{scss, css}'], ['styles', reload]);
   _gulp2['default'].watch(['./src/js/**/*.js'], ['jshint']);
   _gulp2['default'].watch(['./src/images/**/*'], reload);
