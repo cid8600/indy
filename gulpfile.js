@@ -125,7 +125,7 @@ _gulp2['default'].task('scripts', function () {
 _gulp2['default'].task('fileinclude', function () {
   _gulp2['default'].src(['./src/index.html']).pipe((0, _gulpFileInclude2['default'])({
     prefix: '@@',
-    basepath: './src/templates'
+    basepath: './src/partialviews'
   })).pipe(_gulp2['default'].dest('.tmp/'));
 });
 
@@ -133,7 +133,10 @@ _gulp2['default'].task('fileinclude', function () {
 _gulp2['default'].task('html', function () {
   var assets = $.useref.assets({ searchPath: '{.tmp, ./src}' });
 
-  return _gulp2['default'].src('./src/*.html').pipe(assets)
+  return _gulp2['default'].src('./src/*.html').pipe((0, _gulpFileInclude2['default'])({
+    prefix: '@@',
+    basepath: './src/partialviews'
+  })).pipe(assets)
   // Remove any unused CSS
   // Note: If not using the Style Guide, you can delete it from
   // the next line to only include styles your project uses.
@@ -148,7 +151,15 @@ _gulp2['default'].task('html', function () {
   .pipe($['if']('*.css', $.csso())).pipe(assets.restore()).pipe($.useref())
 
   // Minify any HTML
-  .pipe($['if']('*.html', $.minifyHtml()))
+  .pipe($['if']('*.html', $.minifyHtml({
+    empty: false,
+    cdata: false,
+    comments: true,
+    conditionals: true,
+    spare: false,
+    quotes: true,
+    loose: false
+  })))
   // Output files
   .pipe(_gulp2['default'].dest('./dist')).pipe($.size({ title: 'html' }));
 });

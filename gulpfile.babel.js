@@ -125,7 +125,7 @@ gulp.task('fileinclude', () => {
 
     .pipe(fileinclude({
       prefix: '@@',
-      basepath: './src/templates'
+      basepath: './src/partialviews'
     }))
     .pipe(gulp.dest('.tmp/'));
 });
@@ -135,6 +135,10 @@ gulp.task('html', () => {
   const assets = $.useref.assets({searchPath: '{.tmp, ./src}'});
 
   return gulp.src('./src/*.html')
+    .pipe(fileinclude({
+      prefix: '@@',
+      basepath: './src/partialviews'
+    }))
     .pipe(assets)
     // Remove any unused CSS
     // Note: If not using the Style Guide, you can delete it from
@@ -154,7 +158,15 @@ gulp.task('html', () => {
     .pipe($.useref())
 
     // Minify any HTML
-    .pipe($.if('*.html', $.minifyHtml()))
+    .pipe($.if('*.html', $.minifyHtml({
+      empty: false,
+      cdata: false,
+      comments: false,
+      conditionals: true,
+      spare: false,
+      quotes: true,
+      loose: true
+    })))
     // Output files
     .pipe(gulp.dest('./dist'))
     .pipe($.size({title: 'html'}));
