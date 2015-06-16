@@ -6,6 +6,7 @@
  *
  */
 @import "./partials/_h5bp";
+// @import "./partials/_h5reset";
 @import "../../bower_components/bourbon/app/assets/stylesheets/_bourbon";
 @import "./partials/_fonts";
 @import "./partials/_bootstrap";
@@ -42,4 +43,25 @@ body {
     width: 100%;
     height: 293px;
     margin: 0 auto;
+}
+
+.container {
+    > div {
+        position: relative;
+    }
+}
+
+#social-wrapper {
+    position: absolute;
+    top: 0;
+    right: 5%;
+    z-index: 1;
+}
+.left-col {
+    float: left;
+    width: 50%;
+}
+.right-col {
+    float: right;
+    width: 50%;
 }
