@@ -22,8 +22,6 @@
 // You can read more about the new JavaScript features here:
 // https://babeljs.io/docs/learn-es2015/
 import fileinclude from 'gulp-file-include';
-import debug from 'gulp-debug';
-import bluebird from 'bluebird';
 import fs from 'fs';
 import path from 'path';
 import gulp from 'gulp';

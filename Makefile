@@ -1,6 +1,6 @@
 .PHONY: watch dist clean serve default babel
 
-default: gulp default
+default: babel gulpfile.babel.js --out-file gulpfile.js && gulp default
 
 build: node_modules
 
@@ -13,7 +13,7 @@ serve:
 	babel gulpfile.babel.js --out-file gulpfile.js && gulp serve
 
 clean:
-	gulp clean
+	babel gulpfile.babel.js --out-file gulpfile.js && gulp clean
 
 dist:
 	babel gulpfile.babel.js --out-file gulpfile.js && gulp default

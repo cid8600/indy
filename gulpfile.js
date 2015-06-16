@@ -29,14 +29,6 @@ var _gulpFileInclude = require('gulp-file-include');
 
 var _gulpFileInclude2 = _interopRequireDefault(_gulpFileInclude);
 
-var _gulpDebug = require('gulp-debug');
-
-var _gulpDebug2 = _interopRequireDefault(_gulpDebug);
-
-var _bluebird = require('bluebird');
-
-var _bluebird2 = _interopRequireDefault(_bluebird);
-
 var _fs = require('fs');
 
 var _fs2 = _interopRequireDefault(_fs);
@@ -154,11 +146,11 @@ _gulp2['default'].task('html', function () {
   .pipe($['if']('*.html', $.minifyHtml({
     empty: false,
     cdata: false,
-    comments: true,
+    comments: false,
     conditionals: true,
     spare: false,
     quotes: true,
-    loose: false
+    loose: true
   })))
   // Output files
   .pipe(_gulp2['default'].dest('./dist')).pipe($.size({ title: 'html' }));

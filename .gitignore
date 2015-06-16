@@ -34,8 +34,8 @@ Thumbs.db
 *.komodoproject
 
 # Folders to ignore
-bower_components
-node_modules
+bower_components/*
+node_modules/*
 dist/*
 .tmp/*
 src/scss/.sass-cache
