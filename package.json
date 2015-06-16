@@ -58,7 +58,8 @@
     "watchify": "^3.2.2"
   },
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "postinstall": "npm rebuild gulp-sass node-sass;"
   },
   "repository": {
     "type": "git",
