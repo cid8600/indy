@@ -1,8 +1,3 @@
-<!-- custom-1434402399842 -->
-
-<div id="wall"></div>
-
-<script>
 Livefyre.require([ 'streamhub-wall#3' ], function(MediaWall) {
   var wall = window.wall = new MediaWall({
     el : document.getElementById("wall"),
@@ -24,5 +19,3 @@ Livefyre.require([ 'streamhub-wall#3' ], function(MediaWall) {
     clock.decrement();
   });
 });
-
-</script>
