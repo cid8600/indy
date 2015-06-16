@@ -191,7 +191,8 @@ gulp.task('serve:dist', ['default'], () => {
 gulp.task('default', ['clean'], cb => {
   runSequence(
     'styles',
-    ['jshint', 'scripts', 'images', 'fonts', 'html'],
+    // 'jshint',
+    [ 'scripts', 'images', 'fonts', 'html'],
     'copy',
     'generate-service-worker',
     cb);
