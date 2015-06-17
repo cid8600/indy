@@ -1,4 +1,13 @@
 @font-face {
+    font-family: 'Thunderhouse';
+    font-style: normal;
+    font-weight: 500;
+    src: url(/fonts/thunderhouse.eot);
+    src: local("Thunderhouse"), local("Thunderhouse"), url(/fonts/thunderhouse.eot) format("embedded-opentype"), url(/fonts/thunderhouse.woff) format("woff");
+}
+
+
+@font-face {
     font-family: 'Roboto Condensed';
     font-style: normal;
     font-weight: 300;
