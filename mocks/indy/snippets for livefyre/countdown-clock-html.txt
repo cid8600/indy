@@ -1,0 +1,26 @@
+<div class="tout tout-xs-1-1">
+    <div id="evt-countdown" class="play" style="background: url('<%= countdownBgImage.getMediaURL() %>') 0 0 no-repeat scroll">
+		<%--<div id="evt-countdown-header"><%= countdownHeader %></div>--%>
+		<div id="evt-countdown-countdown">
+			<div class="countdownBox" id="remainingDays">
+				<div class="countdownBox-header">Days</div>
+				<div class="countdownBox-value"></div>
+			</div>
+			<div class="countdownBox" id="remainingHours">
+				<div class="countdownBox-header">Hrs</div>
+				<div class="countdownBox-value"></div>
+			</div>
+			<div class="countdownBox" id="remainingMinutes">
+				<div class="countdownBox-header">Mins</div>
+				<div class="countdownBox-value"></div>
+			</div>
+			<div class="countdownBox" id="remainingSeconds">
+				<div class="countdownBox-header">Secs</div>
+				<div class="countdownBox-value"></div>
+			</div>
+		</div>
+    </div>
+    <script type="text/javascript">
+        IMS.Events.Countdown.initialize(<%= totalSeconds %>);
+    </script>
+</div>
