@@ -39,31 +39,104 @@ body {
     font-size: 19px;
 }
 
+.btn, a {
+    font-family: 'Six Caps', sans-serif;
+}
+
 .container-fluid {
     max-width: 3357px;
     margin: 0 auto;
 }
 
-.row {
-    margin: 0 auto;
+.logo {
+    width: 160px;
+    height: 80px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-image: url("./images/logo.png");
+    background-size: 160px 80px;
+    display: block;
+    text-indent: -9999px;
 }
 
-#header-module {
-    min-height: 150px;
+ul {
+    list-style-type: none;
 
-    > div {
-        &::before {
-            width: 2404px;
-            height: 1062px;
-            background-position: center center;
-            background-repeat: repeat;
-            background-image: url("./images/grain.png");
-            background-size: 2404px 1062px;
-            display: block;
-            position: absolute;
-            top: 0;
-            left: %50;
-            margin-left: -601px;
+    li {
+        float: left;
+        display: inline-block;
+
+        a {
+            font: 18px/1 'Six Caps', 'Helvetica Neue', Helvetica, Arial, sans-serif #fff;
+            text-transform: uppercase;
+        }
+    }
+}
+
+.row {
+    margin: 0 auto;
+
+    a {
+        text-decoration: none;
+        color: #fff;
+
+        &:hover {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        &:active {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        &:visited {
+            text-decoration: none;
+            color: #fff;
+        }
+    }
+
+    &#header-module {
+        min-height: 206px;
+        padding-top: 30px;
+
+        > div {
+            &::before {
+                content: '';
+                width: 2404px;
+                height: 1062px;
+                background-position: center center;
+                background-repeat: repeat;
+                background-image: url("./images/grain.png");
+                background-size: 2404px 1062px;
+                display: block;
+                position: absolute;
+                top: 0;
+                left: -601px;
+                margin-left: 50%;
+            }
+        }
+
+        ul {
+            height: 40px;
+
+            li {
+                width: 49%;
+                border-right: 1px solid #fff;
+                text-align: center;
+
+                &:last-child {
+                    border-right: none;
+                }
+
+                a {
+                    font-size: 18px;
+                    letter-spacing: 1px;
+                    padding: 11px 0;
+                    width: 100%;
+                    box-sizing: border-box;
+                }
+            }
         }
     }
 }
@@ -80,8 +153,8 @@ body {
 
 .container {
     > div {
-      position: relative;
-      overflow: hidden;
+        position: relative;
+        overflow: hidden;
     }
 }
 
@@ -100,10 +173,6 @@ body {
 .right-col {
     float: right;
     width: 50%;
-}
-
-.btn {
-    font-family: 'Six Caps', sans-serif !important;
 }
 
 .diag {
