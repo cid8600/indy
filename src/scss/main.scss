@@ -6,6 +6,7 @@
  *
  */
 @import "./partials/_h5bp";
+
 // @import "./partials/_h5reset";
 @import "../../bower_components/bourbon/app/assets/stylesheets/_bourbon";
 @import "./partials/_fonts";
@@ -16,6 +17,9 @@
  * Visual Style Guide styles
  * Remove if you prefer to use a CSS library, like Bootstrap
  */
+
+$indyBlue: #0022B8;
+$indyRed: #e3172f;
 
 html,
 body {
@@ -29,17 +33,46 @@ body {
     position: relative;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 300;
-    background-color: #000;
+    background-color: #fff;
     box-sizing: border-box;
     min-height: 100%;
-    font-size: 19px
+    font-size: 19px;
+}
+
+.container-fluid {
+    max-width: 3357px;
+    margin: 0 auto;
+}
+
+.row {
+    margin: 0 auto;
+}
+
+#header-module {
+    min-height: 150px;
+
+    > div {
+        &::before {
+            width: 2404px;
+            height: 1062px;
+            background-position: center center;
+            background-repeat: repeat;
+            background-image: url("./images/grain.png");
+            background-size: 2404px 1062px;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: %50;
+            margin-left: -601px;
+        }
+    }
 }
 
 #video {
     max-width: 520px;
     max-height: 293px;
     display: block;
-    background-color: red;
+    background-color: $indyRed;
     width: 100%;
     height: 293px;
     margin: 0 auto;
@@ -47,7 +80,8 @@ body {
 
 .container {
     > div {
-        position: relative;
+      position: relative;
+      overflow: hidden;
     }
 }
 
@@ -57,10 +91,12 @@ body {
     right: 5%;
     z-index: 1;
 }
+
 .left-col {
     float: left;
     width: 50%;
 }
+
 .right-col {
     float: right;
     width: 50%;
@@ -68,4 +104,21 @@ body {
 
 .btn {
     font-family: 'Six Caps', sans-serif !important;
+}
+
+.diag {
+    width: 100%;
+    height: auto;
+    background-clip: padding-box;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    &.red {
+        background-image: url("./images/diagnol-red.png");
+        padding-bottom: 47px;
+    }
+
+    &.blue {
+        background-image: url("./images/diagnol-blue.png");
+    }
 }
