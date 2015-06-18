@@ -164,7 +164,39 @@ ul {
         margin-top: -90px;
 
         > div {
-            padding: 0;
+            padding: 0 0 290px 0;
+            background-size: 60%;
+            background-repeat: no-repeat;
+            background-position: 0 560px;
+            background-image: url("./images/3men.png");
+
+            .left-col {
+                padding: 0;
+
+                img {
+                    display: block;
+                    margin-bottom: 40px;
+                }
+
+                h1 {
+                    width: 0;
+                    height: 0;
+                    text-indent: -9999px;
+                    margin: 0;
+                }
+            }
+
+            .right-col {
+                padding: 0;
+                padding-top: 220px;
+            }
+
+            p {
+                font-size: 18px;
+                line-height: 1.6;
+                font-family: $helvetica;
+                color: $indyRed;
+            }
         }
     }
 }
@@ -187,28 +219,6 @@ ul {
         position: relative;
         overflow: hidden;
     }
-}
-
-.left-col {
-    float: left;
-    width: 50%;
-
-    img {
-        display: block;
-    }
-
-    h1 {
-        width: 0;
-        height: 0;
-        text-indent: -9999px;
-        margin: 0;
-    }
-}
-
-.right-col {
-    float: right;
-    width: 50%;
-    padding-top: 220px;
 }
 
 .diag {
