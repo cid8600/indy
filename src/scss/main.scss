@@ -199,6 +199,25 @@ ul {
             }
         }
     }
+
+    &#support-module {
+        max-width: 1068px;
+        max-width: 1068px;
+        background-position: center -66px;
+        padding-top: 139px;
+        margin-top: -184px;
+
+        > div {
+            margin: 0 auto;
+            background-color: $indyBlue;
+            float: left;
+            padding: 0 24px;
+
+            &::before {
+                @include grain;
+            }
+        }
+    }
 }
 
 #video {
