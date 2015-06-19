@@ -1,5 +1,8 @@
 /* Get the bourbon mixin from http://bourbon.io */
 
+
+
+
 /* Reset */
 .flip-clock-wrapper * {
     margin: 0;
@@ -38,9 +41,10 @@
 
 /* Main */
 
-.flip-clock-wrapper {
+.flip-clock-wrapper, .flip-clock-wrapper a {
     min-height: 100%;
-    font: normal 11px "Helvetica Neue", Helvetica, sans-serif;
+    font: bold 11px "Helvetica Neue", Helvetica, sans-serif;
+    color: #fff;
     -webkit-user-select: none;
 }
 
@@ -294,7 +298,20 @@
     background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, .1) 100%);
     @include animation(hide .5s .3s linear both);
 }
+.counter .comma {
+    margin-left: 26px;
+}
 
+.counter .comma:before {
+    background-size: 100%;
+    bottom: 0px;
+    content: ",";
+    height: 45px;
+    left: -43px;
+    position: relative;
+    width: 14px;
+    color: #E41730;
+}
 @include keyframes(show) {
   0% {
     opacity: 0;
