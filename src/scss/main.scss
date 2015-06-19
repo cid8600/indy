@@ -164,11 +164,12 @@ ul {
         margin-top: -90px;
 
         > div {
-            padding: 0 0 290px 0;
-            background-size: 60%;
-            background-repeat: no-repeat;
-            background-position: 0 560px;
-            background-image: url("./images/3men.png");
+            padding-bottom: 240px;
+
+            .heroes {
+                position: absolute;
+                bottom: -80px;
+            }
 
             .left-col {
                 padding: 0;
