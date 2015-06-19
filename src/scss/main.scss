@@ -75,6 +75,13 @@ img.responsive {
     margin: 0 auto;
 }
 
+.container {
+    > div {
+        position: relative;
+        overflow: hidden;
+    }
+}
+
 .logo {
     width: 160px;
     height: 80px;
@@ -186,7 +193,7 @@ ul {
     }
 
     /* HERO VIDEO PLAYER */
-    &#hero-module {
+    &#hero-module, &#buy-module {
         margin-top: -90px;
 
         > div {
@@ -363,6 +370,24 @@ ul {
             @include grain;
         }
     }
+
+    &#buy-module {
+        margin-top: 0;
+        padding-top: 150px;
+
+        > div {
+            h2 {
+                text-indent: -9999px;
+                width: 0;
+                height: 0;
+            }
+
+            .right-col {
+                padding: 0;
+                margin-top: -90px;
+            }
+        }
+    }
 }
 
 #video {
@@ -398,13 +423,7 @@ ul {
     }
 }
 
-.container {
-    > div {
-        position: relative;
-        overflow: hidden;
-    }
-}
-
+/* DIAGNOL CLASSES */
 .diag {
     width: 100%;
     height: auto;
@@ -422,6 +441,7 @@ ul {
     }
 }
 
+/* SHARE ICONS */
 #social-wrapper {
     position: absolute;
     top: 0;
