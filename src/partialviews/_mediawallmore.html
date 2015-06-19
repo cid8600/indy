@@ -15,11 +15,11 @@ Livefyre.require([ 'streamhub-wall#3' ], function(MediaWall) {
   });
 
   wall._collection.on('data', function() {
-    clock.increment();
+    clock._clockInstances[0].increment();
   });
 
   wall._wallView.$el.on('removeContentView.hub', function(e) {
-    clock.decrement();
+    clock._clockInstances[0].decrement();
   });
 });
 
