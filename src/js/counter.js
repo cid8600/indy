@@ -6,21 +6,13 @@
 var clock;
     
 $(document).ready(function() {
-  clock = new FlipClock($('.counter'), 0, {
-      clockFace : 'Counter'
-    });
   
-  var contentCount = {
-      ajaxURL : "https://sales.bootstrap.fyre.co/api/v1.1/public/comments/ncomments/MzcxMzI3OkNVUkFURQ==.json",
-      siteId : 371327,
-      articleId : "CURATE",
-      interval : null,
-
-      get : function() {
-        var self = this;
-        $.get(self.ajaxURL, function(data) {
-          clock.setValue(data.data[self.siteId][self.articleId].total);
-        });
-      }
-    }.get();
+  var opts = {
+      targetEls: [".counter"],
+      network: "sales.fyre.co",
+      siteId: "371327",
+      articleIds: ["CURATE"]
+  };
+  
+  clock = new FlipCounter(opts);
 });
