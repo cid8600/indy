@@ -35,7 +35,11 @@
 
 $indyBlue: #0022B8;
 $indyRed: #e3172f;
+
 $helvetica: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$thunderhouse: "Thunderhouse", sans-serif !important;
+$thunderhouse: "Thunderhouse", sans-serif !important;
+$sixCaps: "Six Caps", sans-serif !important;
 
 html,
 body {
@@ -56,7 +60,7 @@ body {
 }
 
 .btn, a {
-    font-family: 'Six Caps', sans-serif;
+    font-family: $sixCaps;
 }
 
 img.responsive {
@@ -84,6 +88,8 @@ img.responsive {
 
 ul {
     list-style-type: none;
+    margin: 0;
+    padding: 0;
 
     li {
         float: left;
@@ -120,6 +126,18 @@ ul {
         }
     }
 
+    h2 {
+        font-family: $thunderhouse;
+        text-align: center;
+        font-size: 72px;
+        margin: 0;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    /* HEADER & NAV */
     &#header-module {
         min-height: 206px;
         padding-top: 20px;
@@ -160,6 +178,7 @@ ul {
         }
     }
 
+    /* HERO VIDEO PLAYER */
     &#hero-module {
         margin-top: -90px;
 
@@ -201,6 +220,7 @@ ul {
         }
     }
 
+    /* FOLLOW THESE STEPS */
     &#support-module {
         max-width: 1068px;
         max-width: 1068px;
@@ -208,11 +228,60 @@ ul {
         padding-top: 139px;
         margin-top: -184px;
 
+        h2 {
+            color: white;
+            margin: 50px 0 20px 0;
+            text-align: center;
+        }
+
+        p {
+            color: #fff;
+            text-align: center;
+            font-family: $helvetica;
+            font-size: .9em;
+            line-height: 1.4;
+            font-weight: normal;
+            padding: 0 15px;
+        }
+
+        ul {
+            li {
+                margin-bottom: 60px;
+            }
+        }
+
+        .star {
+            position: relative;
+            width: 100%;
+            margin-bottom: 20px;
+
+            p {
+                font-family: $sixCaps;
+                line-height: 77px;
+                position: relative;
+                font-size: 24px;
+            }
+
+            &:before {
+                content: '';
+                width: 90px;
+                height: 77px;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-image: url("./images/star.png");
+                background-size: 90px 77px;
+                display: block;
+                position: absolute;
+                left: 50%;
+                margin-left: -45px;
+            }
+        }
+
         > div {
             margin: 0 auto;
             background-color: $indyBlue;
             float: left;
-            padding: 0 24px;
+            padding: 0 24px 240px 24px;
 
             &::before {
                 @include grain;
