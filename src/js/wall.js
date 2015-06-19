@@ -1,6 +1,3 @@
-<div id="wall"></div>
-
-<script>
 Livefyre.require([ 'streamhub-wall#3' ], function(MediaWall) {
   var wall = window.wall = new MediaWall({
     el : document.getElementById("wall"),
@@ -15,12 +12,10 @@ Livefyre.require([ 'streamhub-wall#3' ], function(MediaWall) {
   });
 
   wall._collection.on('data', function() {
-    clock._clockInstances[0].increment();
+    clock.increment();
   });
 
   wall._wallView.$el.on('removeContentView.hub', function(e) {
-    clock._clockInstances[0].decrement();
+    clock.decrement();
   });
 });
-
-</script>

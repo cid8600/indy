@@ -1,5 +1,8 @@
 /* Get the bourbon mixin from http://bourbon.io */
 
+
+
+
 /* Reset */
 .flip-clock-wrapper * {
     margin: 0;
@@ -38,12 +41,13 @@
 
 /* Main */
 
-.flip-clock-wrapper {
+.flip-clock-wrapper, .flip-clock-wrapper a {
     min-height: 100%;
-    font: normal 11px "Helvetica Neue", Helvetica, sans-serif;
+    font: bold 11px "Helvetica Neue", Helvetica, sans-serif;
+    color: #fff;
     -webkit-user-select: none;
 }
-
+/*
 .flip-clock-meridium {
 	background: none;
 	box-shadow: 0 0 0 !important;
@@ -51,7 +55,7 @@
 	color: rgb(49, 51, 51);
 	bottom: 10px;
 }
-
+*/
 
 .flip-clock-wrapper {
     text-align: center;
@@ -62,6 +66,10 @@
 
 /* Skeleton */
 
+.flip-clock-wrapper .flip-clock-active {
+	background-color: #E31730;
+}
+
 .flip-clock-wrapper ul {
     position: relative;
     float: left;
@@ -71,9 +79,8 @@
     font-size: 80px;
     font-weight: bold;
     line-height: 87px;
-    border-radius: 6px_prefixed
-    ;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, .7);
+    /*border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .7);*/
 }
 
 .flip-clock-wrapper ul li {
@@ -118,7 +125,7 @@
     @include transform-origin(50% 100%);
     top: 0;
 }
-
+/*
 .flip-clock-wrapper ul li a div.up:after {
   content: "";
   position:absolute;
@@ -130,10 +137,14 @@
   background-color: #000;
   background-color: rgba(0,0,0,.4);
 }
-
+*/
 .flip-clock-wrapper ul li a div.down {
     @include transform-origin(50% 0);
     bottom: 0;
+}
+
+.flip-clock-wrapper ul li a div.down .shadow {
+	background-color: rgba(0,0,0,.10);
 }
 
 .flip-clock-wrapper ul li a div div.inn {
@@ -142,12 +153,10 @@
     z-index: 1;
     width: 100%;
     height: 200%;
-    color: #ccc;
-    text-shadow: 0 1px 2px #000;
+    color: #fff;
     text-align: center;
-    background-color: #333;
-    border-radius: 6px;
     font-size: 70px;
+    background: url(../images/grain-2.png);
 }
 
 .flip-clock-wrapper ul li a div.up div.inn {
@@ -252,7 +261,7 @@
 .flip-clock-wrapper ul li.flip-clock-active { z-index: 3; }
 
 /* SHADOW */
-
+/*
 .flip-clock-wrapper ul.play li.flip-clock-before .up .shadow {
     background: -moz-linear-gradient(top, rgba(0, 0, 0, .1) 0%, rgba(0, 0, 0, 1) 100%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, .1)), color-stop(100%, rgba(0, 0, 0, 1)));
@@ -272,9 +281,9 @@
     background: linear-gradient(to bottom, rgba(0, 0, 0, .1) 0%, rgba(0, 0, 0, 1) 100%);
     @include animation(hide .5s .3s linear both);
 }
-
+*/
 /*DOWN*/
-
+/*
 .flip-clock-wrapper ul.play li.flip-clock-before .down .shadow {
     background: -moz-linear-gradient(top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, .1) 100%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 1)), color-stop(100%, rgba(0, 0, 0, .1)));
@@ -294,7 +303,21 @@
     background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, .1) 100%);
     @include animation(hide .5s .3s linear both);
 }
+*/
+.counter .comma {
+    margin-left: 26px;
+}
 
+.counter .comma:before {
+    background-size: 100%;
+    bottom: 0px;
+    content: ",";
+    height: 45px;
+    left: -43px;
+    position: relative;
+    width: 14px;
+    color: #E41730;
+}
 @include keyframes(show) {
   0% {
     opacity: 0;

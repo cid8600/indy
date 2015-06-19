@@ -44,3 +44,5 @@ src/scss/.sass-cache
 .codekit-cache/*
 .codekit-cache
 config.codekit
+/dist/
+/.tmp/
