@@ -29,7 +29,6 @@ FlipCounter.prototype.init = function () {
         });
         this._clockInstances.push(clk);
     }
-console.log('clock instances', this._clockInstances);
     this._dataAdapter = new LfCommentCounts(this.opts, this.callback.bind(this));
 };
 FlipCounter.prototype.callback = function (data) {
@@ -72,6 +71,7 @@ FlipCounter.prototype.update = function () {
 };
 FlipCounter.prototype._addCommas = function (clockInstance) {
     var numDigits = clockInstance.face.lists.length;
+    
     if (numDigits > 3) {
         for (var i = numDigits, step = 3; i > step; i -= step) {
             $(clockInstance.face.lists[i - step])[0].$obj.addClass("comma");
