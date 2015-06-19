@@ -18,6 +18,18 @@
  * Remove if you prefer to use a CSS library, like Bootstrap
  */
 
+@mixin indyBtn {
+    background-color: $indyRed;
+    border-radius: 0;
+    border: none;
+    color: #fff;
+    padding: 0 50px;
+    line-height: 60px;
+    font-size: 36px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
 @mixin grain {
     content: '';
     width: 2404px;
@@ -132,6 +144,10 @@ ul {
             text-decoration: none;
             color: #fff;
         }
+    }
+
+    .btn-indy {
+        @include indyButton;
     }
 
     h2 {
@@ -369,6 +385,11 @@ ul {
         &::before {
             @include grain;
         }
+    }
+
+    &#poll-module {
+        .lf-poll
+        .lf-poll-btn {}
     }
 
     &#buy-module {
