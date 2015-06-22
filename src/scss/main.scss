@@ -440,12 +440,10 @@ ul {
 
 .lf-media-wall {
     min-height: 600px;
-    background-color: #333;
     position: relative;
     text-align: center;
 
     &:after {
-        content: 'Media Wall Place Holder';
         font-size: 36px;
         font-family: $helvetica;
         line-height: 600px;

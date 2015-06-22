@@ -1,6 +1,6 @@
-#wall {
+.lf-media-wall {
 	font: 14px/20px $helvetica !important;
-
+	text-align: left !important;
 	article {
 		&.content {
 		  	width: 100%;
@@ -19,6 +19,7 @@
 		&.content-author-name a {
 			font: bold 14px/19px $helvetica !important;
 			text-transform: uppercase;
+			color: #222 !important;
 		}
 		
 		.content-author-avatar img {
@@ -53,12 +54,30 @@
 	 		color: #666;
 	 	}
  	}
- 	
+ 	.content-default.content-with-image .content-header {
+ 		background: none !important;
+ 	}
  	.content-default.content-with-image .content-attachment .content-attachment-photo {
  		border-radius: 0 !important;
  		position: absolute;
- 		top: 48px;
+ 		top: 47px;
+ 	}
+ 	
+ 	.content-default {
+ 		box-shadow: none !important;
  	}
 }
 
+.content .content-author-avatar img,
+.content-default.content-with-image .content-header .content-author-avatar img,
+[data-lf-package~="streamhub-wall#3.5.0"] .content-default.content-with-image .content-header .content-author-avatar img  {
+	width: 47px !important;
+	height: 47px !important;
+	box-shadow: none !important;
+}
 
+.content-default.content-with-image .content-header .content-author-name a, 
+.content-default.content-with-image .content-header .content-author-username a {
+	color: #222 !important;
+	text-shadow: none !important;
+}
