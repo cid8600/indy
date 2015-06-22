@@ -440,10 +440,21 @@ ul {
             margin-bottom: 15px;
         }
 
-        ul {
-            li {
-                font-size: 1.2rem;
+        > ul {
+            display: block;
+            margin: 0 auto;
+            float: right;
+            position: relative;
+            right: 50%;
+            text-align: center;
+
+            > li {
+                display: inline-block;
+                float: left;
+                position: relative;
+                left: 50%;
                 text-transform: uppercase;
+                font-size: 1.2rem;
             }
         }
     }
