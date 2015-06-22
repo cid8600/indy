@@ -13,6 +13,7 @@
 @import "./partials/_bootstrap";
 @import "./partials/flipclock";
 @import "./partials/_mediawall";
+
 /*
  * Visual Style Guide styles
  * Remove if you prefer to use a CSS library, like Bootstrap
@@ -334,7 +335,7 @@ ul {
     }
 
     /* TOP SUBMISSIONS MEDIA WALL */
-    &#top-sbmissions-module, &#more-sbmissions-module {
+    &#top-submissions-module, &#more-submissions-module {
         > div {
             text-align: center;
         }
@@ -474,7 +475,6 @@ ul {
 }
 
 .lf-media-wall {
-    min-height: 600px;
     position: relative;
     text-align: center;
 

@@ -1,26 +1,38 @@
+<div id="more-submissions-module" class="row mediawall-module">
+<div class="col-xs-12">
+    <div class="tripple front-stars"></div>
+    <h2>More Submissions</h2>
+    <div class="tripple back-stars"></div>
+</div>
+
 <div id="wall" class="lf-media-wall"></div>
 
 <script>
-Livefyre.require([ 'streamhub-wall#3' ], function(MediaWall) {
-  var wall = window.wall = new MediaWall({
-    el : document.getElementById("wall"),
-    collection : {
-      "network" : "sales.fyre.co",
-      "siteId" : "371327",
-      "articleId" : "CURATE"
-    },
-    initial : 50,
-    showMore : 50,
-    columns: 3
-  });
+  $(document).ready(function () {
+    Livefyre.require(['streamhub-wall#3'], function (MediaWall) {
+      var wall = new MediaWall({
+        el : document.getElementById("wall"),
+        collection : {
+          "network" : "sales.fyre.co",
+          "siteId" : "371327",
+          "articleId" : "CURATE"
+        },
+        initial : 50,
+        showMore : 50,
+        columns: 3
+      });
 
-  wall._collection.on('data', function() {
-    clock._clockInstances[0].increment();
-  });
+      wall._collection.on('data', function() {
+        clock._clockInstances[0].increment();
+      });
 
-  wall._wallView.$el.on('removeContentView.hub', function(e) {
-    clock._clockInstances[0].decrement();
+      wall._wallView.$el.on('removeContentView.hub', function(e) {
+        clock._clockInstances[0].decrement();
+      });
+
+    });
+
   });
-});
 
 </script>
+  </div>
