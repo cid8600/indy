@@ -12,7 +12,7 @@
 @import "./partials/_fonts";
 @import "./partials/_bootstrap";
 @import "./partials/flipclock";
-
+@import "./partials/_mediawall";
 /*
  * Visual Style Guide styles
  * Remove if you prefer to use a CSS library, like Bootstrap
@@ -49,9 +49,9 @@ $indyBlue: #0022B8;
 $indyRed: #e3172f;
 
 $helvetica: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$thunderhouse: "Thunderhouse", sans-serif !important;
-$thunderhouse: "Thunderhouse", sans-serif !important;
-$sixCaps: "Six Caps", sans-serif !important;
+$thunderhouse: "Thunderhouse", sans-serif;
+$thunderhouse: "Thunderhouse", sans-serif;
+$sixCaps: "Six Caps", sans-serif;
 
 html,
 body {
@@ -71,7 +71,7 @@ body {
     font-size: 19px;
 }
 
-.btn, a {
+.btn {
     font-family: $sixCaps;
 }
 
@@ -475,12 +475,10 @@ ul {
 
 .lf-media-wall {
     min-height: 600px;
-    background-color: #333;
     position: relative;
     text-align: center;
 
     &:after {
-        content: 'Media Wall Place Holder';
         font-size: 36px;
         font-family: $helvetica;
         line-height: 600px;
@@ -602,7 +600,7 @@ $flip_fontsize_L: 12rem;
         .comma {
             &:before {
                 height: $flip_height_L;
-                left: -80px;
+                left: -33px;
                 bottom: -65px;
             }
         }

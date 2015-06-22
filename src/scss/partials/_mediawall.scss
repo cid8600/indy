@@ -1,0 +1,116 @@
+.lf-media-wall {
+	font: 14px/20px $helvetica !important;
+	text-align: left !important;
+	article {	
+		&.content {
+		  	width: 308px !important;
+		  	border: 1px solid #eaeaea !important;
+		  	border-radius: 0 !important;
+		  
+		  
+		  	.content-header {
+		  		
+		  		.content-header-inner {
+					padding: 0 !important;	  		
+			  	}
+		  	}
+		}
+		
+		&.content-author-name a {
+			font: bold 14px/19px $helvetica !important;
+			text-transform: uppercase;
+			color: #222 !important;
+		}
+		
+		.content-author-avatar img {
+			width: 47px;
+			height: 47px;
+			border-radius: 0 !important;
+			position: relative;
+			top: 0;
+			left: 0;
+		}
+	}
+ 	
+ 	.content-default .content-body {
+ 		font: inherit !important;
+ 		
+ 		a {
+        	color: #D52B1E;
+	 		font: inherit !important;    	
+ 		}
+ 	}
+ 	
+ 	.content-default.content-with-image .content-header {
+ 		text-transform: uppercase;
+ 	
+ 		&.content-author-name a {
+	 		font: bold 15px/19px $helvetica !important;
+	 	}
+	 	
+	 	&.content-author-username a {
+	 		font: bold 9px $helvetica !important;
+	 		
+	 		color: #666 !important;
+	 	}
+ 	}
+ 	.content-default.content-with-image .content-header {
+ 		background: none !important;
+ 	}
+ 	.content-default.content-with-image .content-attachment .content-attachment-photo {
+ 		border-radius: 0 !important;
+ 		position: absolute;
+ 		top: 47px;
+ 	}
+}
+.content-default.content-with-image,
+.content-default.content-with-image .content-attachment .content-attachment-frame,
+.content .content-attachment-photo {
+	box-shadow: none !important;
+}
+
+.content-default.content-with-image .content-header {
+	border-radius: 0 !important;
+	box-shadow: none !important;
+}
+
+.content .content-author-avatar img,
+.content-default.content-with-image .content-header .content-author-avatar img,
+[data-lf-package~="streamhub-wall#3.5.0"] .content-default.content-with-image .content-header .content-author-avatar img  {
+	width: 47px !important;
+	height: 47px !important;
+	box-shadow: none !important;
+}
+
+.content-default.content-with-image .content-header .content-author-name a, 
+.content-default.content-with-image .content-header .content-author-username a {
+	color: #222 !important;
+	text-shadow: none !important;
+}
+
+.content-default.content-with-image .content-header .content-author-name {
+	margin: 8px 0 0 16px;
+}
+
+.content.content-instagram .content-source-logo {
+	color: #3f729b !important;
+	margin-right: 30px;
+}
+
+.streamhub-media-wall-view .hub-wall-column {
+	padding: 25px !important;
+	
+}
+
+.content-default.content-with-image.content-tweet .content-source-logo {
+	color: #55acee !important;
+	margin-right: 30px;
+}
+
+.content.content-tweet .hub-btn {
+	color: #CECECE !important;
+}
+
+#top-wall .hub-list-more {
+	display:none;
+}

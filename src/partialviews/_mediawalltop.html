@@ -4,7 +4,20 @@
 	  <h2>Top Submissions</h2>
 	  <div class="tripple back-stars"></div>
 	</div>
-  <div class="lf-media-wall col-xs-12">
-    <!-- custom-1434401721002 -->
+  <div class="lf-media-wall col-xs-12" id="top-wall">
+    <script>
+		Livefyre.require([ 'streamhub-wall#3' ], function(MediaWall) {
+		  var walltop = window.walltop = new MediaWall({
+		    el : document.getElementById("top-wall"),
+		    collection : {
+		      "network" : "sales.fyre.co",
+		      "siteId" : "371327",
+		      "articleId" : "CURATE"
+		    },
+		    initial : 3,
+		    columns: 3
+		  }).pause();
+		});
+	</script>
   </div>
 </div>

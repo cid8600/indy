@@ -1,10 +1,8 @@
 /* Get the bourbon mixin from http://bourbon.io */
 
-
-
-
 /* Reset */
-.flip-clock-wrapper * {
+
+.flip-clock-wrapper *, .flip-clock-wrapper a {
     margin: 0;
     padding: 0;
     line-height: normal;
@@ -43,7 +41,7 @@
 
 .flip-clock-wrapper, .flip-clock-wrapper a {
     min-height: 100%;
-    font: bold 11px "Helvetica Neue", Helvetica, sans-serif;
+    font: bold 130px "Helvetica Neue", Helvetica, sans-serif;
     color: #fff;
     -webkit-user-select: none;
 }
@@ -58,10 +56,9 @@
 */
 
 .flip-clock-wrapper {
-    text-align: center;
     position: relative;
     width: 100%;
-    margin: 1em;
+    margin-top:60px;
 }
 
 /* Skeleton */
@@ -74,9 +71,9 @@
     position: relative;
     float: left;
     margin: 5px;
-    width: 60px;
-    height: 90px;
-    font-size: 80px;
+    width: 130px;
+    height: 168px;
+    font-size: 130px;
     font-weight: bold;
     line-height: 87px;
     /*border-radius: 6px;
@@ -155,7 +152,7 @@
     height: 200%;
     color: #fff;
     text-align: center;
-    font-size: 70px;
+    font-size: 130px;
     background: url(../images/grain-2.png);
 }
 
@@ -305,18 +302,19 @@
 }
 */
 .counter .comma {
-    margin-left: 26px;
+    margin-left: 26px ;
 }
 
 .counter .comma:before {
     background-size: 100%;
-    bottom: 0px;
+    bottom: -30px;
     content: ",";
     height: 45px;
-    left: -43px;
+    left: -33px;
     position: relative;
     width: 14px;
     color: #E41730;
+    font-size:130px;
 }
 @include keyframes(show) {
   0% {
