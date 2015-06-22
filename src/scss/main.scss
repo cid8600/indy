@@ -160,6 +160,7 @@ ul {
         margin: 0 0 105px 0;
         color: $indyRed;
         line-height: 1;
+        letter-spacing: 1px;
 
         &.submissions {
             position: relative;
@@ -392,6 +393,7 @@ ul {
         h2 {
             color: #fff;
             text-align: left;
+            margin-bottom: 0;
         }
 
         p {
@@ -415,6 +417,7 @@ ul {
     &#buy-module {
         margin-top: 0;
         padding-top: 150px;
+        max-height: 740px;
 
         > div {
             h2 {
@@ -434,10 +437,16 @@ ul {
     &#footer-module {
         max-width: 1068px;
         background-position: center -66px;
-        padding-top: 139px;
-        margin-top: -375px;
+        padding-top: 140px;
+        margin-top: -136px;
         padding-left: 0;
         padding-right: 0;
+        margin-bottom: 0;
+        padding-bottom: 0;
+        overflow: hidden;
+        box-sizing: border-box;
+        display: block;
+        position: relative;
 
         &::after {
             @include grain;
