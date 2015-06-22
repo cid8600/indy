@@ -7,7 +7,7 @@
   <div class="lf-media-wall col-xs-12" id="top-wall">
     <script>
 		Livefyre.require([ 'streamhub-wall#3' ], function(MediaWall) {
-		  var wall = window.wall = new MediaWall({
+		  var walltop = window.walltop = new MediaWall({
 		    el : document.getElementById("top-wall"),
 		    collection : {
 		      "network" : "sales.fyre.co",
@@ -17,14 +17,6 @@
 		    initial : 3,
 		    columns: 3
 		  }).pause();
-		
-		  wall._collection.on('data', function() {
-		    clock._clockInstances[0].increment();
-		  });
-		
-		  wall._wallView.$el.on('removeContentView.hub', function(e) {
-		    clock._clockInstances[0].decrement();
-		  });
 		});
 	</script>
   </div>
