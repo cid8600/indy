@@ -1,9 +1,9 @@
 .lf-media-wall {
 	font: 14px/20px $helvetica !important;
 	text-align: left !important;
-	article {
+	article {	
 		&.content {
-		  	width: 100%;
+		  	width: 308px !important;
 		  	border: 1px solid #eaeaea !important;
 		  	border-radius: 0 !important;
 		  
@@ -49,9 +49,9 @@
 	 	}
 	 	
 	 	&.content-author-username a {
-	 		font: bold 9px/19px $helvetica !important;
+	 		font: bold 9px $helvetica !important;
 	 		
-	 		color: #666;
+	 		color: #666 !important;
 	 	}
  	}
  	.content-default.content-with-image .content-header {
@@ -62,10 +62,16 @@
  		position: absolute;
  		top: 47px;
  	}
- 	
- 	.content-default {
- 		box-shadow: none !important;
- 	}
+}
+.content-default.content-with-image,
+.content-default.content-with-image .content-attachment .content-attachment-frame,
+.content .content-attachment-photo {
+	box-shadow: none !important;
+}
+
+.content-default.content-with-image .content-header {
+	border-radius: 0 !important;
+	box-shadow: none !important;
 }
 
 .content .content-author-avatar img,
@@ -80,4 +86,31 @@
 .content-default.content-with-image .content-header .content-author-username a {
 	color: #222 !important;
 	text-shadow: none !important;
+}
+
+.content-default.content-with-image .content-header .content-author-name {
+	margin: 8px 0 0 16px;
+}
+
+.content.content-instagram .content-source-logo {
+	color: #3f729b !important;
+	margin-right: 30px;
+}
+
+.streamhub-media-wall-view .hub-wall-column {
+	padding: 25px !important;
+	
+}
+
+.content-default.content-with-image.content-tweet .content-source-logo {
+	color: #55acee !important;
+	margin-right: 30px;
+}
+
+.content.content-tweet .hub-btn {
+	color: #CECECE !important;
+}
+
+#top-wall .hub-list-more {
+	display:none;
 }
