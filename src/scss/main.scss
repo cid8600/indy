@@ -72,7 +72,8 @@ body {
     font-size: 19px;
 }
 
-.btn {
+.btn,
+[data-lf-package~="streamhub-wall#3.5.0"] .hub-list-more {
     font-family: $sixCaps;
 }
 
@@ -147,16 +148,18 @@ ul {
         }
     }
 
-    .btn-indy {
+    .btn-indy,
+    [data-lf-package~="streamhub-wall#3.5.0"] .hub-list-more {
         @include indyButton;
     }
 
     h2 {
         font-family: $thunderhouse;
         text-align: center;
-        font-size: 72px;
-        margin: 0;
+        font-size: 7.2rem;
+        margin: 0 0 105px 0;
         color: $indyRed;
+        line-height: 1;
 
         &.submissions {
             position: relative;
@@ -331,7 +334,7 @@ ul {
     }
 
     &.mediawall-module {
-        padding: 150px 0;
+        padding: 140px 0;
     }
 
     /* TOP SUBMISSIONS MEDIA WALL */
@@ -401,6 +404,7 @@ ul {
                 text-indent: -9999px;
                 width: 0;
                 height: 0;
+                margin: 0;
             }
 
             .right-col {
