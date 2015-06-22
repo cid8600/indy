@@ -408,6 +408,21 @@ ul {
             }
         }
     }
+
+    &#footer-module {
+        max-width: 1068px;
+        background-position: center -66px;
+        padding-top: 139px;
+        margin-top: -375px;
+        padding-left: 0;
+        padding-right: 0;
+
+        > div {
+            background-color: $indyRed;
+            float: left;
+            color: #fff;
+        }
+    }
 }
 
 #video {
@@ -458,6 +473,29 @@ ul {
 
     &.blue {
         background-image: url("./images/diagnol-blue.png");
+    }
+
+    &.flipped {
+        background: none;
+
+        &:before {
+            background-image: url("./images/diagnol-red.png");
+            background-clip: padding-box;
+            background-position: center center;
+            background-repeat: no-repeat;
+            content: "";
+            width: 3357px;
+            height: 206px;
+            position: absolute;
+            top: -66px;
+            left: -50%;
+            z-index: 0;
+            -webkit-transform: rotate(180deg);
+            -moz-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            -o-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
     }
 }
 
