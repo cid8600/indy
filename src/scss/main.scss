@@ -323,7 +323,6 @@ ul {
 
     &#social-counter-moudle {
         padding: 150px 0 0 0;
-        min-height: 745px;
         background-size: 80%;
         background-repeat: no-repeat;
         background-position: 0 bottom;
@@ -501,6 +500,54 @@ ul {
                     display: block;
                     width: 100%;
                     height: 100%;
+                }
+            }
+        }
+    }
+}
+
+$flip_height_L: 170px;
+$flip_width_L: 135px;
+$flip_fontsize_L: 12rem;
+
+/* FLIP CLOCK */
+#counter-wrapper {
+    float: right;
+    position: relative;
+    right: 50%;
+    width: auto;
+    padding-bottom: 200px;
+
+    .flip-clock-wrapper {
+        float: left;
+        position: relative;
+        left: 50%;
+        width: auto;
+    }
+
+    .counter {
+        .comma {
+            &:before {
+                height: $flip_height_L;
+                left: -80px;
+                bottom: -65px;
+            }
+        }
+    }
+
+    .flip-clock-wrapper ul {
+        width: $flip_width_L;
+        height: $flip_height_L;
+
+        li {
+            a {
+                cursor: default;
+
+                div {
+                    div.inn {
+                        font-size: $flip_fontsize_L;
+                        line-height: $flip_height_L;
+                    }
                 }
             }
         }
