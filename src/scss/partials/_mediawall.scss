@@ -1,0 +1,64 @@
+#wall {
+	font: 14px/20px $helvetica !important;
+
+	article {
+		&.content {
+		  	width: 100%;
+		  	border: 1px solid #eaeaea !important;
+		  	border-radius: 0 !important;
+		  
+		  
+		  	.content-header {
+		  		
+		  		.content-header-inner {
+					padding: 0 !important;	  		
+			  	}
+		  	}
+		}
+		
+		&.content-author-name a {
+			font: bold 14px/19px $helvetica !important;
+			text-transform: uppercase;
+		}
+		
+		.content-author-avatar img {
+			width: 47px;
+			height: 47px;
+			border-radius: 0 !important;
+			position: relative;
+			top: 0;
+			left: 0;
+		}
+	}
+ 	
+ 	.content-default .content-body {
+ 		font: inherit !important;
+ 		
+ 		a {
+        	color: #D52B1E;
+	 		font: inherit !important;    	
+ 		}
+ 	}
+ 	
+ 	.content-default.content-with-image .content-header {
+ 		text-transform: uppercase;
+ 	
+ 		&.content-author-name a {
+	 		font: bold 15px/19px $helvetica !important;
+	 	}
+	 	
+	 	&.content-author-username a {
+	 		font: bold 9px/19px $helvetica !important;
+	 		
+	 		color: #666;
+	 	}
+ 	}
+ 	
+ 	.content-default.content-with-image .content-attachment .content-attachment-photo {
+ 		border-radius: 0 !important;
+ 		position: absolute;
+ 		top: 48px;
+ 	}
+}
+
+
