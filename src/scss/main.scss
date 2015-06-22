@@ -409,6 +409,72 @@ ul {
         }
     }
 
+    &#trending-module {
+        [data-lf-package="trends-component#0.2.1"] {
+            .hub-metric-list {
+                .hub-metric {
+                    border: none;
+                    margin: 0 0 4px 0;
+                    background-color: rgba(0, 0, 0, 0.1);
+                    padding: 0 30px 0 0;
+                    height: 60px;
+
+                    &:first-child {
+                        border-radius: 0;
+                    }
+
+                    &:last-child {
+                        border-radius: 0;
+                    }
+
+                    .hub-metric-container {
+                        .hub-metric-rank {
+                            background-color: $indyRed;
+                            height: 60px;
+                            width: 80px;
+                            border-radius: 0;
+
+                            .hub-metric-rank-value {
+                                height: 60px;
+                                width: 80px;
+
+                                &:before {
+                                    line-height: 60px;
+                                    font-family: $sixCaps;
+                                    font-size: 2.4rem;
+                                }
+                            }
+                        }
+
+                        .hub-metric-details {
+                            padding-left: 80px;
+                            margin: 0;
+
+                            .hub-metric-label {
+                                color: #fff;
+                                font-size: 1.4rem;
+                                line-height: 1.2;
+                                margin: 0 0 16px 12px;
+                                padding-top: 16px;
+                            }
+
+                            .hub-metric-bar-container {
+                                margin: 0;
+                                height: 12px;
+
+                                .hub-metric-bar {
+                                    border-radius: 0;
+                                    background-color: #fff;
+                                    height: 12px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     &#poll-module {
         .lf-poll
         .lf-poll-btn {}
