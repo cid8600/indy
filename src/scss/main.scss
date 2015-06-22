@@ -189,24 +189,37 @@ ul {
         ul {
             height: 40px;
             margin-top: 10px;
+            padding: 0 0 0 36px;
 
             li {
-                width: 49%;
+                width: 50%;
                 border-right: 1px solid #fff;
-                text-align: center;
+                box-sizing: border-box;
 
                 &:last-child {
                     border-right: none;
+
+                    a {
+                        padding-right: 0 !important;
+                        text-align: right !important;
+                    }
+                }
+
+                &:first-child {
+                    a {
+                        padding-left: 0 !important;
+                    }
                 }
 
                 a {
-                    font-size: 18px;
+                    font-size: 1.2rem;
                     letter-spacing: 1px;
-                    padding: 0;
                     width: 100%;
                     box-sizing: border-box;
                     display: inline-block;
                     height: auto;
+                    font-family: $helvetica;
+                    padding: 0 4px;
                 }
             }
         }
@@ -331,6 +344,10 @@ ul {
         background-repeat: no-repeat;
         background-position: 0 bottom;
         background-image: url("./images/2cars.png");
+
+        h2 {
+            margin: 0;
+        }
     }
 
     &.mediawall-module {
@@ -598,6 +615,7 @@ $flip_fontsize_L: 12rem;
         position: relative;
         left: 50%;
         width: auto;
+        margin-top: 40px;
     }
 
     .counter {
