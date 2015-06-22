@@ -12,7 +12,7 @@
 @import "./partials/_fonts";
 @import "./partials/_bootstrap";
 @import "./partials/flipclock";
-
+@import "./partials/_mediawall";
 /*
  * Visual Style Guide styles
  * Remove if you prefer to use a CSS library, like Bootstrap
@@ -71,7 +71,7 @@ body {
     font-size: 19px;
 }
 
-.btn, a {
+.btn {
     font-family: $sixCaps;
 }
 
