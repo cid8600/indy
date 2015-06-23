@@ -13,7 +13,8 @@
 @import "./partials/_bootstrap";
 @import "./partials/flipclock";
 @import "./partials/_mediawall";
-
+@import "./partials/video-js";
+@import "./partials/trending";
 /*
  * Visual Style Guide styles
  * Remove if you prefer to use a CSS library, like Bootstrap
@@ -50,7 +51,6 @@ $indyBlue: #0022B8;
 $indyRed: #e3172f;
 
 $helvetica: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$thunderhouse: "Thunderhouse", sans-serif;
 $thunderhouse: "Thunderhouse", sans-serif;
 $sixCaps: "Six Caps", sans-serif;
 
@@ -204,6 +204,7 @@ ul {
                     box-sizing: border-box;
                     display: inline-block;
                     height: auto;
+                    font-family: $sixCaps
                 }
             }
         }
@@ -463,15 +464,21 @@ ul {
 
 #video {
     display: block;
-    background-color: $indyRed;
-    width: 100%;
-    height: 293px;
+    //background-color: $indyRed;
+    width: 500px;
+    height: 281px;
     margin: 0 auto 70px auto;
 
     img {
         width: 100%;
         min-height: 75%;
     }
+}
+
+#video {
+	.vjs-big-play-button {
+		display:none;
+	}
 }
 
 .lf-media-wall {
