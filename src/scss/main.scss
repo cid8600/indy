@@ -254,7 +254,7 @@ ul {
 
                 img {
                     display: block;
-                    margin-bottom: 40px;
+                    margin-bottom: 30px;
                 }
 
                 h1 {
@@ -370,6 +370,14 @@ ul {
 
     &.mediawall-module {
         padding: 140px 0;
+
+        #wallTweet {
+            margin-right: 10px;
+        }
+
+        #wallShowMore {
+            margin-left: 10px;
+        }
     }
 
     /* TOP SUBMISSIONS MEDIA WALL */
@@ -525,6 +533,7 @@ ul {
             h2 {
                 font-size: 3rem;
                 line-height: 1.2;
+                margin-bottom: 40px;
             }
 
             li {
@@ -544,12 +553,17 @@ ul {
                 }
             }
 
-            .lf-poll-link-results {
+            .lf-poll-link-results,
+            a {
                 text-align: center;
                 color: #fff;
                 font-size: 1.2rem;
                 font-family: $helvetica;
                 line-height: 1;
+            }
+
+            .lf-poll-disclaimer {
+                display: none;
             }
         }
 
@@ -587,6 +601,10 @@ ul {
             .right-col {
                 padding: 0;
                 margin-top: -90px;
+            }
+
+            a {
+                margin-top: 30px;
             }
         }
     }
