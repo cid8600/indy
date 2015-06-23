@@ -1,32 +1,48 @@
 <div id="more-submissions-module" class="row mediawall-module">
+<<<<<<< HEAD
 <div class="col-xs-12">
     <div class="tripple front-stars"></div>
     <h2>MORE SubMISsIONS</h2>
     <div class="tripple back-stars"></div>
 </div>
 
-<div id="wall" class="lf-media-wall"></div>
+  <div id="wall" class="lf-media-wall"></div>
+  <div class="row">
+    <a class="btn btn-default btn-indy" id="wallTweet" href="#">Tweet</a>
+    <a class="btn btn-default btn-indy" id="wallShowMore" href="#">View More</a>
+  </div>
 
 <script>
-  $(document).ready(function () {
-    Livefyre.require(['streamhub-wall#3'], function (MediaWall) {
-      var wall = window.wall = new MediaWall({
-        el : document.getElementById("wall"),
-        collection : {
-          "network" : "sales.fyre.co",
-          "siteId" : "371327",
-          "articleId" : "CURATE"
-        },
-        initial : 50,
-        showMore : 50
+    $(document).ready(function () {
+      Livefyre.require(['streamhub-wall#3.3.2'], function (MediaWall) {
+        var wall = window.wall = new MediaWall({
+          el : document.getElementById("wall"),
+          collection : {
+            "network" : "sales.fyre.co",
+            "siteId" : "371327",
+            "articleId" : "CURATE"
+          },
+          initial : 50,
+          showMore : 50
+        });
+
+        wall._collection.on('data', function() {
+          clock._clockInstances[0].increment();
+        });
+
+        wall._wallView.$el.on('removeContentView.hub', function(e) {
+          clock._clockInstances[0].decrement();
+        });
+
       });
 
-      wall._collection.on('data', function() {
-        clock._clockInstances[0].increment();
+      $('#wallShowMore').click(function(e) {
+        e.preventDefault();
+        wall._wallView.showMore();
       });
-
-      wall._wallView.$el.on('removeContentView.hub', function(e) {
-        clock._clockInstances[0].decrement();
+      $('#wallTweet').click(function(e) {
+        e.preventDefault();
+        alert('Tweet box');
       });
 
     });
@@ -34,4 +50,3 @@
   });
 
 </script>
-  </div>
