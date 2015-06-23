@@ -509,8 +509,66 @@ ul {
             width: 100%;
             margin: 0;
             float: right;
+            border: none;
+            color: #fff;
+            padding: 40px 30px;
+            font-family: Helvetica,Georgia,Arial,sans-serif;
+            font-size: 1.3rem;
+            background-color: $indyRed;
+
+            .lf-poll-answers {
+                input[type='radio'] {
+                    margin-right: 20px;
+                }
+            }
+
+            h2 {
+                font-size: 3rem;
+                line-height: 1.2;
+            }
+
+            li {
+                width: 100%;
+                padding: 0;
+                height: 40px;
+                position: relative;
+
+                label {
+                    display: inline-block;
+                    max-width: 100%;
+                    margin-bottom: 0;
+                    font-weight: normal;
+                    font-family: $helvetica;
+                    font-size: 2rem;
+                    line-height: 40px;
+                }
+            }
+
+            .lf-poll-link-results {
+                text-align: center;
+                color: #fff;
+                font-size: 1.2rem;
+                font-family: $helvetica;
+                line-height: 1;
+            }
         }
-        .lf-poll-btn {}
+
+        .lf-poll-btn {
+            background-color: $indyRedDark;
+            border: 1px solid $indyRedDark;
+            border-radius: 0;
+            width: 100%;
+            padding: 16px 0;
+            text-transform: uppercase;
+            font-family: $sixCaps;
+            font-size: 4.4rem;
+            line-height: 1;
+            margin: 40px 0 10px 0;
+
+            &:hover {
+                border-color: #fff;
+            }
+        }
     }
 
     &#buy-module {
