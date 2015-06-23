@@ -126,7 +126,7 @@ ul {
 
 .row {
     margin: 0 auto;
-    max-width: 1068px;
+    // max-width: 1068px;
     padding: 0 12px;
 
     a {
@@ -230,6 +230,8 @@ ul {
     /* HERO VIDEO PLAYER */
     &#hero-module, &#buy-module {
         margin-top: -90px;
+        position: relative;
+        overflow: hidden;
 
         > div {
             padding-bottom: 240px;
@@ -275,9 +277,11 @@ ul {
         max-width: 1068px;
         background-position: center -66px;
         padding-top: 139px;
-        margin-top: -184px;
+        margin-top: -139px;
         padding-left: 0;
         padding-right: 0;
+        position: relative;
+        overflow: hidden;
 
         h2 {
             color: white;
@@ -390,6 +394,8 @@ ul {
         background-color: $indyBlue;
         padding-top: 130px;
         padding-bottom: 150px;
+        position: relative;
+        overflow: hidden;
 
         h2 {
             color: #fff;
@@ -405,8 +411,10 @@ ul {
             font-weight: normal;
         }
 
-        &::before {
-            @include grain;
+        > div {
+            &::before {
+                @include grain;
+            }
         }
     }
 
@@ -563,6 +571,18 @@ ul {
             margin-bottom: 15px;
             background-size: 130px 70px;
         }
+    }
+
+    &#hero-module,
+    &#buy-module,
+    &#support-module,
+    &#top-submissions-module,
+    &#more-submissions-module,
+    &#trending-module > div,
+    &#poll-module > div {
+        max-width: 1068px;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
