@@ -10,7 +10,7 @@
 <script>
   $(document).ready(function () {
     Livefyre.require(['streamhub-wall#3'], function (MediaWall) {
-      var wall = new MediaWall({
+      var wall = window.wall = new MediaWall({
         el : document.getElementById("wall"),
         collection : {
           "network" : "sales.fyre.co",
@@ -18,9 +18,9 @@
           "articleId" : "CURATE"
         },
         initial : 50,
-        showMore : 50,
+        showMore : 50
       });
-
+      
       wall._collection.on('data', function() {
         clock._clockInstances[0].increment();
       });
