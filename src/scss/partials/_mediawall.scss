@@ -111,6 +111,21 @@
 	color: #CECECE !important;
 }
 
-#top-wall .hub-list-more {
-	display:none;
+#wallTweet, #wallShowMore {
+	background-color: #e3172f !important;
+    border-radius: 0 !important;
+    border: none !important;
+    color: #fff !important;
+    padding: 0 50px !important;
+    line-height: 60px !important;
+    font-size: 36px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    font-family: "Six Caps", sans-serif !important;
+    width: 291px !important;
+    height: 60px !important;
+}
+
+.hub-list-more {
+	display:none !important;
 }
