@@ -14,6 +14,7 @@
 @import "./partials/flipclock";
 @import "./partials/_mediawall";
 @import "./partials/video-js";
+
 /*
  * Visual Style Guide styles
  * Remove if you prefer to use a CSS library, like Bootstrap
@@ -535,6 +536,24 @@ ul {
                 position: relative;
                 z-index: 3;
             }
+
+            > ul {
+                display: block;
+                margin: 0 auto;
+                float: right;
+                position: relative;
+                right: 50%;
+                text-align: center;
+
+                > li {
+                    display: inline-block;
+                    float: left;
+                    position: relative;
+                    left: 50%;
+                    text-transform: uppercase;
+                    font-size: 1.2rem;
+                }
+            }
         }
 
         .logo {
@@ -542,33 +561,16 @@ ul {
             width: 130px;
             height: 70px;
             margin-bottom: 15px;
-        }
-
-        > ul {
-            display: block;
-            margin: 0 auto;
-            float: right;
-            position: relative;
-            right: 50%;
-            text-align: center;
-
-            > li {
-                display: inline-block;
-                float: left;
-                position: relative;
-                left: 50%;
-                text-transform: uppercase;
-                font-size: 1.2rem;
-            }
+            background-size: 130px 70px;
         }
     }
 }
 
 #video {
     display: block;
-    //background-color: $indyRed;
-    width: 500px;
-    height: 281px;
+    width: 100%;
+    height: auto;
+    max-width: 510px;
     margin: 0 auto 70px auto;
 
     img {
@@ -578,9 +580,9 @@ ul {
 }
 
 #video {
-	.vjs-big-play-button {
-		display:none;
-	}
+    .vjs-big-play-button {
+        display: none;
+    }
 }
 
 .lf-media-wall {
