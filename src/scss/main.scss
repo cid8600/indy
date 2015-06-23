@@ -409,6 +409,13 @@ ul {
         }
     }
 
+    // @for $i from 1 through 20 {
+    //     div.inn {
+    //         background-position-x: 0;
+    //         background-position-y: (10px * $i) !important;
+    //     }
+    // }
+
     &#trending-module {
         [data-lf-package="trends-component#0.2.1"] {
             .hub-metric-list {
