@@ -177,7 +177,8 @@ ul {
     &#header-module {
         min-height: 206px;
         padding-top: 20px;
-        max-width: 1068px;
+        position: relative;
+        overflow: hidden;
 
         > div {
             max-width: 1020px;
@@ -234,7 +235,7 @@ ul {
         overflow: hidden;
 
         > div {
-            padding-bottom: 240px;
+            padding-bottom: 290px;
 
             .heroes {
                 position: absolute;
@@ -274,10 +275,9 @@ ul {
 
     /* FOLLOW THESE STEPS */
     &#support-module {
-        max-width: 1068px;
-        background-position: center -66px;
-        padding-top: 139px;
-        margin-top: -139px;
+        background-position: center 0;
+        padding-top: 205px;
+        margin-top: -240px;
         padding-left: 0;
         padding-right: 0;
         position: relative;
@@ -346,9 +346,9 @@ ul {
 
     &#social-counter-moudle {
         padding: 150px 0 0 0;
-        background-size: 80%;
+        background-size: 1096px 374px;
         background-repeat: no-repeat;
-        background-position: 0 bottom;
+        background-position: 10% bottom;
         background-image: url("./images/2cars.png");
 
         h2 {
@@ -517,7 +517,6 @@ ul {
     }
 
     &#footer-module {
-        max-width: 1068px;
         background-position: center -66px;
         padding-top: 140px;
         margin-top: -136px;
@@ -539,6 +538,7 @@ ul {
             float: left;
             color: #fff;
             width: 100%;
+            padding-bottom: 70px;
 
             > * {
                 position: relative;
@@ -575,7 +575,6 @@ ul {
 
     &#hero-module,
     &#buy-module,
-    &#support-module,
     &#top-submissions-module,
     &#more-submissions-module,
     &#trending-module > div,
