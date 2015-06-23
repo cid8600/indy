@@ -49,6 +49,7 @@
 
 $indyBlue: #0022B8;
 $indyRed: #e3172f;
+$indyRedDark: #c91429;
 
 $helvetica: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $thunderhouse: "Thunderhouse", sans-serif;
@@ -150,8 +151,14 @@ ul {
     }
 
     .btn-indy,
-    [data-lf-package~="streamhub-wall#3.5.0"] .hub-list-more {
+    [data-lf-package~="streamhub-wall#3.5.0"] .hub-list-more,
+    #wallTweet,
+    #wallShowMore {
         @include indyButton;
+
+        &:hover {
+            background-color: $indyRedDark !important;
+        }
     }
 
     h2 {
@@ -337,6 +344,7 @@ ul {
             background-color: $indyBlue;
             float: left;
             padding: 0 24px 180px 24px;
+            width: 100%;
 
             &::before {
                 @include grain;
@@ -577,6 +585,7 @@ ul {
     &#buy-module,
     &#top-submissions-module,
     &#more-submissions-module,
+    &#support-module > div > div,
     &#trending-module > div,
     &#poll-module > div {
         max-width: 1068px;
