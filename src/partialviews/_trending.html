@@ -15,4 +15,16 @@ custom-1434401032114
 Ryan Newman
 custom-1434401215648 -->
   </div>
+  
+  <script>
+	Livefyre.require([
+	    'streamhub-hot-collections#0.1.1'
+	], function(Trending) {    
+	    var app = new Trending({
+	        el: document.getElementById("trending-wrapper"),
+	        network: 'sales.fyre.co'
+	    });
+	    app.start();
+	});
+	</script>
 </div>

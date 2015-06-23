@@ -1,0 +1,37 @@
+#trending-wrapper {
+	color: #fff;
+
+	.hub-metric:nth-of-type(1n+5) {
+		display:none;
+	}
+	
+	.hub-metric {
+		margin: 0 0 10px 0;
+	}
+	
+	.hub-metric-details {
+		background-color: rgba(0,0,0,.1);		
+	}
+		
+	.hub-metric-label {
+		margin: 5px 0 0 10px;
+		font: bold 18px "Helvetica Neue", Helvetica, Arial, sans-serif;
+	}
+	
+	.hub-metric-rank {
+		background-color: #E02237;
+		padding-top: 10px;
+		width: 84px !important;
+		height: 43px !important;
+	
+		.hub-metric-rank-value {
+			font: 18px "Thunderhouse", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		}
+		
+		
+	}
+	
+	.hub-metric-bar {
+		background-color: #fff;
+	}
+}
