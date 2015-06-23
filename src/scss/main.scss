@@ -278,6 +278,10 @@ ul {
                 font-weight: normal;
             }
         }
+
+        #live-container {
+            padding: 0 15px;
+        }
     }
 
     /* FOLLOW THESE STEPS */
@@ -500,7 +504,12 @@ ul {
     }
 
     &#poll-module {
-        .lf-poll
+        .lf-poll {
+            max-width: 335px;
+            width: 100%;
+            margin: 0;
+            float: right;
+        }
         .lf-poll-btn {}
     }
 
