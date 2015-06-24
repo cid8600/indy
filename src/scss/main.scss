@@ -47,6 +47,19 @@
     margin-left: 50%;
 }
 
+@mixin coma {
+    width: 14px;
+    background-size: 100%;
+    content: ",";
+    display: block;
+    position: absolute;
+    color: #E41730;
+    font-size: 130px;
+    height: $flip_height_L;
+    left: -33px;
+    bottom: -65px;
+}
+
 $indyBlue: #0022B8;
 $indyRed: #e3172f;
 $indyRedDark: #c91429;
@@ -886,6 +899,8 @@ $flip_fontsize_L: 12rem;
     right: 50%;
     width: auto;
     padding-bottom: 312px;
+    padding-left: 0;
+    padding-right: 0;
 
     .flip-clock-wrapper {
         float: left;
@@ -898,9 +913,7 @@ $flip_fontsize_L: 12rem;
     .counter {
         .comma {
             &:before {
-                height: $flip_height_L;
-                left: -33px;
-                bottom: -65px;
+                @include coma;
             }
         }
     }
@@ -919,6 +932,79 @@ $flip_fontsize_L: 12rem;
                         line-height: $flip_height_L;
                     }
                 }
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {}
+
+@media (width: 768px) {}
+
+@media (min-width: 769px) and (max-width: 1068px) {
+    .row {
+        &#hero-module,
+        &#buy-module,
+        &#top-submissions-module,
+        &#more-submissions-module,
+        &#support-module > div > div,
+        &#trending-module > div,
+        &#poll-module > div {
+            padding-left: 0;
+        }
+
+        &#header-module {
+            > div > div > div {
+                padding-left: 12px;
+            }
+
+            > div > div > ul {
+                padding-right: 12px;
+            }
+        }
+
+        &#hero-module {
+            #social-wrapper {
+                right: 0;
+            }
+
+            > div .heroes {
+                bottom: -120px;
+            }
+        }
+
+        &#trending-module {
+            overflow: hidden;
+
+            [data-lf-package="trends-component#0.2.1"] .hub-metric-list .hub-metric {
+                margin-left: 0;
+            }
+        }
+
+        &#top-submissions-module,
+        &#more-submissions-module {
+            [data-lf-package~="streamhub-wall#3.3.2"] .streamhub-media-wall-view .hub-wall-column {
+                width: 30% !important;
+                margin: 0 5% 0 0 !important;
+                padding: 0 !important;
+
+                &:last-child {
+                    margin: 0 !important;
+                }
+            }
+
+            .lf-media-wall article.content {
+                width: 100% !important;
+            }
+
+            #more-buttons {
+                margin-top: 80px;
+            }
+        }
+
+        &#buy-module {
+            > div a {
+                margin-left: 0;
             }
         }
     }
