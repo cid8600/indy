@@ -41,7 +41,7 @@
  		}
  	}
  	
- 	.content-default.content-with-image .content-header {
+ 	.content-default .content-header {
  		text-transform: uppercase;
  	
  		&.content-author-name a {
@@ -88,13 +88,18 @@
 	text-shadow: none !important;
 }
 
-.content-default.content-with-image .content-header .content-author-name {
+.content-default .content-header .content-author-name {
 	margin: 8px 0 0 16px;
 }
 
 .content.content-instagram .content-source-logo {
 	color: #3f729b !important;
 	margin-right: 30px;
+}
+
+.content.content-tweet .content-source-logo {
+	margin-right: 30px;
+	color: #55acee !important;
 }
 
 .streamhub-media-wall-view .hub-wall-column {
@@ -128,4 +133,8 @@
 
 .hub-list-more {
 	display:none !important;
+}
+
+.content-default .content-byline .content-author-name a {
+	color: #222 !important;
 }
