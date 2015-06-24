@@ -311,6 +311,16 @@ ul {
         }
     }
 
+    &#buy-module {
+        > div {
+            .left-col {
+                img {
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+
     /* FOLLOW THESE STEPS */
     &#support-module {
         background-position: center 0;
@@ -323,7 +333,7 @@ ul {
 
         h2 {
             color: white;
-            margin: 50px 0 20px 0;
+            margin: 100px 0 40px 0;
             text-align: center;
         }
 
@@ -332,7 +342,7 @@ ul {
             text-align: center;
             font-family: $helvetica;
             font-size: .9em;
-            line-height: 1.4;
+            line-height: 1.6;
             font-weight: normal;
             padding: 0 15px;
         }
@@ -439,7 +449,7 @@ ul {
 
     &#trending-module, &#poll-module {
         background-color: $indyBlue;
-        padding-top: 130px;
+        padding-top: 140px;
         padding-bottom: 150px;
         position: relative;
         overflow: hidden;
@@ -451,17 +461,32 @@ ul {
         }
 
         p {
-            font-size: 18px;
+            font-size: 1.6rem;
             line-height: 1.6;
             font-family: $helvetica;
             color: #fff;
             font-weight: normal;
+            padding-right: 50px;
         }
 
         > div {
             &::before {
                 @include grain;
             }
+        }
+    }
+
+    &#poll-module {
+        padding-top: 45px;
+        padding-bottom: 45px;
+
+        > div > div > h2 {
+            margin-top: 100px;
+            padding-left: 20px;
+        }
+
+        p {
+            padding-left: 20px;
         }
     }
 
@@ -477,10 +502,10 @@ ul {
             .hub-metric-list {
                 .hub-metric {
                     border: none;
-                    margin: 0 0 4px 0;
+                    margin: 0 0 4px 45px;
                     background-color: rgba(0, 0, 0, 0.1);
-                    padding: 0 30px 0 0;
-                    height: 60px;
+                    padding: 0 45px 0 0;
+                    height: 54px;
 
                     &:first-child {
                         border-radius: 0;
@@ -493,16 +518,16 @@ ul {
                     .hub-metric-container {
                         .hub-metric-rank {
                             background-color: $indyRed;
-                            height: 60px;
+                            height: 54px;
                             width: 80px;
                             border-radius: 0;
 
                             .hub-metric-rank-value {
-                                height: 60px;
+                                height: 54px;
                                 width: 80px;
 
                                 &:before {
-                                    line-height: 60px;
+                                    line-height: 54px;
                                     font-family: $sixCaps;
                                     font-size: 2.4rem;
                                 }
@@ -517,7 +542,7 @@ ul {
                                 color: #fff;
                                 font-size: 1.4rem;
                                 line-height: 1.2;
-                                margin: 0 0 16px 12px;
+                                margin: 0 0 6px 12px;
                                 padding-top: 16px;
                             }
 
@@ -528,7 +553,7 @@ ul {
                                 .hub-metric-bar {
                                     border-radius: 0;
                                     background-color: #fff;
-                                    height: 12px;
+                                    height: 16px;
                                 }
                             }
                         }
@@ -558,15 +583,15 @@ ul {
             }
 
             h2 {
-                font-size: 3rem;
+                font-size: 2.8rem;
                 line-height: 1.2;
-                margin-bottom: 40px;
+                margin-bottom: 35px;
             }
 
             li {
                 width: 100%;
                 padding: 0;
-                height: 40px;
+                height: 45px;
                 position: relative;
 
                 label {
@@ -576,7 +601,7 @@ ul {
                     font-weight: normal;
                     font-family: $helvetica;
                     font-size: 2rem;
-                    line-height: 40px;
+                    line-height: 45px;
                 }
             }
 
@@ -584,7 +609,7 @@ ul {
             a {
                 text-align: center;
                 color: #fff;
-                font-size: 1.2rem;
+                font-size: 1rem;
                 font-family: $helvetica;
                 line-height: 1;
             }
@@ -599,12 +624,12 @@ ul {
             border: 1px solid $indyRedDark;
             border-radius: 0;
             width: 100%;
-            padding: 16px 0;
+            padding: 12px 0;
             text-transform: uppercase;
-            font-family: $sixCaps;
-            font-size: 4.4rem;
+            font-family: "Six Caps", sans-serif;
+            font-size: 3.4rem;
             line-height: 1;
-            margin: 40px 0 10px 0;
+            margin: 30px 0 10px 0;
 
             &:hover {
                 border-color: #fff;
@@ -837,7 +862,7 @@ $flip_fontsize_L: 12rem;
     position: relative;
     right: 50%;
     width: auto;
-    padding-bottom: 200px;
+    padding-bottom: 312px;
 
     .flip-clock-wrapper {
         float: left;
