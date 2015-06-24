@@ -1053,6 +1053,11 @@ $flip_fontsize_L: 12rem;
         &#poll-module {
             padding-top: 0;
             padding-bottom: 100px;
+
+            .lf-poll {
+                float: none;
+                margin: 0 auto;
+            }
         }
 
         &#trending-module {
