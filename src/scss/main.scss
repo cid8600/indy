@@ -939,7 +939,100 @@ $flip_fontsize_L: 12rem;
 
 @media (max-width: 767px) {}
 
-@media (width: 768px) {}
+@media (min-width: 768px) {
+    .row {
+        &#hero-module,
+        &#buy-module,
+        &#top-submissions-module,
+        &#more-submissions-module,
+        &#support-module > div > div,
+        &#trending-module > div,
+        &#poll-module > div {
+            max-width: 708px;
+        }
+
+        &#header-module {
+            > div > * {
+                max-width: 668px;
+            }
+        }
+
+        &#hero-module,
+        &#buy-module {
+            margin-top: -115px;
+
+            > div {
+                p {
+                    text-align: center;
+                    padding: 0 80px;
+                }
+
+                .right-col {
+                    padding-top: 40px;
+                }
+
+                .heroes {
+                    left: 0;
+                }
+            }
+
+            #video {
+                max-width: 662px;
+            }
+        }
+
+        &#hero-module {
+            > div {
+                padding-bottom: 430px;
+            }
+
+            .video-js {
+                width: 100% !important;
+                height: 436px !important;
+            }
+
+            #social-wrapper > ul > li {
+                &:first-child {
+                    clear: both;
+                }
+            }
+        }
+
+        #live-container {
+            padding: 0 100px;
+        }
+
+        &#support-module {
+            margin-top: -170px;
+
+            > div {
+                margin-top: -60px;
+            }
+        }
+
+        &#social-counter-moudle {
+            background-size: 700px 238px;
+            background-repeat: no-repeat;
+            background-position: -40% bottom;
+
+            #counter-wrapper {
+                padding-bottom: 172px;
+
+                .flip-clock-wrapper ul {
+                    max-width: 70px;
+                    max-height: 125px;
+
+                    li {
+                        a div div.inn {
+                            line-height: 125px;
+                            font-size: 8rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
 @media (min-width: 769px) and (max-width: 1068px) {
     .row {
@@ -1006,6 +1099,10 @@ $flip_fontsize_L: 12rem;
             > div a {
                 margin-left: 0;
             }
+        }
+
+        &#footer-module {
+            margin-top: -235px;
         }
     }
 }
