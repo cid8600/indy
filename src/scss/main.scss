@@ -43,7 +43,7 @@
     display: block;
     position: absolute;
     top: 0;
-    left: -601px;
+    left: -710px;
     margin-left: 50%;
 }
 
@@ -186,17 +186,35 @@ ul {
 
     /* HEADER & NAV */
     &#header-module {
-        min-height: 206px;
-        padding-top: 20px;
+        min-height: 236px;
+        padding-top: 0;
         position: relative;
         overflow: hidden;
+        padding-left: 0;
+        padding-right: 0;
 
         > div {
-            max-width: 1020px;
             margin: 0 auto;
+            background-color: #e3172f;
+            min-height: 20px;
+            width: 100%;
+            padding-top: 30px;
 
             &::before {
                 @include grain;
+            }
+
+            > div {
+                > div {
+                    padding-left: 0;
+                }
+            }
+
+            > * {
+                width: 100%;
+                max-width: 1020px;
+                margin-left: auto;
+                margin-right: auto;
             }
         }
 
@@ -241,24 +259,29 @@ ul {
 
     /* HERO VIDEO PLAYER */
     &#hero-module, &#buy-module {
-        margin-top: -90px;
+        margin-top: -105px;
         position: relative;
         overflow: hidden;
 
         > div {
             padding-bottom: 290px;
+            padding-top: 20px;
 
             .heroes {
                 position: absolute;
-                bottom: -80px;
+                bottom: -190px;
+                padding: 0;
+                left: -50px;
             }
 
             .left-col {
                 padding: 0;
+                position: relative;
 
                 img {
                     display: block;
-                    margin-bottom: 30px;
+                    margin-bottom: 40px;
+                    margin-top: -100px;
                 }
 
                 h1 {
@@ -271,12 +294,12 @@ ul {
 
             .right-col {
                 padding: 0;
-                padding-top: 220px;
+                padding-top: 120px;
             }
 
             p {
-                font-size: 18px;
-                line-height: 1.6;
+                font-size: 1.8rem;
+                line-height: 1.5;
                 font-family: $helvetica;
                 color: $indyRed;
                 font-weight: normal;
@@ -284,7 +307,7 @@ ul {
         }
 
         #live-container {
-            padding: 0 15px;
+            padding: 0 22px;
         }
     }
 
