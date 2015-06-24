@@ -27,7 +27,7 @@
     color: #fff;
     padding: 0 50px;
     line-height: 60px;
-    font-size: 36px;
+    font-size: 3rem;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -299,7 +299,7 @@ ul {
 
             p {
                 font-size: 1.8rem;
-                line-height: 1.5;
+                line-height: 1.4;
                 font-family: $helvetica;
                 color: $indyRed;
                 font-weight: normal;
@@ -308,16 +308,6 @@ ul {
 
         #live-container {
             padding: 0 22px;
-        }
-    }
-
-    &#buy-module {
-        > div {
-            .left-col {
-                img {
-                    margin-top: 0;
-                }
-            }
         }
     }
 
@@ -491,7 +481,7 @@ ul {
     }
 
     // @for $i from 1 through 20 {
-    //     div.inn {
+    //     ul:nth-child($i) > li div.inn {
     //         background-position-x: 0;
     //         background-position-y: (10px * $i) !important;
     //     }
@@ -639,7 +629,7 @@ ul {
 
     &#buy-module {
         margin-top: 0;
-        padding-top: 150px;
+        padding-top: 120px;
         max-height: 740px;
 
         > div {
@@ -650,20 +640,28 @@ ul {
                 margin: 0;
             }
 
+            .left-col {
+                img {
+                    margin-top: 0;
+                }
+            }
+
             .right-col {
                 padding: 0;
                 margin-top: -90px;
             }
 
             a {
+                margin-left: 10px;
                 margin-top: 30px;
+                padding: 0 100px;
             }
         }
     }
 
     &#footer-module {
         padding-top: 205px;
-        margin-top: -156px;
+        margin-top: -205px;
         padding-left: 0;
         padding-right: 0;
         margin-bottom: 0;
@@ -704,15 +702,40 @@ ul {
                     left: 50%;
                     text-transform: uppercase;
                     font-size: 1.2rem;
+                    border-right: 1px solid #fff;
+                    box-sizing: border-box;
+
+                    // li:last-child {
+                    //     margin-right: 0;
+                    //     padding-right: 0;
+                    //     border-right: none;
+                    // }
+
                 }
+            }
+
+            li {
+                margin-right: 20px;
+                padding-right: 20px;
+
+                &:last-child {
+                    margin-right: 0;
+                    padding-right: 0;
+                    border-right: none;
+                }
+            }
+
+            li.right-border {
+                margin-right: 20px;
+                padding-right: 20px;
+                border-right: 1px solid #fff;
             }
         }
 
         .logo {
-            margin: 0 auto;
+            margin: -40px auto 15px auto;
             width: 130px;
             height: 70px;
-            margin-bottom: 15px;
             background-size: 130px 70px;
         }
     }
@@ -754,7 +777,7 @@ ul {
     text-align: center;
 
     &:after {
-        font-size: 36px;
+        font-size: 3rem;
         font-family: $helvetica;
         line-height: 600px;
         position: absolute;

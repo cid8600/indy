@@ -1040,7 +1040,7 @@ body .markdown-body
     color: #fff;<br />
     padding: 0 50px;<br />
     line-height: 60px;<br />
-    font-size: 36px;<br />
+    font-size: 3rem;<br />
     text-transform: uppercase;<br />
     letter-spacing: 1px;<br />
 }</p>
@@ -1055,7 +1055,7 @@ body .markdown-body
     display: block;<br />
     position: absolute;<br />
     top: 0;<br />
-    left: -601px;<br />
+    left: -710px;<br />
     margin-left: 50%;<br />
 }</p>
 <p>$indyBlue: #0022B8;<br />
@@ -1070,6 +1070,9 @@ body {<br />
     width: 100%;<br />
     height: 100%;<br />
     margin: 0;<br />
+    padding: 0;<br />
+}</p>
+<p>.container-fluid {<br />
     padding: 0;<br />
 }</p>
 <p>body {<br />
@@ -1182,17 +1185,35 @@ p {
 
 /* HEADER &amp; NAV */
 &amp;#header-module {
-    min-height: 206px;
-    padding-top: 20px;
+    min-height: 236px;
+    padding-top: 0;
     position: relative;
     overflow: hidden;
+    padding-left: 0;
+    padding-right: 0;
 
     &gt; div {
-        max-width: 1020px;
         margin: 0 auto;
+        background-color: #e3172f;
+        min-height: 20px;
+        width: 100%;
+        padding-top: 30px;
 
         &amp;::before {
             @include grain;
+        }
+
+        &gt; div {
+            &gt; div {
+                padding-left: 0;
+            }
+        }
+
+        &gt; * {
+            width: 100%;
+            max-width: 1020px;
+            margin-left: auto;
+            margin-right: auto;
         }
     }
 
@@ -1237,24 +1258,29 @@ p {
 
 /* HERO VIDEO PLAYER */
 &amp;#hero-module, &amp;#buy-module {
-    margin-top: -90px;
+    margin-top: -105px;
     position: relative;
     overflow: hidden;
 
     &gt; div {
         padding-bottom: 290px;
+        padding-top: 20px;
 
         .heroes {
             position: absolute;
-            bottom: -80px;
+            bottom: -190px;
+            padding: 0;
+            left: -50px;
         }
 
         .left-col {
             padding: 0;
+            position: relative;
 
             img {
                 display: block;
                 margin-bottom: 40px;
+                margin-top: -100px;
             }
 
             h1 {
@@ -1267,12 +1293,12 @@ p {
 
         .right-col {
             padding: 0;
-            padding-top: 220px;
+            padding-top: 120px;
         }
 
         p {
-            font-size: 18px;
-            line-height: 1.6;
+            font-size: 1.8rem;
+            line-height: 1.4;
             font-family: $helvetica;
             color: $indyRed;
             font-weight: normal;
@@ -1280,7 +1306,7 @@ p {
     }
 
     #live-container {
-        padding: 0 15px;
+        padding: 0 22px;
     }
 }
 
@@ -1296,7 +1322,7 @@ p {
 
     h2 {
         color: white;
-        margin: 50px 0 20px 0;
+        margin: 100px 0 40px 0;
         text-align: center;
     }
 
@@ -1305,7 +1331,7 @@ p {
         text-align: center;
         font-family: $helvetica;
         font-size: .9em;
-        line-height: 1.4;
+        line-height: 1.6;
         font-weight: normal;
         padding: 0 15px;
     }
@@ -1370,6 +1396,14 @@ p {
 
 &amp;.mediawall-module {
     padding: 140px 0;
+
+    #wallTweet {
+        margin-right: 10px;
+    }
+
+    #wallShowMore {
+        margin-left: 10px;
+    }
 }
 
 /* TOP SUBMISSIONS MEDIA WALL */
@@ -1404,7 +1438,7 @@ p {
 
 &amp;#trending-module, &amp;#poll-module {
     background-color: $indyBlue;
-    padding-top: 130px;
+    padding-top: 140px;
     padding-bottom: 150px;
     position: relative;
     overflow: hidden;
@@ -1416,17 +1450,32 @@ p {
     }
 
     p {
-        font-size: 18px;
+        font-size: 1.6rem;
         line-height: 1.6;
         font-family: $helvetica;
         color: #fff;
         font-weight: normal;
+        padding-right: 50px;
     }
 
     &gt; div {
         &amp;::before {
             @include grain;
         }
+    }
+}
+
+&amp;#poll-module {
+    padding-top: 45px;
+    padding-bottom: 45px;
+
+    &gt; div &gt; div &gt; h2 {
+        margin-top: 100px;
+        padding-left: 20px;
+    }
+
+    p {
+        padding-left: 20px;
     }
 }
 
@@ -1442,10 +1491,10 @@ p {
         .hub-metric-list {
             .hub-metric {
                 border: none;
-                margin: 0 0 4px 0;
+                margin: 0 0 4px 45px;
                 background-color: rgba(0, 0, 0, 0.1);
-                padding: 0 30px 0 0;
-                height: 60px;
+                padding: 0 45px 0 0;
+                height: 54px;
 
                 &amp;:first-child {
                     border-radius: 0;
@@ -1458,16 +1507,16 @@ p {
                 .hub-metric-container {
                     .hub-metric-rank {
                         background-color: $indyRed;
-                        height: 60px;
+                        height: 54px;
                         width: 80px;
                         border-radius: 0;
 
                         .hub-metric-rank-value {
-                            height: 60px;
+                            height: 54px;
                             width: 80px;
 
                             &amp;:before {
-                                line-height: 60px;
+                                line-height: 54px;
                                 font-family: $sixCaps;
                                 font-size: 2.4rem;
                             }
@@ -1482,7 +1531,7 @@ p {
                             color: #fff;
                             font-size: 1.4rem;
                             line-height: 1.2;
-                            margin: 0 0 16px 12px;
+                            margin: 0 0 6px 12px;
                             padding-top: 16px;
                         }
 
@@ -1493,7 +1542,7 @@ p {
                             .hub-metric-bar {
                                 border-radius: 0;
                                 background-color: #fff;
-                                height: 12px;
+                                height: 16px;
                             }
                         }
                     }
@@ -1515,8 +1564,47 @@ p {
         font-family: Helvetica,Georgia,Arial,sans-serif;
         font-size: 1.3rem;
         background-color: $indyRed;
-        h2 {
 
+        .lf-poll-answers {
+            input[type='radio'] {
+                margin-right: 20px;
+            }
+        }
+
+        h2 {
+            font-size: 2.8rem;
+            line-height: 1.2;
+            margin-bottom: 35px;
+        }
+
+        li {
+            width: 100%;
+            padding: 0;
+            height: 45px;
+            position: relative;
+
+            label {
+                display: inline-block;
+                max-width: 100%;
+                margin-bottom: 0;
+                font-weight: normal;
+                font-family: $helvetica;
+                font-size: 2rem;
+                line-height: 45px;
+            }
+        }
+
+        .lf-poll-link-results,
+        a {
+            text-align: center;
+            color: #fff;
+            font-size: 1rem;
+            font-family: $helvetica;
+            line-height: 1;
+        }
+
+        .lf-poll-disclaimer {
+            display: none;
         }
     }
 
@@ -1524,6 +1612,13 @@ p {
         background-color: $indyRedDark;
         border: 1px solid $indyRedDark;
         border-radius: 0;
+        width: 100%;
+        padding: 12px 0;
+        text-transform: uppercase;
+        font-family: "Six Caps", sans-serif;
+        font-size: 3.4rem;
+        line-height: 1;
+        margin: 30px 0 10px 0;
 
         &amp;:hover {
             border-color: #fff;
@@ -1533,7 +1628,7 @@ p {
 
 &amp;#buy-module {
     margin-top: 0;
-    padding-top: 150px;
+    padding-top: 120px;
     max-height: 740px;
 
     &gt; div {
@@ -1544,17 +1639,28 @@ p {
             margin: 0;
         }
 
+        .left-col {
+            img {
+                margin-top: 0;
+            }
+        }
+
         .right-col {
             padding: 0;
             margin-top: -90px;
+        }
+
+        a {
+            margin-left: 10px;
+            margin-top: 30px;
+            padding: 100px;
         }
     }
 }
 
 &amp;#footer-module {
-    background-position: center -66px;
-    padding-top: 140px;
-    margin-top: -136px;
+    padding-top: 205px;
+    margin-top: -205px;
     padding-left: 0;
     padding-right: 0;
     margin-bottom: 0;
@@ -1644,7 +1750,7 @@ img {
     position: relative;<br />
     text-align: center;</p>
 <pre><code>&amp;:after {
-    font-size: 36px;
+    font-size: 3rem;
     font-family: $helvetica;
     line-height: 600px;
     position: absolute;
@@ -1684,7 +1790,7 @@ img {
         width: 3357px;
         height: 206px;
         position: absolute;
-        top: -66px;
+        top: 0;
         left: -50%;
         z-index: 0;
         -webkit-transform: rotate(180deg);
@@ -1750,7 +1856,7 @@ $flip_fontsize_L: 12rem;</p>
 position: relative;
 right: 50%;
 width: auto;
-padding-bottom: 200px;
+padding-bottom: 312px;
 
 .flip-clock-wrapper {
     float: left;
