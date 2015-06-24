@@ -160,8 +160,7 @@
 
 @for $i from 1 through 20 {
     .flip:nth-child(#{$i}) div.inn {
-    	background-position-x: (10px * $i) !important;
-        background-position-y: (50px * $i) !important;
+    	background-position: (10px * $i) (50px * $i) !important;
     }
 }
 
