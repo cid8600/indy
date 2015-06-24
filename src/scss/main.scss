@@ -448,6 +448,14 @@ ul {
         h2 {
             display: inline-block;
         }
+
+        [data-lf-package~="streamhub-wall#3.3.2"] {
+            .hub-list {
+                .hub-content-container {
+                    margin-bottom: 50px;
+                }
+            }
+        }
     }
 
     &#trending-module, &#poll-module {
@@ -777,9 +785,7 @@ ul {
         width: 100%;
         min-height: 75%;
     }
-}
 
-#video {
     .vjs-big-play-button {
         display: none;
     }
@@ -939,7 +945,7 @@ $flip_fontsize_L: 12rem;
 
 @media (max-width: 767px) {}
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1023px) {
     .row {
         &#hero-module,
         &#buy-module,
@@ -1031,10 +1037,70 @@ $flip_fontsize_L: 12rem;
                 }
             }
         }
+
+        &#trending-module,
+        &#poll-module {
+            h2 {
+                text-align: center;
+            }
+
+            > div > div:first-child {
+                text-align: center;
+                margin-bottom: 60px;
+            }
+        }
+
+        &#poll-module {
+            padding-top: 0;
+            padding-bottom: 100px;
+        }
+
+        &#trending-module {
+            #trending-wrapper {
+                overflow: hidden;
+
+                .hub-metric {
+                    margin-left: 0;
+                }
+            }
+        }
+
+        &#buy-module {
+            margin-top: 100px;
+            max-height: 860px;
+            padding-top: 0;
+
+            > div {
+                a {
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-top: 30px;
+                    max-width: 300px;
+                    text-align: center;
+                    display: block;
+                }
+
+                .right-col {
+                    padding-top: 100px;
+
+                    img {
+                        max-width: 510px;
+                        display: block;
+                        margin: 0 auto;
+                    }
+                }
+            }
+        }
+
+        &#footer-module {
+            .logo {
+                margin-top: 0;
+            }
+        }
     }
 }
 
-@media (min-width: 769px) and (max-width: 1068px) {
+@media (min-width: 1024px) {
     .row {
         &#hero-module,
         &#buy-module,

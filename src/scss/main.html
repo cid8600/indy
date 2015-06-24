@@ -1058,6 +1058,18 @@ body .markdown-body
     left: -710px;<br />
     margin-left: 50%;<br />
 }</p>
+<p>@mixin coma {<br />
+    width: 14px;<br />
+    background-size: 100%;<br />
+    content: &ldquo;,&rdquo;;<br />
+    display: block;<br />
+    position: absolute;<br />
+    color: #E41730;<br />
+    font-size: 130px;<br />
+    height: $flip_height_L;<br />
+    left: -33px;<br />
+    bottom: -65px;<br />
+}</p>
 <p>$indyBlue: #0022B8;<br />
 $indyRed: #e3172f;<br />
 $indyRedDark: #c91429;</p>
@@ -1434,6 +1446,14 @@ p {
     h2 {
         display: inline-block;
     }
+
+    [data-lf-package~="streamhub-wall#3.3.2"] {
+        .hub-list {
+            .hub-content-container {
+                margin-bottom: 50px;
+            }
+        }
+    }
 }
 
 &amp;#trending-module, &amp;#poll-module {
@@ -1480,7 +1500,7 @@ p {
 }
 
 // @for $i from 1 through 20 {
-//     div.inn {
+//     ul:nth-child($i) &gt; li div.inn {
 //         background-position-x: 0;
 //         background-position-y: (10px * $i) !important;
 //     }
@@ -1653,7 +1673,7 @@ p {
         a {
             margin-left: 10px;
             margin-top: 30px;
-            padding: 100px;
+            padding: 0 100px;
         }
     }
 }
@@ -1701,15 +1721,40 @@ p {
                 left: 50%;
                 text-transform: uppercase;
                 font-size: 1.2rem;
+                border-right: 1px solid #fff;
+                box-sizing: border-box;
+
+                // li:last-child {
+                //     margin-right: 0;
+                //     padding-right: 0;
+                //     border-right: none;
+                // }
+
             }
+        }
+
+        li {
+            margin-right: 20px;
+            padding-right: 20px;
+
+            &amp;:last-child {
+                margin-right: 0;
+                padding-right: 0;
+                border-right: none;
+            }
+        }
+
+        li.right-border {
+            margin-right: 20px;
+            padding-right: 20px;
+            border-right: 1px solid #fff;
         }
     }
 
     .logo {
-        margin: 0 auto;
+        margin: -40px auto 15px auto;
         width: 130px;
         height: 70px;
-        margin-bottom: 15px;
         background-size: 130px 70px;
     }
 }
@@ -1738,10 +1783,8 @@ img {
     width: 100%;
     min-height: 75%;
 }
-</code></pre>
-<p>}</p>
-<h1 id="video_1"><a name="user-content-video_1" href="#video_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>video {</h1>
-<pre><code>.vjs-big-play-button {
+
+.vjs-big-play-button {
     display: none;
 }
 </code></pre>
@@ -1857,6 +1900,8 @@ position: relative;
 right: 50%;
 width: auto;
 padding-bottom: 312px;
+padding-left: 0;
+padding-right: 0;
 
 .flip-clock-wrapper {
     float: left;
@@ -1869,9 +1914,7 @@ padding-bottom: 312px;
 .counter {
     .comma {
         &amp;:before {
-            height: $flip_height_L;
-            left: -33px;
-            bottom: -65px;
+            @include coma;
         }
     }
 }
@@ -1891,6 +1934,209 @@ padding-bottom: 312px;
                 }
             }
         }
+    }
+}
+</code></pre>
+<p>}</p>
+<p>@media (max-width: 767px) {}</p>
+<p>@media (min-width: 768px) {<br />
+    .row {<br />
+        &amp;#hero-module,<br />
+        &amp;#buy-module,<br />
+        &amp;#top-submissions-module,<br />
+        &amp;#more-submissions-module,<br />
+        &amp;#support-module &gt; div &gt; div,<br />
+        &amp;#trending-module &gt; div,<br />
+        &amp;#poll-module &gt; div {<br />
+            max-width: 708px;<br />
+        }</p>
+<pre><code>    &amp;#header-module {
+        &gt; div &gt; * {
+            max-width: 668px;
+        }
+    }
+
+    &amp;#hero-module,
+    &amp;#buy-module {
+        margin-top: -115px;
+
+        &gt; div {
+            p {
+                text-align: center;
+                padding: 0 80px;
+            }
+
+            .right-col {
+                padding-top: 40px;
+            }
+
+            .heroes {
+                left: 0;
+            }
+        }
+
+        #video {
+            max-width: 662px;
+        }
+    }
+
+    &amp;#hero-module {
+        &gt; div {
+            padding-bottom: 430px;
+        }
+
+        .video-js {
+            width: 100% !important;
+            height: 436px !important;
+        }
+
+        #social-wrapper &gt; ul &gt; li {
+            &amp;:first-child {
+                clear: both;
+            }
+        }
+    }
+
+    #live-container {
+        padding: 0 100px;
+    }
+
+    &amp;#support-module {
+        margin-top: -170px;
+
+        &gt; div {
+            margin-top: -60px;
+        }
+    }
+
+    &amp;#social-counter-moudle {
+        background-size: 700px 238px;
+        background-repeat: no-repeat;
+        background-position: -40% bottom;
+
+        #counter-wrapper {
+            padding-bottom: 172px;
+
+            .flip-clock-wrapper ul {
+                max-width: 70px;
+                max-height: 125px;
+
+                li {
+                    a div div.inn {
+                        line-height: 125px;
+                        font-size: 8rem;
+                    }
+                }
+            }
+        }
+    }
+
+    &amp;#trending-module,
+    &amp;#poll-module {
+        h2 {
+            text-align: center;
+        }
+
+        &gt; div &gt; div:first-child {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+    }
+
+    &amp;#poll-module {
+        padding-top: 0;
+        padding-bottom: 100px;
+    }
+
+    &amp;#trending-module {
+        #trending-wrapper {
+            overflow: hidden;
+
+            .hub-metric {
+                margin-left: 0;
+            }
+        }
+    }
+
+    &amp;#buy-module {
+          margin-top: -40px;
+          &gt; div {
+            a {
+
+            }
+          }
+    }
+}
+</code></pre>
+<p>}</p>
+<p>@media (min-width: 769px) and (max-width: 1068px) {<br />
+    .row {<br />
+        &amp;#hero-module,<br />
+        &amp;#buy-module,<br />
+        &amp;#top-submissions-module,<br />
+        &amp;#more-submissions-module,<br />
+        &amp;#support-module &gt; div &gt; div,<br />
+        &amp;#trending-module &gt; div,<br />
+        &amp;#poll-module &gt; div {<br />
+            padding-left: 0;<br />
+        }</p>
+<pre><code>    &amp;#header-module {
+        &gt; div &gt; div &gt; div {
+            padding-left: 12px;
+        }
+
+        &gt; div &gt; div &gt; ul {
+            padding-right: 12px;
+        }
+    }
+
+    &amp;#hero-module {
+        #social-wrapper {
+            right: 0;
+        }
+
+        &gt; div .heroes {
+            bottom: -120px;
+        }
+    }
+
+    &amp;#trending-module {
+        overflow: hidden;
+
+        [data-lf-package="trends-component#0.2.1"] .hub-metric-list .hub-metric {
+            margin-left: 0;
+        }
+    }
+
+    &amp;#top-submissions-module,
+    &amp;#more-submissions-module {
+        [data-lf-package~="streamhub-wall#3.3.2"] .streamhub-media-wall-view .hub-wall-column {
+            width: 30% !important;
+            margin: 0 5% 0 0 !important;
+            padding: 0 !important;
+
+            &amp;:last-child {
+                margin: 0 !important;
+            }
+        }
+
+        .lf-media-wall article.content {
+            width: 100% !important;
+        }
+
+        #more-buttons {
+            margin-top: 80px;
+        }
+    }
+
+    &amp;#buy-module {
+        &gt; div a {
+            margin-left: 0;
+        }
+    }
+
+    &amp;#footer-module {
+        margin-top: -235px;
     }
 }
 </code></pre>
