@@ -234,15 +234,16 @@ ul {
         ul {
             height: 40px;
             margin-top: 10px;
-            padding: 0 0 0 36px;
+            float: right;
 
             li {
-                width: 50%;
+                width: auto;
                 border-right: 1px solid #fff;
                 box-sizing: border-box;
 
-                &:last-child {
+                &:nth-child(2n+2) {
                     border-right: none;
+                    padding-left: 12px;
 
                     a {
                         padding-right: 0 !important;
@@ -250,7 +251,9 @@ ul {
                     }
                 }
 
-                &:first-child {
+                &:nth-child(1n+1) {
+                    padding-right: 12px;
+
                     a {
                         padding-left: 0 !important;
                     }
@@ -854,7 +857,16 @@ ul {
         height: 40px;
         line-height: 40px;
         font-family: $helvetica;
-        font-size: 14px;
+        font-size: 1.8rem;
+        font-weight: bold;
+
+        &.hidden-sm {
+            text-align: center;
+            float: none;
+            display: block;
+            margin: 0px auto;
+            width: 90px;
+        }
 
         ul {
             float: right;
@@ -986,6 +998,20 @@ $flip_fontsize_L: 12rem;
         h2 {
             font-size: 4.2rem;
             margin-bottom: 100px;
+        }
+
+        &#header-module {
+            > div {
+                padding-top: 20px;
+            }
+
+            .logo {
+                margin-left: 12px;
+            }
+
+            ul {
+                margin-top: 12px;
+            }
         }
 
         &#hero-module,
@@ -1145,6 +1171,51 @@ $flip_fontsize_L: 12rem;
 
                 .hub-metric {
                     margin-left: 0;
+                }
+            }
+        }
+
+        &#buy-module {
+            padding-top: 70px;
+
+            > div {
+                a {
+                    margin-left: auto;
+                    margin-right: auto;
+                    width: 100%;
+                    max-width: 480px;
+                }
+
+                .right-col {
+                    padding-top: 100px;
+                }
+            }
+        }
+
+        &#footer-module {
+            .logo {
+                margin: 0 auto 15px auto;
+            }
+
+            > div {
+                padding-bottom: 30px;
+
+                > ul {
+                    > li {
+                        display: inline-block;
+                        border-right: none;
+                        box-sizing: border-box;
+                        margin-bottom: 20px;
+                        margin-right: 0;
+                        padding: 0;
+                        width: 100%;
+
+                        > ul {
+                            li {
+                                float: none;
+                            }
+                        }
+                    }
                 }
             }
         }

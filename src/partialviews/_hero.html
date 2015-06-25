@@ -1,16 +1,26 @@
 <div id="hero-module" class="row">
 
 	<div class="col-xs-12">
+
 		<div id="social-wrapper">
 			<ul>
-				<li>
+				<li class="hidden-xs">
 					<ul>
 						<li class="btn-tw"><a href="https://twitter.com/intent/tweet?text=Hello+World">Twitter</a></li>
 						<li class="btn-fb"><a href="#">Facebook</a></li>
 					</ul>
 				</li>
-				<li>Share:</li>
+				<li class="hidden-xs">Share:</li>
+
+				<li class="hidden-sm hidden-md hidden-lg">Share:</li>
+				<li class="hidden-sm hidden-md hidden-lg">
+					<ul>
+						<li class="btn-tw"><a href="https://twitter.com/intent/tweet?text=Hello+World">Twitter</a></li>
+						<li class="btn-fb"><a href="#">Facebook</a></li>
+					</ul>
+				</li>
 			</ul>
+
 		</div>
 		<div class="left-col col-sm-12 col-md-6">
 			<h1>#HoosierDriver</h1>
@@ -37,21 +47,21 @@
 			      this.src('http://www.youtube.com/watch?v=jofNR_WkoCE');
 				  this.play();
 			    });
-			  });		    
-			
+			  });
+
 				$(document).ready(function() {
 				  $('.btn-fb a').click(function(e) {
 				    e.preventDefault();
 				    FB.ui({
 					  method: 'share',
 					  href: 'https://developers.facebook.com/docs/',
-					}, function(response){});	
-				    
+					}, function(response){});
+
 				  })
 				});
-				
-			
-				
+
+
+
 			</script>
 			<div id="live-container">
 				<img class="responsive" alt="See it live"
