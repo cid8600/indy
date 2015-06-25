@@ -99,8 +99,7 @@ _gulp2['default'].task('fileinclude', function () {
   _gulp2['default'].src(['./src/index.html']).pipe((0, _gulpFileInclude2['default'])({
     prefix: '@@',
     basepath: '@file'
-  })).pipe(_gulp2['default'].dest('./dist/'));
-  // .pipe(gulp.dest('.tmp/'));
+  })).pipe(_gulp2['default'].dest('.tmp/'));
 });
 
 // Scan your HTML for assets & optimize them
