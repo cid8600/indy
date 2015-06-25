@@ -1611,8 +1611,11 @@ $flip_fontsize_L: 12rem;
         }
 
         &#buy-module {
-            > div a {
-                margin-left: 0;
+            > div {
+                padding-bottom: 0;
+                a {
+                    margin-left: 0;
+                }
             }
         }
 
