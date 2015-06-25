@@ -104,7 +104,7 @@ gulp.task('fileinclude', () => {
 
     .pipe(fileinclude({
       prefix: '@@',
-      basepath: './src/partialviews'
+      basepath: '@file'
     }))
     .pipe(gulp.dest('.tmp/'));
 });
@@ -113,10 +113,13 @@ gulp.task('fileinclude', () => {
 gulp.task('html', () => {
   const assets = $.useref.assets({searchPath: '{.tmp, ./src}'});
 
-  return gulp.src('./src/*.html')
+  gulp.src('./src/partialviews/*.html').pipe(gulp.dest('./dist/partialviews/'));
+
+
+    gulp.src('./src/*.html')
     .pipe(fileinclude({
       prefix: '@@',
-      basepath: './src/partialviews'
+      basepath: '@file'
     }))
     .pipe(assets)
     // Remove any unused CSS

@@ -98,17 +98,20 @@ _gulp2['default'].task('scripts', function () {
 _gulp2['default'].task('fileinclude', function () {
   _gulp2['default'].src(['./src/index.html']).pipe((0, _gulpFileInclude2['default'])({
     prefix: '@@',
-    basepath: './src/partialviews'
-  })).pipe(_gulp2['default'].dest('.tmp/'));
+    basepath: '@file'
+  })).pipe(_gulp2['default'].dest('./dist/'));
+  // .pipe(gulp.dest('.tmp/'));
 });
 
 // Scan your HTML for assets & optimize them
 _gulp2['default'].task('html', function () {
   var assets = $.useref.assets({ searchPath: '{.tmp, ./src}' });
 
-  return _gulp2['default'].src('./src/*.html').pipe((0, _gulpFileInclude2['default'])({
+  _gulp2['default'].src('./src/partialviews/*.html').pipe(_gulp2['default'].dest('./dist/partialviews/'));
+
+  _gulp2['default'].src('./src/*.html').pipe((0, _gulpFileInclude2['default'])({
     prefix: '@@',
-    basepath: './src/partialviews'
+    basepath: '@file'
   })).pipe(assets)
   // Remove any unused CSS
   // Note: If not using the Style Guide, you can delete it from
