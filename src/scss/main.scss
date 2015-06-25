@@ -639,6 +639,58 @@ ul {
                 border-color: #fff;
             }
         }
+        
+        .lf-poll-results {
+        	ul li {
+        		margin-bottom: 28px;
+        	}
+        
+        	.lf-poll-result-answer {
+	        	font: bold 16px "Helvetica Neue", Helvetica, Arial, sans-serif;
+	        }
+        
+	        .lf-poll-result-chart {
+	        	clear: both;
+	        	background-color: #c62831;
+	        	border-radius: 3px;
+	        	width: 200px;
+	        	margin: 10px 20px 0 0;
+	        	padding: 0;
+	        	height: 20px;
+	        	
+	        	span {
+	        		background-color: #fff !important;
+	        		height: 16px;
+	        	}
+	        }
+	        
+	        .lf-poll-result-votes {
+	        	display:none;
+	        }
+	        
+	        .lf-poll-result-percent {
+	        	margin: 8px 15px 0 0;
+	        	font: bold 18px "Helvetica Neue", Helvetica, Arial, sans-serif;
+	        	float: right;
+	        }
+	        
+	        .lf-poll-result-total {
+	        	font: bold 16px "Helvetica Neue", Helvetica, Arial, sans-serif;
+	        }
+	        
+	        .lf-poll-back-to-poll {
+	        	float: right;
+	        	text-transform: lowercase;
+	        	margin-top: -14px;
+	        	font-size: 14px;
+	        	
+	        	&:before {
+	        		content: "« ";
+	        	}
+	        }
+        }
+        
+        
     }
 
     &#buy-module {
