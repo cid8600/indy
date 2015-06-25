@@ -322,14 +322,14 @@ ul {
             }
         }
 
-        &#hero-module {
-            > div {
-                padding-bottom: 360px;
-            }
-        }
-
         #live-container {
             padding: 0 22px;
+        }
+    }
+
+    &#hero-module {
+        > div {
+            padding-bottom: 360px;
         }
     }
 
@@ -1340,6 +1340,12 @@ $flip_fontsize_L: 12rem;
 
         &#hero-module {
             > div {
+                .left-col {
+                    img {
+                        padding: 0 75px;
+                        max-width: 5150px;
+                    }
+                }
                 padding-bottom: 430px;
             }
 
