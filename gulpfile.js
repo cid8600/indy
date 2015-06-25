@@ -179,7 +179,7 @@ _gulp2['default'].task('serve:dist', ['default'], function () {
 _gulp2['default'].task('default', ['clean'], function (cb) {
   (0, _runSequence2['default'])('styles',
   // 'jshint',
-  ['scripts', 'images', 'fonts', 'html'], 'copy', 'generate-service-worker', cb);
+  'fileinclude', ['scripts', 'images', 'fonts', 'html'], 'copy', 'generate-service-worker', cb);
 });
 
 // Run PageSpeed Insights

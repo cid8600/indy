@@ -192,6 +192,7 @@ gulp.task('default', ['clean'], cb => {
   runSequence(
     'styles',
     // 'jshint',
+    'fileinclude',
     [ 'scripts', 'images', 'fonts', 'html'],
     'copy',
     'generate-service-worker',
