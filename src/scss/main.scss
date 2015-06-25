@@ -29,7 +29,7 @@
     line-height: 60px;
     font-size: 3rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 3px;
 }
 
 @mixin grain {
@@ -949,6 +949,35 @@ $flip_fontsize_L: 12rem;
                 }
             }
         }
+
+        &#top-submissions-module,
+        &#more-submissions-module {
+            > div {
+                &:first-child {
+                    margin-bottom: 70px;
+                }
+            }
+
+            h2 {
+                margin-bottom: 0;
+            }
+
+            .tripple {
+                width: 40px;
+                height: 25px;
+                background-size: 100%;
+                display: block;
+                margin: 0 auto !important;
+
+                &.front-stars {
+                    margin-right: 5px;
+                }
+
+                &.back-stars {
+                    margin-left: 5px;
+                }
+            }
+        }
     }
 }
 
@@ -956,6 +985,7 @@ $flip_fontsize_L: 12rem;
     .row {
         h2 {
             font-size: 4.2rem;
+            margin-bottom: 100px;
         }
 
         &#hero-module,
@@ -1038,6 +1068,17 @@ $flip_fontsize_L: 12rem;
 
         &.mediawall-module {
             padding-top: 100px;
+            padding-bottom: 0;
+
+            #wallTweet {
+                margin-right: 0;
+                margin-bottom: 40px;
+            }
+
+            #wallShowMore {
+                margin-left: 0;
+                margin-bottom: 100px;
+            }
         }
 
         &#top-submissions-module,
@@ -1066,6 +1107,44 @@ $flip_fontsize_L: 12rem;
                         left: -30px;
                         bottom: 20px;
                     }
+                }
+            }
+        }
+
+        &#trending-module,
+        &#poll-module {
+            padding-top: 130px;
+
+            h2 {
+                text-align: center;
+            }
+
+            p {
+                padding-right: 0;
+            }
+
+            > div > div:first-child {
+                text-align: center;
+                margin-bottom: 60px;
+            }
+        }
+
+        &#poll-module {
+            padding-top: 0;
+            padding-bottom: 100px;
+
+            .lf-poll {
+                float: none;
+                margin: 0 auto;
+            }
+        }
+
+        &#trending-module {
+            #trending-wrapper {
+                overflow: hidden;
+
+                .hub-metric {
+                    margin-left: 0;
                 }
             }
         }
@@ -1185,6 +1264,10 @@ $flip_fontsize_L: 12rem;
         &#poll-module {
             h2 {
                 text-align: center;
+            }
+
+            p {
+                padding-right: 0;
             }
 
             > div > div:first-child {

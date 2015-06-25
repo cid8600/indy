@@ -1,140 +1,140 @@
 .lf-media-wall {
-	font: 14px/20px $helvetica !important;
-	text-align: left !important;
-	article {	
-		&.content {
-		  	width: 308px !important;
-		  	border: 1px solid #eaeaea !important;
-		  	border-radius: 0 !important;
-		  
-		  
-		  	.content-header {
-		  		
-		  		.content-header-inner {
-					padding: 0 !important;	  		
-			  	}
-		  	}
-		}
-		
-		&.content-author-name a {
-			font: bold 14px/19px $helvetica !important;
-			text-transform: uppercase;
-			color: #222 !important;
-		}
-		
-		.content-author-avatar img {
-			width: 47px;
-			height: 47px;
-			border-radius: 0 !important;
-			position: relative;
-			top: 0;
-			left: 0;
-		}
-	}
- 	
- 	.content-default .content-body {
- 		font: inherit !important;
- 		
- 		a {
-        	color: #D52B1E;
-	 		font: inherit !important;    	
- 		}
- 	}
- 	
- 	.content-default .content-header {
- 		text-transform: uppercase;
- 	
- 		&.content-author-name a {
-	 		font: bold 15px/19px $helvetica !important;
-	 	}
-	 	
-	 	&.content-author-username a {
-	 		font: bold 9px $helvetica !important;
-	 		
-	 		color: #666 !important;
-	 	}
- 	}
- 	.content-default.content-with-image .content-header {
- 		background: none !important;
- 	}
- 	.content-default.content-with-image .content-attachment .content-attachment-photo {
- 		border-radius: 0 !important;
- 		position: absolute;
- 		top: 47px;
- 	}
+    font: (14px / 20px) $helvetica !important;
+    text-align: left !important;
+
+    article {
+        &.content {
+            width: 308px !important;
+            border: 1px solid #eaeaea !important;
+            border-radius: 0 !important;
+
+            .content-header {
+                .content-header-inner {
+                    padding: 0 !important;
+                }
+            }
+        }
+
+        &.content-author-name a {
+            font: bold (14px / 19px) $helvetica !important;
+            text-transform: uppercase;
+            color: #222 !important;
+        }
+
+        .content-author-avatar img {
+            width: 47px;
+            height: 47px;
+            border-radius: 0 !important;
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+    }
+
+    .content-default .content-body {
+        font: inherit !important;
+
+        a {
+            color: #D52B1E;
+            font: inherit !important;
+        }
+    }
+
+    .content-default .content-header {
+        text-transform: uppercase;
+
+        &.content-author-name a {
+            font: bold (15px / 19px) $helvetica !important;
+        }
+
+        &.content-author-username a {
+            font: bold 9px $helvetica !important;
+            color: #666 !important;
+        }
+    }
+
+    .content-default.content-with-image .content-header {
+        background: none !important;
+    }
+
+    .content-default.content-with-image .content-attachment .content-attachment-photo {
+        border-radius: 0 !important;
+        position: absolute;
+        top: 47px;
+    }
 }
+
 .content-default.content-with-image,
 .content-default.content-with-image .content-attachment .content-attachment-frame,
 .content .content-attachment-photo {
-	box-shadow: none !important;
+    box-shadow: none !important;
 }
 
 .content-default.content-with-image .content-header {
-	border-radius: 0 !important;
-	box-shadow: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
 }
 
 .content .content-author-avatar img,
 .content-default.content-with-image .content-header .content-author-avatar img,
-[data-lf-package~="streamhub-wall#3.5.0"] .content-default.content-with-image .content-header .content-author-avatar img  {
-	width: 47px !important;
-	height: 47px !important;
-	box-shadow: none !important;
+[data-lf-package~="streamhub-wall#3.5.0"] .content-default.content-with-image .content-header .content-author-avatar img {
+    width: 47px !important;
+    height: 47px !important;
+    box-shadow: none !important;
 }
 
-.content-default.content-with-image .content-header .content-author-name a, 
+.content-default.content-with-image .content-header .content-author-name a,
 .content-default.content-with-image .content-header .content-author-username a {
-	color: #222 !important;
-	text-shadow: none !important;
+    color: #222 !important;
+    text-shadow: none !important;
 }
 
 .content-default .content-header .content-author-name {
-	margin: 8px 0 0 16px;
+    margin: 8px 0 0 16px;
 }
 
 .content.content-instagram .content-source-logo {
-	color: #3f729b !important;
-	margin-right: 30px;
+    color: #3f729b !important;
+    margin-right: 30px;
 }
 
 .content.content-tweet .content-source-logo {
-	margin-right: 30px;
-	color: #55acee !important;
+    margin-right: 30px;
+    color: #55acee !important;
 }
 
 .streamhub-media-wall-view .hub-wall-column {
-	padding: 25px !important;
-	
+    padding: 25px !important;
 }
 
 .content-default.content-with-image.content-tweet .content-source-logo {
-	color: #55acee !important;
-	margin-right: 30px;
+    color: #55acee !important;
+    margin-right: 30px;
 }
 
 .content.content-tweet .hub-btn {
-	color: #CECECE !important;
+    color: #CECECE !important;
 }
 
 #wallTweet, #wallShowMore {
-	background-color: #e3172f !important;
-    border-radius: 0 !important;
-    border: none !important;
-    color: #fff !important;
-    padding: 0 50px !important;
-    line-height: 60px !important;
-    font-size: 36px !important;
-    text-transform: uppercase !important;
-    letter-spacing: 1px !important;
-    font-family: "Six Caps", sans-serif !important;
-    width: 291px !important;
-    height: 60px !important;
+    background-color: #e3172f;
+    border-radius: 0;
+    border: none;
+    color: #fff;
+    padding: 0 50px;
+    line-height: 60px;
+    font-size: 36px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: "Six Caps", sans-serif;
+    width: 291px;
+    height: 60px;
 }
 
 .hub-list-more {
-	display:none !important;
+    display: none !important;
 }
 
 .content-default .content-byline .content-author-name a {
-	color: #222 !important;
+    color: #222 !important;
 }
