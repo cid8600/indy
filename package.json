@@ -60,6 +60,7 @@
   "scripts": {
     "test": "test",
     "postinstall": "npm rebuild gulp-sass node-sass;"
+    "start": "make serve"
   },
   "repository": {
     "type": "git",
