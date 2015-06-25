@@ -1042,7 +1042,7 @@ body .markdown-body
     line-height: 60px;<br />
     font-size: 3rem;<br />
     text-transform: uppercase;<br />
-    letter-spacing: 1px;<br />
+    letter-spacing: 3px;<br />
 }</p>
 <p>@mixin grain {<br />
     content: &lsquo;&rsquo;;<br />
@@ -1218,6 +1218,7 @@ p {
         &gt; div {
             &gt; div {
                 padding-left: 0;
+                padding-right: 0;
             }
         }
 
@@ -1232,15 +1233,16 @@ p {
     ul {
         height: 40px;
         margin-top: 10px;
-        padding: 0 0 0 36px;
+        float: right;
 
         li {
-            width: 50%;
+            width: auto;
             border-right: 1px solid #fff;
             box-sizing: border-box;
 
-            &amp;:last-child {
+            &amp;:nth-child(2n+2) {
                 border-right: none;
+                padding-left: 12px;
 
                 a {
                     padding-right: 0 !important;
@@ -1248,7 +1250,9 @@ p {
                 }
             }
 
-            &amp;:first-child {
+            &amp;:nth-child(2n+1) {
+                padding-right: 12px;
+
                 a {
                     padding-left: 0 !important;
                 }
@@ -1279,10 +1283,20 @@ p {
         padding-top: 20px;
 
         .heroes {
-            position: absolute;
-            bottom: -190px;
+            position: relative;
+            bottom: 0;
             padding: 0;
-            left: -50px;
+            left: 0;
+            content: '';
+            width: 100%;
+            height: 1062px;
+            background-position: center center;
+            background-repeat: repeat;
+            background-image: url("./images/3men.png");
+            background-size: 100% 1062px;
+            display: block;
+            margin-left: 50%;
+
         }
 
         .left-col {
@@ -1319,6 +1333,12 @@ p {
 
     #live-container {
         padding: 0 22px;
+    }
+}
+
+&amp;#hero-module {
+    &gt; div {
+        padding-bottom: 360px;
     }
 }
 
@@ -1425,7 +1445,7 @@ p {
     }
 
     .tripple {
-        width: 83px;
+        width: 80px;
         height: 50px;
         background-size: 100% 17px;
         background-repeat: no-repeat;
@@ -1498,13 +1518,6 @@ p {
         padding-left: 20px;
     }
 }
-
-// @for $i from 1 through 20 {
-//     ul:nth-child($i) &gt; li div.inn {
-//         background-position-x: 0;
-//         background-position-y: (10px * $i) !important;
-//     }
-// }
 
 &amp;#trending-module {
     [data-lf-package="trends-component#0.2.1"] {
@@ -1618,7 +1631,7 @@ p {
         a {
             text-align: center;
             color: #fff;
-            font-size: 1rem;
+            font-size: 1.2rem;
             font-family: $helvetica;
             line-height: 1;
         }
@@ -1639,11 +1652,64 @@ p {
         font-size: 3.4rem;
         line-height: 1;
         margin: 30px 0 10px 0;
+        letter-spacing: 3px;
 
         &amp;:hover {
             border-color: #fff;
         }
     }
+
+    .lf-poll-results {
+        ul li {
+            margin-bottom: 28px;
+        }
+
+        .lf-poll-result-answer {
+            font: bold 16px "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        .lf-poll-result-chart {
+            clear: both;
+            background-color: #c62831;
+            border-radius: 3px;
+            width: 200px;
+            margin: 10px 20px 0 0;
+            padding: 0;
+            height: 20px;
+
+            span {
+                background-color: #fff !important;
+                height: 16px;
+            }
+        }
+
+        .lf-poll-result-votes {
+            display:none;
+        }
+
+        .lf-poll-result-percent {
+            margin: 8px 15px 0 0;
+            font: bold 18px "Helvetica Neue", Helvetica, Arial, sans-serif;
+            float: right;
+        }
+
+        .lf-poll-result-total {
+            font: bold 16px "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        .lf-poll-back-to-poll {
+            float: right;
+            text-transform: lowercase;
+            margin-top: -14px;
+            font-size: 14px;
+
+            &amp;:before {
+                content: "« ";
+            }
+        }
+    }
+
+
 }
 
 &amp;#buy-module {
@@ -1857,7 +1923,15 @@ z-index: 1;
     height: 40px;
     line-height: 40px;
     font-family: $helvetica;
-    font-size: 14px;
+    font-size: 1.8rem;
+
+    &amp;.hidden-sm {
+        text-align: center;
+        float: none;
+        display: block;
+        margin: 0px auto;
+        width: 90px;
+    }
 
     ul {
         float: right;
@@ -1938,8 +2012,299 @@ padding-right: 0;
 }
 </code></pre>
 <p>}</p>
-<p>@media (max-width: 767px) {}</p>
-<p>@media (min-width: 768px) {<br />
+<p>@media (max-width: 480px) {<br />
+    .row {<br />
+        &amp;#hero-module {<br />
+            &gt; div {<br />
+                .right-col {<br />
+                    .video-js {<br />
+                        width: 296px !important;<br />
+                        height: 165px !important;<br />
+                        margin: 0 auto;<br />
+                    }<br />
+                }<br />
+            }<br />
+        }</p>
+<pre><code>    &amp;#top-submissions-module,
+    &amp;#more-submissions-module {
+        &gt; div {
+            &amp;:first-child {
+                margin-bottom: 70px;
+            }
+        }
+
+        h2 {
+            margin-bottom: 0;
+        }
+
+        .tripple {
+            width: 40px;
+            height: 25px;
+            background-size: 100%;
+            display: block;
+            margin: 0 auto !important;
+
+            &amp;.front-stars {
+                margin-right: 5px;
+            }
+
+            &amp;.back-stars {
+                margin-left: 5px;
+            }
+        }
+    }
+}
+</code></pre>
+<p>}</p>
+<p>@media (max-width: 767px) {<br />
+    .row {<br />
+        h2 {<br />
+            font-size: 4.2rem;<br />
+            margin-bottom: 100px;<br />
+        }</p>
+<pre><code>    &amp;#header-module {
+        &gt; div {
+            padding-top: 20px;
+        }
+
+        .logo {
+            margin-left: 12px;
+        }
+
+        ul {
+            margin-top: 12px;
+            width: 100%;
+            max-width: 155px;
+        }
+    }
+
+    &amp;#hero-module,
+    &amp;#buy-module {
+        &gt; div {
+            padding: 30px 12px 290px 12px;
+
+            .left-col {
+                img {
+                    margin-top: 0;
+                }
+            }
+
+            .right-col {
+                padding-top: 70px;
+                margin-bottom: 60px;
+
+                .video-js {
+                    // width: 296px !important;
+                    // height: 165px !important;
+                    // margin: 0 auto
+
+                }
+            }
+
+            .heroes {
+                bottom: -250px;
+                left: 0;
+
+                img {
+                    padding-left: 20px;
+                    box-sizing: border-box;
+                }
+            }
+
+            p {
+                text-align: center;
+            }
+        }
+    }
+
+    &amp;#support-module {
+        margin-top: -150px;
+
+        h2 {
+            margin-top: 0;
+        }
+
+        ul {
+            li {}
+        }
+
+        &gt; div {
+            padding-bottom: 90px;
+        }
+    }
+
+    &amp;#social-counter-moudle {
+        background-size: 700px 238px;
+        background-repeat: no-repeat;
+        background-position: center bottom;
+        padding: 100px 0 0 0;
+
+        #counter-wrapper {
+            padding-bottom: 202px;
+
+            .flip-clock-wrapper ul {
+                max-width: 40px;
+                max-height: 70px;
+
+                li {
+                    a div div.inn {
+                        line-height: 70px;
+                        font-size: 4rem;
+                    }
+                }
+            }
+        }
+    }
+
+    &amp;.mediawall-module {
+        padding-top: 100px;
+        padding-bottom: 0;
+
+        #wallTweet {
+            margin-right: 0;
+            margin-bottom: 40px;
+            width: 100%;
+        }
+
+        #wallShowMore {
+            margin-left: 0;
+            margin-bottom: 100px;
+            width: 100%;
+        }
+    }
+
+    &amp;#top-submissions-module,
+    &amp;#more-submissions-module {
+        .tripple {
+            width: 40px;
+            height: 25px;
+            background-size: 100% 10px;
+
+            &amp;.front-stars {
+                margin-right: 5px;
+            }
+
+            &amp;.back-stars {
+                margin-left: 5px;
+            }
+        }
+    }
+
+    #counter-wrapper {
+        .counter {
+            .comma {
+                &amp;:before {
+                    font-size: 10rem;
+                    height: 70px;
+                    left: -30px;
+                    bottom: 20px;
+                }
+            }
+        }
+    }
+
+    &amp;#trending-module,
+    &amp;#poll-module {
+        padding-top: 130px;
+
+        h2 {
+            text-align: center;
+        }
+
+        p {
+            padding-right: 0;
+        }
+
+        &gt; div &gt; div:first-child {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+    }
+
+    &amp;#poll-module {
+        padding-top: 0;
+        padding-bottom: 100px;
+
+        .lf-poll {
+            float: none;
+            margin: 0 auto;
+        }
+    }
+
+    &amp;#trending-module {
+        #trending-wrapper {
+            overflow: hidden;
+
+            .hub-metric {
+                margin-left: 0;
+            }
+        }
+    }
+
+    &amp;#buy-module {
+        padding-top: 70px;
+
+        &gt; div {
+            a {
+                margin-left: auto;
+                margin-right: auto;
+                width: 100%;
+                max-width: 480px;
+            }
+
+            .right-col {
+                padding-top: 100px;
+            }
+        }
+    }
+
+    &amp;#footer-module {
+        .logo {
+            margin: 0 auto 15px auto;
+        }
+
+        &gt; div {
+            padding-bottom: 30px;
+
+            &gt; ul {
+                &gt; li {
+                    display: inline-block;
+                    border-right: none;
+                    box-sizing: border-box;
+                    margin-bottom: 20px;
+                    margin-right: 0;
+                    padding: 0;
+                    width: 100%;
+
+                    &gt; ul {
+                        li {
+                            float: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#social-wrapper {
+    right: 50%;
+    width: 100px;
+    margin-right: -50px;
+
+    &gt; ul &gt; li ul li {
+        &amp;:first-child {
+            margin-left: 0;
+        }
+    }
+}
+
+#video {
+    margin-bottom: 50px;
+}
+</code></pre>
+<p>}</p>
+<p>@media (min-width: 768px) and (max-width: 1023px) {<br />
     .row {<br />
         &amp;#hero-module,<br />
         &amp;#buy-module,<br />
@@ -1953,6 +2318,11 @@ padding-right: 0;
 <pre><code>    &amp;#header-module {
         &gt; div &gt; * {
             max-width: 668px;
+            &gt; div &gt; div {
+                padding-left: 12px;
+                margin-right: 0;
+                padding-right: 0;
+            }
         }
     }
 
@@ -1982,6 +2352,12 @@ padding-right: 0;
 
     &amp;#hero-module {
         &gt; div {
+            .left-col {
+                img {
+                    padding: 0 75px;
+                    max-width: 5150px;
+                }
+            }
             padding-bottom: 430px;
         }
 
@@ -2012,7 +2388,7 @@ padding-right: 0;
     &amp;#social-counter-moudle {
         background-size: 700px 238px;
         background-repeat: no-repeat;
-        background-position: -40% bottom;
+        background-position: 20% bottom;
 
         #counter-wrapper {
             padding-bottom: 172px;
@@ -2037,6 +2413,10 @@ padding-right: 0;
             text-align: center;
         }
 
+        p {
+            padding-right: 0;
+        }
+
         &gt; div &gt; div:first-child {
             text-align: center;
             margin-bottom: 60px;
@@ -2046,6 +2426,11 @@ padding-right: 0;
     &amp;#poll-module {
         padding-top: 0;
         padding-bottom: 100px;
+
+        .lf-poll {
+            float: none;
+            margin: 0 auto;
+        }
     }
 
     &amp;#trending-module {
@@ -2059,17 +2444,41 @@ padding-right: 0;
     }
 
     &amp;#buy-module {
-          margin-top: -40px;
-          &gt; div {
-            a {
+        margin-top: 100px;
+        max-height: 860px;
+        padding-top: 0;
 
+        &gt; div {
+            a {
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 30px;
+                max-width: 300px;
+                text-align: center;
+                display: block;
             }
-          }
+
+            .right-col {
+                padding-top: 100px;
+
+                img {
+                    max-width: 510px;
+                    display: block;
+                    margin: 0 auto;
+                }
+            }
+        }
+    }
+
+    &amp;#footer-module {
+        .logo {
+            margin-top: 0;
+        }
     }
 }
 </code></pre>
 <p>}</p>
-<p>@media (min-width: 769px) and (max-width: 1068px) {<br />
+<p>@media (min-width: 1024px) {<br />
     .row {<br />
         &amp;#hero-module,<br />
         &amp;#buy-module,<br />
@@ -2083,6 +2492,8 @@ padding-right: 0;
 <pre><code>    &amp;#header-module {
         &gt; div &gt; div &gt; div {
             padding-left: 12px;
+            margin-right: 0;
+            padding-right: 0;
         }
 
         &gt; div &gt; div &gt; ul {
@@ -2091,10 +2502,6 @@ padding-right: 0;
     }
 
     &amp;#hero-module {
-        #social-wrapper {
-            right: 0;
-        }
-
         &gt; div .heroes {
             bottom: -120px;
         }

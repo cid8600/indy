@@ -220,6 +220,7 @@ ul {
             > div {
                 > div {
                     padding-left: 0;
+                    padding-right: 0;
                 }
             }
 
@@ -251,7 +252,7 @@ ul {
                     }
                 }
 
-                &:nth-child(1n+1) {
+                &:nth-child(2n+1) {
                     padding-right: 12px;
 
                     a {
@@ -285,9 +286,19 @@ ul {
 
             .heroes {
                 position: absolute;
-                bottom: -190px;
+                bottom: 0 !important;
                 padding: 0;
-                left: -50px;
+                left: 0;
+                content: '';
+                width: 100%;
+                height: 368px;
+                background-position: 0 center;
+                background-repeat: repeat;
+                background-image: url("./images/3men.png");
+                background-size: 50%;
+                display: block;
+                background-repeat: no-repeat;
+
             }
 
             .left-col {
@@ -329,7 +340,7 @@ ul {
 
     &#hero-module {
         > div {
-            padding-bottom: 360px;
+            padding-bottom: 240px;
         }
     }
 
@@ -706,7 +717,6 @@ ul {
     &#buy-module {
         margin-top: 0;
         padding-top: 120px;
-        max-height: 740px;
 
         > div {
             h2 {
@@ -1006,18 +1016,46 @@ $flip_fontsize_L: 12rem;
     }
 }
 
+@media (max-width: 380px) {
+    .container-fluid {
+        .row {
+            &#hero-module {
+                > div {
+                    .right-col {
+                        margin-bottom: 290px !important;
+                        .video-js {
+                            width: 100% !important;
+                            height: 145px !important;
+                        }
+                    }
+                }
+            }
+
+            &#support-module {
+                margin-top: -190px !important;
+            }
+        }
+    }
+}
+
 @media (max-width: 480px) {
     .row {
         &#hero-module {
             > div {
+                margin-bottom: 0;
                 .right-col {
+                    margin-bottom: 350px !important;
                     .video-js {
-                        width: 296px !important;
+                        width: 100% !important;
                         height: 165px !important;
                         margin: 0 auto;
                     }
                 }
             }
+        }
+
+        &#support-module {
+
         }
 
         &#top-submissions-module,
@@ -1051,6 +1089,28 @@ $flip_fontsize_L: 12rem;
     }
 }
 
+@media (max-width: 600px) {
+    .row {
+        &#hero-module {
+            > div {
+                margin-bottom: 0;
+                .heroes {
+                    height: 508px;
+                }
+                .right-col {
+                    margin-bottom: 380px;
+                    .video-js {
+                        width: 100% !important;
+                        max-width: 500px;
+                        height: 286px !important;
+                        margin: 0 auto;
+                    }
+                }
+            }
+        }
+    }
+}
+
 @media (max-width: 767px) {
     .row {
         h2 {
@@ -1069,13 +1129,15 @@ $flip_fontsize_L: 12rem;
 
             ul {
                 margin-top: 12px;
+                width: 100%;
+                max-width: 155px;
             }
         }
 
         &#hero-module,
         &#buy-module {
             > div {
-                padding: 30px 12px 290px 12px;
+            padding: 30px 12px 0 12px;
 
                 .left-col {
                     img {
@@ -1096,8 +1158,11 @@ $flip_fontsize_L: 12rem;
                 }
 
                 .heroes {
-                    bottom: 0;
-                    left: 0;
+
+                    background-position: center center;
+                    background-size: 100%;
+                    height: 508px;
+                    bottom: -110px !important;
 
                     img {
                         padding-left: 20px;
@@ -1111,8 +1176,17 @@ $flip_fontsize_L: 12rem;
             }
         }
 
+        &#hero-module {
+            padding: 30px 12px 0 12px;
+            > div {
+                .right-col {
+                    margin-bottom: 410px;
+                }
+            }
+        }
+
         &#support-module {
-            margin-top: -230px;
+            margin-top: -150px;
 
             h2 {
                 margin-top: 0;
@@ -1157,11 +1231,13 @@ $flip_fontsize_L: 12rem;
             #wallTweet {
                 margin-right: 0;
                 margin-bottom: 40px;
+                width: 100%;
             }
 
             #wallShowMore {
                 margin-left: 0;
                 margin-bottom: 100px;
+                width: 100%;
             }
         }
 
@@ -1234,14 +1310,14 @@ $flip_fontsize_L: 12rem;
         }
 
         &#buy-module {
-            padding-top: 70px;
 
             > div {
+                padding: 30px 12px 0 12px;
+
                 a {
                     margin-left: auto;
                     margin-right: auto;
                     width: 100%;
-                    max-width: 480px;
                 }
 
                 .right-col {
@@ -1251,6 +1327,7 @@ $flip_fontsize_L: 12rem;
         }
 
         &#footer-module {
+            margin-top: -393px;
             .logo {
                 margin: 0 auto 15px auto;
             }
@@ -1265,7 +1342,7 @@ $flip_fontsize_L: 12rem;
                         box-sizing: border-box;
                         margin-bottom: 20px;
                         margin-right: 0;
-                        padding: 0;
+                        padding: 0 24px;
                         width: 100%;
 
                         > ul {
@@ -1311,6 +1388,11 @@ $flip_fontsize_L: 12rem;
         &#header-module {
             > div > * {
                 max-width: 668px;
+                > div > div {
+                    padding-left: 12px;
+                    margin-right: 0;
+                    padding-right: 0;
+                }
             }
         }
 
@@ -1329,7 +1411,10 @@ $flip_fontsize_L: 12rem;
                 }
 
                 .heroes {
-                    left: 0;
+                    background-position: center center;
+                    background-size: 100%;
+                    height: 478px;
+                    bottom: -80px !important;
                 }
             }
 
@@ -1376,7 +1461,7 @@ $flip_fontsize_L: 12rem;
         &#social-counter-moudle {
             background-size: 700px 238px;
             background-repeat: no-repeat;
-            background-position: -40% bottom;
+            background-position: 20% bottom;
 
             #counter-wrapper {
                 padding-bottom: 172px;
@@ -1481,6 +1566,8 @@ $flip_fontsize_L: 12rem;
         &#header-module {
             > div > div > div {
                 padding-left: 12px;
+                margin-right: 0;
+                padding-right: 0;
             }
 
             > div > div > ul {
