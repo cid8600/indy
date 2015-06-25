@@ -158,6 +158,14 @@
     background: url(../images/grain-2.png);
 }
 
+@for $i from 1 through 20 {
+    .flip:nth-child(#{$i}) div.inn {
+    	background-position-x: (10px * $i) !important;
+        background-position-y: (50px * $i) !important;
+    }
+}
+
+
 .flip-clock-wrapper ul li a div.up div.inn {
     top: 0;
 }

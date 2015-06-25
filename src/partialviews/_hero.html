@@ -5,7 +5,7 @@
 			<ul>
 				<li>
 					<ul>
-						<li class="btn-tw"><a href="#">Twitter</a></li>
+						<li class="btn-tw"><a href="https://twitter.com/intent/tweet?text=Hello+World">Twitter</a></li>
 						<li class="btn-fb"><a href="#">Facebook</a></li>
 					</ul>
 				</li>
@@ -37,7 +37,22 @@
 			      this.src('http://www.youtube.com/watch?v=jofNR_WkoCE');
 				  this.play();
 			    });
-			  });		    </script>
+			  });		    
+			
+				$(document).ready(function() {
+				  $('.btn-fb a').click(function(e) {
+				    e.preventDefault();
+				    FB.ui({
+					  method: 'share',
+					  href: 'https://developers.facebook.com/docs/',
+					}, function(response){});	
+				    
+				  })
+				});
+				
+			
+				
+			</script>
 			<div id="live-container">
 				<img class="responsive" alt="See it live"
 					src="./images/see-it-live.png" />

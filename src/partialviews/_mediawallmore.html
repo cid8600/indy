@@ -8,7 +8,7 @@
 
   <div id="wall" class="lf-media-wall col-xs-12"></div>
   <div class="col-xs-12" id="more-buttons">
-    <a class="btn btn-default btn-indy" id="wallTweet" href="#">Tweet</a>
+    <a class="btn btn-default btn-indy" id="wallTweet" href="https://twitter.com/intent/tweet?text=Hello+World">Tweet</a>
     <a class="btn btn-default btn-indy" id="wallShowMore" href="#">View More</a>
   </div>
 
@@ -40,10 +40,6 @@
         $('#wallShowMore').click(function(e) {
           e.preventDefault();
           wall._wallView.showMore();
-        });
-        $('#wallTweet').click(function(e) {
-          e.preventDefault();
-          alert('Tweet box');
         });
 
       });
