@@ -19,6 +19,8 @@
    ========================================================================== */
 @import url(http://fonts.googleapis.com/css?family=Six+Caps);
 
+@import url(http://fonts.googleapis.com/css?family=Oswald:700);
+
 html,
 button,
 input,
@@ -180,6 +182,15 @@ textarea[contenteditable] {
     font-weight: 500;
     src: url(/fonts/thunderhouse.eot);
     src: local("Thunderhouse"), local("Thunderhouse"), url(/fonts/thunderhouse.eot) format("embedded-opentype"), url(/fonts/thunderhouse.woff) format("woff");
+}
+
+
+@font-face {
+    font-family: 'VideoJS';
+    src: url("/fonts/vjs.eot");
+    src: url("/fonts/vjs.eot?#iefix") format("embedded-opentype"), url("/fonts/vjs.woff") format("woff"), url("/fonts/vjs.ttf") format("truetype"), url("/fonts/vjs.svg#icomoon") format("svg");
+    font-weight: normal;
+    font-style: normal;
 }
 
 
@@ -2198,8 +2209,8 @@ pre code {
 .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
     position: relative;
     min-height: 1px;
-    padding-right: 12px;
-    padding-left: 12px;
+    padding-right: 18px;
+    padding-left: 18px;
 }
 
 .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
@@ -8617,6 +8628,22 @@ button.close {
 }
 
 
+.row [data-lf-package~="streamhub-wall#3.3.2"] .content-default .content-footer .hub-btn-link:before {
+    color: #bbb;
+}
+
+.row [data-lf-package~="streamhub-wall#3.3.2"] .hub-btn-link {
+    color: #bbb;
+}
+
+.row [data-lf-package~="streamhub-wall#3.3.2"] .content p {
+    line-height: 1.5;
+}
+
+.row .lf-media-wall .content-default .content-body a {
+    color: #d52b1e;
+}
+
 .lf-media-wall {
     font: 0.7 "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif !important;
     text-align: left !important;
@@ -8775,15 +8802,7 @@ e.g. <video class="video-js my-skin-name">
 The control icons are from a custom font. Each icon corresponds to a character
 (e.g. "\e001"). Font icons allow for easy scaling and coloring of icons.
 */
-@font-face {
-    font-family: 'VideoJS';
-    src: url("fonts/vjs.eot");
-    src: url("fonts/vjs.eot?#iefix") format("embedded-opentype"), url("fonts/vjs.woff") format("woff"), url("fonts/vjs.ttf") format("truetype"), url("fonts/vjs.svg#icomoon") format("svg");
-    font-weight: normal;
-    font-style: normal;
-}
-
-
+/* fonts imported from _fonts.scss*/
 /* Base UI Component Classes
 --------------------------------------------------------------------------------
 */
@@ -8837,7 +8856,7 @@ The default control bar that is a container for most of the controls.
     display: none;
     position: absolute;
     /* Place control bar at the bottom of the player box/video.
-       If you want more margin below the control bar, add more height. */
+         If you want more margin below the control bar, add more height. */
     bottom: 0;
     /* Use left/right to stretch to 100% width of player div */
     left: 0;
@@ -8935,7 +8954,7 @@ fonts to show/hide properly.
 .vjs-default-skin .vjs-control:focus {
     /*  outline: 0; */
     /* keyboard-only users cannot see the focus on several of the UI elements when
-    this is set to 0 */
+      this is set to 0 */
 }
 
 /* Hide control text visually, but have it available for screenreaders */
@@ -9041,8 +9060,8 @@ fonts to show/hide properly.
     width: 0.5em;
     height: 0.5em;
     /* Assumes volume starts at 1.0. If you change the size of the
-       handle relative to the volume bar, you'll need to update this value
-       too. */
+         handle relative to the volume bar, you'll need to update this value
+         too. */
     left: 4.5em;
 }
 
@@ -9107,7 +9126,7 @@ fonts to show/hide properly.
 .vjs-default-skin:hover .vjs-progress-control {
     font-size: .9em;
     /* Even though we're not changing the top/height, we need to include them in
-        the transition so they're handled correctly. */
+          the transition so they're handled correctly. */
     /* transition */
     -webkit-transition: all 0.2s;
     transition: all 0.2s;
@@ -9136,13 +9155,13 @@ fonts to show/hide properly.
 
 .vjs-default-skin .vjs-play-progress {
     /*
-      Using a data URI to create the white diagonal lines with a transparent
-        background. Surprisingly works in IE8.
-        Created using http://www.patternify.com
-      Changing the first color value will change the bar color.
-      Also using a paralax effect to make the lines move backwards.
-        The -50% left position makes that happen.
-    */
+        Using a data URI to create the white diagonal lines with a transparent
+          background. Surprisingly works in IE8.
+          Created using http://www.patternify.com
+        Changing the first color value will change the bar color.
+        Also using a paralax effect to make the lines move backwards.
+          The -50% left position makes that happen.
+      */
     background: #66a8cc url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAAP0lEQVQIHWWMAQoAIAgDR/QJ/Ub//04+w7ZICBwcOg5FZi5iBB82AGzixEglJrd4TVK5XUJpskSTEvpdFzX9AB2pGziSQcvAAAAAAElFTkSuQmCC) -50% 0 repeat;
 }
 
@@ -9311,7 +9330,7 @@ easily in the skin designer. http://designer.videojs.com/
     content: "\e001";
     font-family: VideoJS;
     /* In order to center the play icon vertically we need to set the line height
-       to the same as the button height */
+         to the same as the button height */
     line-height: 2.6em;
     text-shadow: 0.05em 0.05em 0.1em #000;
     text-align: center;
@@ -9347,7 +9366,7 @@ easily in the skin designer. http://designer.videojs.com/
     font-size: 4em;
     color: #666666;
     /* In order to center the play icon vertically we need to set the line height
-       to the same as the button height */
+         to the same as the button height */
     line-height: 1;
     text-shadow: 0.05em 0.05em 0.1em #000;
     text-align: center;
@@ -9586,7 +9605,7 @@ control positioning and full window mode. **
     position: relative;
     padding: 0;
     /* Start with 10px for base font size so other dimensions can be em based and
-       easily calculable. */
+         easily calculable. */
     font-size: 10px;
     /* Allow poster to be vertically aligned. */
     vertical-align: middle;
@@ -9598,8 +9617,8 @@ control positioning and full window mode. **
     /* Avoiding helvetica: issue #376 */
     font-family: Arial, sans-serif;
     /* Turn off user selection (text highlighting) by default.
-       The majority of player components will not be text blocks.
-       Text areas will need to turn user selection back on. */
+         The majority of player components will not be text blocks.
+         Text areas will need to turn user selection back on. */
     /* user-select */
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -9877,7 +9896,7 @@ img.responsive {
     height: 80px;
     background-position: center center;
     background-repeat: no-repeat;
-    background-image: url("../images/logo.png");
+    background-image: url("./images/logo.png");
     background-size: 160px 80px;
     display: block;
     text-indent: -9999px;
@@ -9941,6 +9960,8 @@ ul li a {
     font-size: 3rem;
     text-transform: uppercase;
     letter-spacing: 3px;
+    -webkit-transition: background-color, letter-spacing 500ms linear;
+    transition: background-color, letter-spacing 500ms linear;
 }
 
 .row .btn-indy:hover,
@@ -9948,6 +9969,7 @@ ul li a {
 .row #wallTweet:hover,
 .row #wallShowMore:hover {
     background-color: #c91429 !important;
+    letter-spacing: 5px;
 }
 
 .row h2 {
@@ -9992,7 +10014,7 @@ ul li a {
     height: 1062px;
     background-position: center center;
     background-repeat: repeat;
-    background-image: url("../images/grain.png");
+    background-image: url("./images/grain.png");
     background-size: 2404px 1062px;
     display: block;
     position: absolute;
@@ -10044,13 +10066,13 @@ ul li a {
 }
 
 .row#header-module ul li a {
-    font-size: 1.2rem;
+    font-size: 2rem;
     letter-spacing: 1px;
     width: 100%;
     box-sizing: border-box;
     display: inline-block;
     height: auto;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Six Caps", sans-serif;
     padding: 0 4px;
 }
 
@@ -10067,18 +10089,17 @@ ul li a {
 
 .row#hero-module > div .heroes, .row#buy-module > div .heroes {
     position: absolute;
-    bottom: 0 !important;
+    bottom: -60px !important;
     padding: 0;
     left: 0;
     content: '';
     width: 100%;
-    height: 368px;
+    height: 438px;
     background-position: 0 center;
-    background-repeat: repeat;
-    background-image: url("../images/3men.png");
-    background-size: 50%;
-    display: block;
     background-repeat: no-repeat;
+    background-image: url("./images/3men.png");
+    background-size: 60%;
+    display: block;
 }
 
 .row#hero-module > div .left-col, .row#buy-module > div .left-col {
@@ -10106,7 +10127,7 @@ ul li a {
 
 .row#hero-module > div p, .row#buy-module > div p {
     font-size: 1.8rem;
-    line-height: 1.4;
+    line-height: 1.5;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #e3172f;
     font-weight: normal;
@@ -10123,7 +10144,7 @@ ul li a {
 .row#support-module {
     background-position: center 0;
     padding-top: 205px;
-    margin-top: -240px;
+    margin-top: -190px;
     padding-left: 0;
     padding-right: 0;
     position: relative;
@@ -10157,10 +10178,10 @@ ul li a {
 }
 
 .row#support-module .star p {
-    font-family: "Six Caps", sans-serif;
-    line-height: 77px;
+    font-family: "Oswald", sans-serif;
+    line-height: 84px;
     position: relative;
-    font-size: 24px;
+    font-size: 2.2rem;
 }
 
 .row#support-module .star:before {
@@ -10169,7 +10190,7 @@ ul li a {
     height: 77px;
     background-position: center center;
     background-repeat: no-repeat;
-    background-image: url("../images/star.png");
+    background-image: url("./images/star.png");
     background-size: 90px 77px;
     display: block;
     position: absolute;
@@ -10191,7 +10212,7 @@ ul li a {
     height: 1062px;
     background-position: center center;
     background-repeat: repeat;
-    background-image: url("../images/grain.png");
+    background-image: url("./images/grain.png");
     background-size: 2404px 1062px;
     display: block;
     position: absolute;
@@ -10205,7 +10226,8 @@ ul li a {
     background-size: 1096px 374px;
     background-repeat: no-repeat;
     background-position: 10% bottom;
-    background-image: url("../images/2cars.png");
+    background-image: url("./images/2cars.png");
+    background-color: #f0f4ff;
 }
 
 .row#social-counter-moudle h2 {
@@ -10238,12 +10260,12 @@ ul li a {
 }
 
 .row#top-submissions-module .tripple.front-stars, .row#more-submissions-module .tripple.front-stars {
-    background-image: url("../images/3stars-front.png");
+    background-image: url("./images/3stars-front.png");
     margin-right: 10px;
 }
 
 .row#top-submissions-module .tripple.back-stars, .row#more-submissions-module .tripple.back-stars {
-    background-image: url("../images/3stars-back.png");
+    background-image: url("./images/3stars-back.png");
     margin-left: 10px;
 }
 
@@ -10253,6 +10275,10 @@ ul li a {
 
 .row#top-submissions-module [data-lf-package~="streamhub-wall#3.3.2"] .hub-list .hub-content-container, .row#more-submissions-module [data-lf-package~="streamhub-wall#3.3.2"] .hub-list .hub-content-container {
     margin-bottom: 50px;
+}
+
+.row#top-submissions-module [data-lf-package~="streamhub-wall#3.3.2"] .hub-list .hub-content-container:nth-child(1n+2) {
+    display: none;
 }
 
 .row#trending-module, .row#poll-module {
@@ -10284,7 +10310,7 @@ ul li a {
     height: 1062px;
     background-position: center center;
     background-repeat: repeat;
-    background-image: url("../images/grain.png");
+    background-image: url("./images/grain.png");
     background-size: 2404px 1062px;
     display: block;
     position: absolute;
@@ -10315,6 +10341,11 @@ ul li a {
     height: 54px;
 }
 
+.row#trending-module [data-lf-package="trends-component#0.2.1"] .hub-metric-list .hub-metric:hover {
+    box-shadow: none;
+    cursor: default;
+}
+
 .row#trending-module [data-lf-package="trends-component#0.2.1"] .hub-metric-list .hub-metric:first-child {
     border-radius: 0;
 }
@@ -10337,7 +10368,7 @@ ul li a {
 
 .row#trending-module [data-lf-package="trends-component#0.2.1"] .hub-metric-list .hub-metric .hub-metric-container .hub-metric-rank .hub-metric-rank-value:before {
     line-height: 54px;
-    font-family: "Six Caps", sans-serif;
+    font-family: "Oswald", sans-serif;
     font-size: 2.4rem;
 }
 
@@ -10348,10 +10379,10 @@ ul li a {
 
 .row#trending-module [data-lf-package="trends-component#0.2.1"] .hub-metric-list .hub-metric .hub-metric-container .hub-metric-details .hub-metric-label {
     color: #fff;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     line-height: 1.2;
-    margin: 0 0 6px 12px;
-    padding-top: 16px;
+    margin: 0 0 5px 12px;
+    padding-top: 12px;
 }
 
 .row#trending-module [data-lf-package="trends-component#0.2.1"] .hub-metric-list .hub-metric .hub-metric-container .hub-metric-details .hub-metric-bar-container {
@@ -10430,10 +10461,13 @@ ul li a {
     line-height: 1;
     margin: 30px 0 10px 0;
     letter-spacing: 3px;
+    -webkit-transition: border-color, letter-spacing 500ms linear;
+    transition: border-color, letter-spacing 500ms linear;
 }
 
 .row#poll-module .lf-poll-btn:hover {
     border-color: #fff;
+    letter-spacing: 5px;
 }
 
 .row#poll-module .lf-poll-results ul li {
@@ -10530,7 +10564,7 @@ ul li a {
     height: 1062px;
     background-position: center center;
     background-repeat: repeat;
-    background-image: url("../images/grain.png");
+    background-image: url("./images/grain.png");
     background-size: 2404px 1062px;
     display: block;
     position: absolute;
@@ -10614,6 +10648,22 @@ ul li a {
     height: auto;
     max-width: 510px;
     margin: 0 auto 70px auto;
+    position: relative;
+}
+
+#video:before {
+    content: '';
+    width: 510px;
+    height: 120px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-image: url("./images/shadow.png");
+    background-size: 510px 120px;
+    display: block;
+    position: absolute;
+    bottom: -70px;
+    left: -255px;
+    margin-left: 50%;
 }
 
 #video img {
@@ -10652,12 +10702,12 @@ ul li a {
 }
 
 .diag.red {
-    background-image: url("../images/diagnol-red.png");
+    background-image: url("./images/diagnol-red.png");
     padding-bottom: 47px;
 }
 
 .diag.blue {
-    background-image: url("../images/diagnol-blue.png");
+    background-image: url("./images/diagnol-blue.png");
 }
 
 .diag.flipped {
@@ -10665,7 +10715,7 @@ ul li a {
 }
 
 .diag.flipped:before {
-    background-image: url("../images/diagnol-red.png");
+    background-image: url("./images/diagnol-red.png");
     background-clip: padding-box;
     background-position: center center;
     background-repeat: no-repeat;
@@ -10694,7 +10744,7 @@ ul li a {
     height: 40px;
     line-height: 40px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
 }
 
 #social-wrapper > ul > li.hidden-sm {
@@ -10721,11 +10771,11 @@ ul li a {
 }
 
 #social-wrapper > ul > li ul li.btn-tw {
-    background-image: url("../images/share-tweet.png");
+    background-image: url("./images/share-tweet.png");
 }
 
 #social-wrapper > ul > li ul li.btn-fb {
-    background-image: url("../images/share-fb.png");
+    background-image: url("./images/share-fb.png");
 }
 
 #social-wrapper > ul > li ul li a {
@@ -10769,6 +10819,10 @@ ul li a {
 #counter-wrapper .flip-clock-wrapper ul {
     width: 135px;
     height: 170px;
+}
+
+#counter-wrapper .flip-clock-wrapper ul li:last-child {
+    box-shadow: 0px 6px 10px -4px #000;
 }
 
 #counter-wrapper .flip-clock-wrapper ul li a {
@@ -10841,6 +10895,14 @@ ul li a {
     .row#top-submissions-module .tripple.back-stars,
     .row#more-submissions-module .tripple.back-stars {
         margin-left: 5px;
+    }
+
+    #video:before {
+        width: 255px;
+        height: 60px;
+        background-size: 255px 60px;
+        bottom: -30px;
+        left: -127px;
     }
 }
 
@@ -10966,9 +11028,13 @@ ul li a {
         padding-bottom: 0;
     }
 
+    .row.mediawall-module #more-buttons {
+        padding: 0 40px;
+    }
+
     .row.mediawall-module #wallTweet {
         margin-right: 0;
-        margin-bottom: 40px;
+        margin-bottom: 30px;
         width: 100%;
     }
 
@@ -11188,11 +11254,11 @@ ul li a {
 
     .row#social-counter-moudle #counter-wrapper .flip-clock-wrapper ul {
         max-width: 70px;
-        max-height: 125px;
+        max-height: 85px;
     }
 
     .row#social-counter-moudle #counter-wrapper .flip-clock-wrapper ul li a div div.inn {
-        line-height: 125px;
+        line-height: 85px;
         font-size: 8rem;
     }
 
