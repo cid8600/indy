@@ -9960,8 +9960,8 @@ ul li a {
     font-size: 3rem;
     text-transform: uppercase;
     letter-spacing: 3px;
-    -webkit-transition: background-color, letter-spacing 500ms linear;
-    transition: background-color, letter-spacing 500ms linear;
+    -webkit-transition: background-color, letter-spacing 250ms linear;
+    transition: background-color, letter-spacing 250ms linear;
 }
 
 .row .btn-indy:hover,
@@ -10461,8 +10461,8 @@ ul li a {
     line-height: 1;
     margin: 30px 0 10px 0;
     letter-spacing: 3px;
-    -webkit-transition: border-color, letter-spacing 500ms linear;
-    transition: border-color, letter-spacing 500ms linear;
+    -webkit-transition: border-color, letter-spacing 250ms linear;
+    transition: border-color, letter-spacing 250ms linear;
 }
 
 .row#poll-module .lf-poll-btn:hover {
@@ -10485,7 +10485,7 @@ ul li a {
     width: 200px;
     margin: 10px 20px 0 0;
     padding: 0;
-    height: 20px;
+    height: auto;
 }
 
 .row#poll-module .lf-poll-results .lf-poll-result-chart span {
@@ -10876,17 +10876,17 @@ ul li a {
     }
 
     .row#social-counter-moudle #counter-wrapper .flip-clock-wrapper ul {
-        max-width: 48px;
-        max-height: 60px;
+        max-width: 48px !important;
+        max-height: 60px !important;
     }
 
     .row#social-counter-moudle #counter-wrapper .flip-clock-wrapper ul li:last-child {
-        box-shadow: 0px 4px 0px -2px #ccc;
+        box-shadow: 0px 4px 0px -2px #ccc !important;
     }
 
     .row#social-counter-moudle #counter-wrapper .flip-clock-wrapper ul li a div div.inn {
-        line-height: 60px;
-        font-size: 4rem;
+        line-height: 60px !important;
+        font-size: 4rem !important;
     }
 
     .row#top-submissions-module > div:first-child,
@@ -11363,7 +11363,7 @@ ul li a {
     .row#header-module > div > div > div {
         padding-left: 12px;
         margin-right: 0;
-        padding-right: 0;
+        padding-right: 24px;
     }
 
     .row#header-module > div > div > ul {
