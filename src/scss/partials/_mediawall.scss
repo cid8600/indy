@@ -1,3 +1,39 @@
+$linkColor: #d52b1e;
+
+.row {
+    [data-lf-package~="streamhub-wall#3.3.2"] {
+        .content-default {
+            .content-footer {
+                .hub-btn-link {
+                    &:before {
+                        color: #bbb;
+                    }
+                }
+            }
+        }
+
+        .hub-btn-link {
+            color: #bbb;
+        }
+
+        .content {
+            p {
+                line-height: 1.5;
+            }
+        }
+    }
+
+    .lf-media-wall {
+        .content-default {
+            .content-body {
+                a {
+                    color: $linkColor;
+                }
+            }
+        }
+    }
+}
+
 .lf-media-wall {
     font: (14px / 20px) $helvetica !important;
     text-align: left !important;
