@@ -30,11 +30,11 @@
     font-size: 3rem;
     text-transform: uppercase;
     letter-spacing: 3px;
-    -webkit-transition: background-color, letter-spacing 500ms linear;
-    -moz-transition: background-color, letter-spacing 500ms linear;
-    -o-transition: background-color, letter-spacing 500ms linear;
-    -ms-transition: background-color, letter-spacing 500ms linear;
-    transition: background-color, letter-spacing 500ms linear;
+    -webkit-transition: background-color, letter-spacing 250ms linear;
+    -moz-transition: background-color, letter-spacing 250ms linear;
+    -o-transition: background-color, letter-spacing 250ms linear;
+    -ms-transition: background-color, letter-spacing 250ms linear;
+    transition: background-color, letter-spacing 250ms linear;
 }
 
 @mixin grain {
@@ -71,8 +71,8 @@
 }
 
 @mixin boxshadowsmall {
-    -webkit-box-shadow: 0px 4px 0px -2px #ccc;
-    box-shadow: 0px 4px 0px -2px #ccc;
+    -webkit-box-shadow: 0px 4px 0px -2px #ccc !important;
+    box-shadow: 0px 4px 0px -2px #ccc !important;
 }
 
 $indyBlue: #0022B8;
@@ -688,11 +688,11 @@ ul {
             line-height: 1;
             margin: 30px 0 10px 0;
             letter-spacing: 3px;
-            -webkit-transition: border-color, letter-spacing 500ms linear;
-            -moz-transition: border-color, letter-spacing 500ms linear;
-            -o-transition: border-color, letter-spacing 500ms linear;
-            -ms-transition: border-color, letter-spacing 500ms linear;
-            transition: border-color, letter-spacing 500ms linear;
+            -webkit-transition: border-color, letter-spacing 250ms linear;
+            -moz-transition: border-color, letter-spacing 250ms linear;
+            -o-transition: border-color, letter-spacing 250ms linear;
+            -ms-transition: border-color, letter-spacing 250ms linear;
+            transition: border-color, letter-spacing 250ms linear;
 
             &:hover {
                 border-color: #fff;
@@ -716,7 +716,7 @@ ul {
                 width: 200px;
                 margin: 10px 20px 0 0;
                 padding: 0;
-                height: 20px;
+                height: auto;
 
                 span {
                     background-color: #fff !important;
@@ -1132,8 +1132,8 @@ $flip_fontsize_L: 12rem;
 
             #counter-wrapper {
                 .flip-clock-wrapper ul {
-                    max-width: 48px;
-                    max-height: 60px;
+                    max-width: 48px !important;
+                    max-height: 60px !important;
 
                     li {
                         &:last-child {
@@ -1141,8 +1141,8 @@ $flip_fontsize_L: 12rem;
                         }
 
                         a div div.inn {
-                            line-height: 60px;
-                            font-size: 4rem;
+                            line-height: 60px !important;
+                            font-size: 4rem !important;
                         }
                     }
                 }
@@ -1675,15 +1675,14 @@ $flip_fontsize_L: 12rem;
         }
 
         &#header-module {
+            ul {}
+
             > div > div > div {
                 padding-left: 12px;
                 margin-right: 0;
-                padding-right: 0;
+                padding-right: 18px;
             }
-
-            > div > div > ul {
-                padding-right: 12px;
-            }
+            > div > div > ul {}
         }
 
         &#hero-module {
