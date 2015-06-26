@@ -8491,6 +8491,8 @@ ul {
         width: 100% !important;
         height: 165px !important;
         margin: 0 auto; }
+  .row#support-module {
+    margin-top: -200px; }
   .row#top-submissions-module > div:first-child,
   .row#more-submissions-module > div:first-child {
     margin-bottom: 70px; }
