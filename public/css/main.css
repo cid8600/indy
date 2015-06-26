@@ -9896,7 +9896,7 @@ img.responsive {
     height: 80px;
     background-position: center center;
     background-repeat: no-repeat;
-    background-image: url("./images/logo.png");
+    background-image: url("../images/logo.png");
     background-size: 160px 80px;
     display: block;
     text-indent: -9999px;
@@ -10014,7 +10014,7 @@ ul li a {
     height: 1062px;
     background-position: center center;
     background-repeat: repeat;
-    background-image: url("./images/grain.png");
+    background-image: url("../images/grain.png");
     background-size: 2404px 1062px;
     display: block;
     position: absolute;
@@ -10097,7 +10097,7 @@ ul li a {
     height: 438px;
     background-position: 0 center;
     background-repeat: no-repeat;
-    background-image: url("./images/3men.png");
+    background-image: url("../images/3men.png");
     background-size: 60%;
     display: block;
 }
@@ -10190,7 +10190,7 @@ ul li a {
     height: 77px;
     background-position: center center;
     background-repeat: no-repeat;
-    background-image: url("./images/star.png");
+    background-image: url("../images/star.png");
     background-size: 90px 77px;
     display: block;
     position: absolute;
@@ -10212,7 +10212,7 @@ ul li a {
     height: 1062px;
     background-position: center center;
     background-repeat: repeat;
-    background-image: url("./images/grain.png");
+    background-image: url("../images/grain.png");
     background-size: 2404px 1062px;
     display: block;
     position: absolute;
@@ -10226,7 +10226,7 @@ ul li a {
     background-size: 1096px 374px;
     background-repeat: no-repeat;
     background-position: 10% bottom;
-    background-image: url("./images/2cars.png");
+    background-image: url("../images/2cars.png");
     background-color: #f0f4ff;
 }
 
@@ -10260,12 +10260,12 @@ ul li a {
 }
 
 .row#top-submissions-module .tripple.front-stars, .row#more-submissions-module .tripple.front-stars {
-    background-image: url("./images/3stars-front.png");
+    background-image: url("../images/3stars-front.png");
     margin-right: 10px;
 }
 
 .row#top-submissions-module .tripple.back-stars, .row#more-submissions-module .tripple.back-stars {
-    background-image: url("./images/3stars-back.png");
+    background-image: url("../images/3stars-back.png");
     margin-left: 10px;
 }
 
@@ -10310,7 +10310,7 @@ ul li a {
     height: 1062px;
     background-position: center center;
     background-repeat: repeat;
-    background-image: url("./images/grain.png");
+    background-image: url("../images/grain.png");
     background-size: 2404px 1062px;
     display: block;
     position: absolute;
@@ -10564,7 +10564,7 @@ ul li a {
     height: 1062px;
     background-position: center center;
     background-repeat: repeat;
-    background-image: url("./images/grain.png");
+    background-image: url("../images/grain.png");
     background-size: 2404px 1062px;
     display: block;
     position: absolute;
@@ -10657,7 +10657,7 @@ ul li a {
     height: 120px;
     background-position: center center;
     background-repeat: no-repeat;
-    background-image: url("./images/shadow.png");
+    background-image: url("../images/shadow.png");
     background-size: 510px 120px;
     display: block;
     position: absolute;
@@ -10702,12 +10702,12 @@ ul li a {
 }
 
 .diag.red {
-    background-image: url("./images/diagnol-red.png");
+    background-image: url("../images/diagnol-red.png");
     padding-bottom: 47px;
 }
 
 .diag.blue {
-    background-image: url("./images/diagnol-blue.png");
+    background-image: url("../images/diagnol-blue.png");
 }
 
 .diag.flipped {
@@ -10715,7 +10715,7 @@ ul li a {
 }
 
 .diag.flipped:before {
-    background-image: url("./images/diagnol-red.png");
+    background-image: url("../images/diagnol-red.png");
     background-clip: padding-box;
     background-position: center center;
     background-repeat: no-repeat;
@@ -10771,11 +10771,11 @@ ul li a {
 }
 
 #social-wrapper > ul > li ul li.btn-tw {
-    background-image: url("./images/share-tweet.png");
+    background-image: url("../images/share-tweet.png");
 }
 
 #social-wrapper > ul > li ul li.btn-fb {
-    background-image: url("./images/share-fb.png");
+    background-image: url("../images/share-fb.png");
 }
 
 #social-wrapper > ul > li ul li a {
