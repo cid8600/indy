@@ -60,6 +60,11 @@
     bottom: -65px;
 }
 
+@mixin boxshadow {
+    -webkit-box-shadow: 0px 6px 10px -4px #000;
+    box-shadow: 0px 6px 10px -4px #000;
+}
+
 $indyBlue: #0022B8;
 $indyRed: #e3172f;
 $indyRedDark: #c91429;
@@ -261,13 +266,13 @@ ul {
                 }
 
                 a {
-                    font-size: 1.2rem;
+                    font-size: 2rem;
                     letter-spacing: 1px;
                     width: 100%;
                     box-sizing: border-box;
                     display: inline-block;
                     height: auto;
-                    font-family: $helvetica;
+                    font-family: $sixCaps;
                     padding: 0 4px;
                 }
             }
@@ -298,7 +303,6 @@ ul {
                 background-size: 50%;
                 display: block;
                 background-repeat: no-repeat;
-
             }
 
             .left-col {
@@ -326,7 +330,7 @@ ul {
 
             p {
                 font-size: 1.8rem;
-                line-height: 1.4;
+                line-height: 1.5;
                 font-family: $helvetica;
                 color: $indyRed;
                 font-weight: normal;
@@ -422,6 +426,7 @@ ul {
         background-repeat: no-repeat;
         background-position: 10% bottom;
         background-image: url("./images/2cars.png");
+        background-color: #f0f4ff;
 
         h2 {
             margin: 0;
@@ -473,6 +478,18 @@ ul {
             .hub-list {
                 .hub-content-container {
                     margin-bottom: 50px;
+                }
+            }
+        }
+    }
+
+    &#top-submissions-module {
+        [data-lf-package~="streamhub-wall#3.3.2"] {
+            .hub-list {
+                .hub-content-container {
+                    &:nth-child(1n+2) {
+                        display: none;
+                    }
                 }
             }
         }
@@ -531,6 +548,11 @@ ul {
                     padding: 0 45px 0 0;
                     height: 54px;
 
+                    &:hover {
+                        box-shadow: none;
+                        cursor: default;
+                    }
+
                     &:first-child {
                         border-radius: 0;
                     }
@@ -564,10 +586,10 @@ ul {
 
                             .hub-metric-label {
                                 color: #fff;
-                                font-size: 1.4rem;
+                                font-size: 1.6rem;
                                 line-height: 1.2;
-                                margin: 0 0 6px 12px;
-                                padding-top: 16px;
+                                margin: 0 0 5px 12px;
+                                padding-top: 12px;
                             }
 
                             .hub-metric-bar-container {
@@ -662,56 +684,54 @@ ul {
         }
 
         .lf-poll-results {
-        	ul li {
-        		margin-bottom: 28px;
-        	}
+            ul li {
+                margin-bottom: 28px;
+            }
 
-        	.lf-poll-result-answer {
-	        	font: bold 16px "Helvetica Neue", Helvetica, Arial, sans-serif;
-	        }
+            .lf-poll-result-answer {
+                font: bold 16px "Helvetica Neue", Helvetica, Arial, sans-serif;
+            }
 
-	        .lf-poll-result-chart {
-	        	clear: both;
-	        	background-color: #c62831;
-	        	border-radius: 3px;
-	        	width: 200px;
-	        	margin: 10px 20px 0 0;
-	        	padding: 0;
-	        	height: 20px;
+            .lf-poll-result-chart {
+                clear: both;
+                background-color: #c62831;
+                border-radius: 3px;
+                width: 200px;
+                margin: 10px 20px 0 0;
+                padding: 0;
+                height: 20px;
 
-	        	span {
-	        		background-color: #fff !important;
-	        		height: 16px;
-	        	}
-	        }
+                span {
+                    background-color: #fff !important;
+                    height: 16px;
+                }
+            }
 
-	        .lf-poll-result-votes {
-	        	display:none;
-	        }
+            .lf-poll-result-votes {
+                display: none;
+            }
 
-	        .lf-poll-result-percent {
-	        	margin: 8px 15px 0 0;
-	        	font: bold 18px "Helvetica Neue", Helvetica, Arial, sans-serif;
-	        	float: right;
-	        }
+            .lf-poll-result-percent {
+                margin: 8px 15px 0 0;
+                font: bold 18px "Helvetica Neue", Helvetica, Arial, sans-serif;
+                float: right;
+            }
 
-	        .lf-poll-result-total {
-	        	font: bold 16px "Helvetica Neue", Helvetica, Arial, sans-serif;
-	        }
+            .lf-poll-result-total {
+                font: bold 16px "Helvetica Neue", Helvetica, Arial, sans-serif;
+            }
 
-	        .lf-poll-back-to-poll {
-	        	float: right;
-	        	text-transform: lowercase;
-	        	margin-top: -14px;
-	        	font-size: 14px;
+            .lf-poll-back-to-poll {
+                float: right;
+                text-transform: lowercase;
+                margin-top: -14px;
+                font-size: 14px;
 
-	        	&:before {
-	        		content: "« ";
-	        	}
-	        }
+                &:before {
+                    content: "« ";
+                }
+            }
         }
-
-
     }
 
     &#buy-module {
@@ -845,6 +865,22 @@ ul {
     height: auto;
     max-width: 510px;
     margin: 0 auto 70px auto;
+    position: relative;
+
+    &:before {
+        content: '';
+        width: 510px;
+        height: 120px;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-image: url("./images/shadow.png");
+        background-size: 510px 120px;
+        display: block;
+        position: absolute;
+        bottom: -70px;
+        left: -255px;
+        margin-left: 50%;
+    }
 
     img {
         width: 100%;
@@ -926,7 +962,7 @@ ul {
         height: 40px;
         line-height: 40px;
         font-family: $helvetica;
-        font-size: 1.8rem;
+        font-size: 1.5rem;
 
         &.hidden-sm {
             text-align: center;
@@ -1002,6 +1038,10 @@ $flip_fontsize_L: 12rem;
         height: $flip_height_L;
 
         li {
+            &:last-child {
+                @include boxshadow;
+            }
+
             a {
                 cursor: default;
 
@@ -1023,6 +1063,7 @@ $flip_fontsize_L: 12rem;
                 > div {
                     .right-col {
                         margin-bottom: 290px !important;
+
                         .video-js {
                             width: 100% !important;
                             height: 145px !important;
@@ -1043,8 +1084,10 @@ $flip_fontsize_L: 12rem;
         &#hero-module {
             > div {
                 margin-bottom: 0;
+
                 .right-col {
                     margin-bottom: 350px !important;
+
                     .video-js {
                         width: 100% !important;
                         height: 165px !important;
@@ -1087,6 +1130,16 @@ $flip_fontsize_L: 12rem;
             }
         }
     }
+
+    #video {
+        &:before {
+            width: 255px;
+            height: 60px;
+            background-size: 255px 60px;
+            bottom: -30px;
+            left: -127px;
+        }
+    }
 }
 
 @media (max-width: 600px) {
@@ -1094,11 +1147,14 @@ $flip_fontsize_L: 12rem;
         &#hero-module {
             > div {
                 margin-bottom: 0;
+
                 .heroes {
                     height: 508px;
                 }
+
                 .right-col {
                     margin-bottom: 380px;
+
                     .video-js {
                         width: 100% !important;
                         max-width: 500px;
@@ -1137,7 +1193,7 @@ $flip_fontsize_L: 12rem;
         &#hero-module,
         &#buy-module {
             > div {
-            padding: 30px 12px 0 12px;
+                padding: 30px 12px 0 12px;
 
                 .left-col {
                     img {
@@ -1158,7 +1214,6 @@ $flip_fontsize_L: 12rem;
                 }
 
                 .heroes {
-
                     background-position: center center;
                     background-size: 100%;
                     height: 508px;
@@ -1178,6 +1233,7 @@ $flip_fontsize_L: 12rem;
 
         &#hero-module {
             padding: 30px 12px 0 12px;
+
             > div {
                 .right-col {
                     margin-bottom: 410px;
@@ -1228,9 +1284,13 @@ $flip_fontsize_L: 12rem;
             padding-top: 100px;
             padding-bottom: 0;
 
+            #more-buttons {
+                padding: 0 40px;
+            }
+
             #wallTweet {
                 margin-right: 0;
-                margin-bottom: 40px;
+                margin-bottom: 30px;
                 width: 100%;
             }
 
@@ -1310,7 +1370,6 @@ $flip_fontsize_L: 12rem;
         }
 
         &#buy-module {
-
             > div {
                 padding: 30px 12px 0 12px;
 
@@ -1328,6 +1387,7 @@ $flip_fontsize_L: 12rem;
 
         &#footer-module {
             margin-top: -393px;
+
             .logo {
                 margin: 0 auto 15px auto;
             }
@@ -1388,6 +1448,7 @@ $flip_fontsize_L: 12rem;
         &#header-module {
             > div > * {
                 max-width: 668px;
+
                 > div > div {
                     padding-left: 12px;
                     margin-right: 0;
@@ -1468,11 +1529,11 @@ $flip_fontsize_L: 12rem;
 
                 .flip-clock-wrapper ul {
                     max-width: 70px;
-                    max-height: 125px;
+                    max-height: 85px;
 
                     li {
                         a div div.inn {
-                            line-height: 125px;
+                            line-height: 85px;
                             font-size: 8rem;
                         }
                     }
@@ -1613,6 +1674,7 @@ $flip_fontsize_L: 12rem;
         &#buy-module {
             > div {
                 padding-bottom: 0;
+
                 a {
                     margin-left: 0;
                 }
