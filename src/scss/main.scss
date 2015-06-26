@@ -357,7 +357,7 @@ ul {
     /* FOLLOW THESE STEPS */
     &#support-module {
         background-position: center 0;
-        padding-top: 205px;
+        padding-top: 204px;
         margin-top: -190px;
         padding-left: 0;
         padding-right: 0;
@@ -1280,11 +1280,11 @@ $flip_fontsize_L: 12rem;
 
                 .flip-clock-wrapper ul {
                     max-width: 40px;
-                    max-height: 70px;
+                    max-height: 50px;
 
                     li {
                         a div div.inn {
-                            line-height: 70px;
+                            line-height: 50px;
                             font-size: 4rem;
                         }
                     }
@@ -1353,6 +1353,7 @@ $flip_fontsize_L: 12rem;
 
             p {
                 padding-right: 0;
+                margin-top: 15px;
             }
 
             > div > div:first-child {
