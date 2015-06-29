@@ -75,7 +75,7 @@ gulp.task('styles', () => {
     './src/scss/*.scss',
     './src/scss/**/*.css'
   ])
-    .pipe($.changed('.tmp/css', {extension: '.css'}))
+    .pipe($.changed('.tmp/css/', {extension: '.css'}))
     .pipe($.sourcemaps.init())
     .pipe($.sass({
       precision: 10
@@ -198,75 +198,6 @@ gulp.task('default', ['clean'], cb => {
     'fileinclude',
     [ 'scripts', 'images', 'fonts', 'html'],
     'copy',
-    'generate-service-worker',
+    //, 'generate-service-worker',
     cb);
 });
-
-// Run PageSpeed Insights
-gulp.task('pagespeed', cb => {
-  // Update the below URL to the public URL of your site
-  pagespeed('example.com', {
-    strategy: 'mobile',
-    // By default we use the PageSpeed Insights free (no API key) tier.
-    // Use a Google Developer API key if you have one: http://goo.gl/RkN0vE
-    // key: 'YOUR_API_KEY'
-  }, cb);
-});
-
-// See http://www.html5rocks.com/en/tutorials/service-worker/introduction/ for
-// an in-depth explanation of what service workers are and why you should care.
-// Generate a service worker file that will provide offline functionality for
-// local resources. This should only be done for the 'dist' directory, to allow
-// live reload to work as expected when serving from the 'app' directory.
-gulp.task('generate-service-worker', cb => {
-  const rootDir = 'dist';
-
-  swPrecache({
-    // Used to avoid cache conflicts when serving on localhost.
-    cacheId: pkg.name || 'web-starter-kit',
-    // URLs that don't directly map to single static files can be defined here.
-    // If any of the files a URL depends on changes, then the URL's cache entry
-    // is invalidated and it will be refetched.
-    // Generally, URLs that depend on multiple files (such as layout templates)
-    // should list all the files; a change in any will invalidate the cache.
-    // In this case, './' is the top-level relative URL, and its response
-    // depends on the contents of the file 'dist/index.html'.
-    dynamicUrlToDependencies: {
-      './': [path.join(rootDir, 'index.html')]
-    },
-    staticFileGlobs: [
-      // Add/remove glob patterns to match your directory setup.
-      '${rootDir}/fonts/**/*.woff',
-      '${rootDir}/images/**/*',
-      '${rootDir}/js/**/*.js',
-      '${rootDir}/css/**/*.css',
-      '${rootDir}/*.{html}',
-      '${rootDir}/data/*.{json}'
-    ],
-    // Translates a static file path to the relative URL that it's served from.
-    stripPrefix: path.join(rootDir, path.sep)
-  }, (err, swFileContents) => {
-    if (err) {
-      cb(err);
-      return;
-    }
-
-    const filepath = path.join(rootDir, 'service-worker.js');
-
-    fs.writeFile(filepath, swFileContents, err => {
-      if (err) {
-        cb(err);
-        return;
-      }
-
-      cb();
-    });
-  });
-});
-
-// Load custom tasks from the `tasks` directory
-// try { require('require-dir')('tasks'); } catch (err) { console.error(err); }
-
-
-
-
