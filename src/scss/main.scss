@@ -1,24 +1,11 @@
-/*
- * Web Starter Kit
- *
- * Multi-screen layout styles for your page. Brought to you by the
- * Web Starter Kit team.
- *
- */
 @import "./partials/_h5bp";
 
-// @import "./partials/_h5reset";
 @import "../../bower_components/bourbon/app/assets/stylesheets/_bourbon";
 @import "./partials/_fonts";
 @import "./partials/_bootstrap";
 @import "./partials/flipclock";
 @import "./partials/_mediawall";
 @import "./partials/video-js";
-
-/*
- * Visual Style Guide styles
- * Remove if you prefer to use a CSS library, like Bootstrap
- */
 
 @mixin indyButton {
     background-color: $indyRed;
