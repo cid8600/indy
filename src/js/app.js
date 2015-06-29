@@ -98,7 +98,7 @@
         }
 
         function createClock(data) {
-
+            console.log('called');
             var contentCount = data.data[opts.siteId][opts.articleIds[0]].total; // presumes only the first articleId is important
             var string = '<ul class="flip nocomma"><li class="flip-clock-before"><a href="#"><div class="up"><div class="shadow"></div><div class="inn">{{n}}</div></div><div class="down"><div class="shadow"></div><div class="inn">{{n}}</div></div></a></li><li class="flip-clock-active"><a href="#"><div class="up"><div class="shadow"></div><div class="inn">{{n}}</div></div><div class="down"><div class="shadow"></div><div class="inn">{{n}}</div></div></a></li></ul>';
             contentCount = (""+contentCount).split("");
@@ -114,6 +114,7 @@
             }
 
             $(opts.targetEls[0]).addClass('flip-clock-wrapper').append(markup);
+
         }
 
     }(isScrolledIntoView));

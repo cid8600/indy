@@ -16,6 +16,7 @@ LfCommentCounts.prototype.getCounts = function () {
               "/api/v1.1/public/comments/ncomments/" +
               base64.btoa(this._createSiteArticlePairing()) +
               ".json";
+              console.log('getCounts');
     $.get(url, this.callback);
 };
 LfCommentCounts.prototype._createSiteArticlePairing = function () {
