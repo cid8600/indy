@@ -8,8 +8,6 @@
     <title>Indy</title>
     <link rel="canonical" href="http://www.ims.com/">
     <link rel="stylesheet" href="./css/main.css">
-    <script src="//cdn.livefyre.com/Livefyre.js"></script>
-    <script type="text/javascript" src="./js/jquery.min.js"></script>
   </head>
   <body>
 
@@ -130,19 +128,6 @@
     <div class="tripple back-stars"></div>
   </div>
   <div class="lf-media-wall col-xs-12" id="top-wall">
-    <script>
-    Livefyre.require([ 'streamhub-wall#3.3.2' ], function(MediaWall) {
-      var walltop = window.walltop = new MediaWall({
-        el : document.getElementById("top-wall"),
-        collection : {
-          "network" : "indycar.fyre.co",
-          "siteId" : "369833",
-          "articleId" : "custom-1434401721002"
-        },
-        initial : 3
-      }).pause();
-    });
-  </script>
   </div>
 </div>
       <!-- End Top Submissions Media Wall -->
@@ -155,7 +140,7 @@
       <p >Make sure you post to Facebook, Twitter and Instagram with the hashtag #HoosierDriver to push your favorite driver into the lead!</p>
     </div>
     <div id="trending-wrapper" class="col-xs-12 col-md-6">
-      <script src="//cdn.livefyre.com/Livefyre.js"></script><div class="lf-app-embed" data-lf-app="f4ab0960-aa3b-470a-949d-33fc9cdd38f7/tagged/published" data-lf-env="prod"></div><script>Livefyre.require(['//cdn.livefyre.com/libs/app-embed/v0.6.4/app-embed.min.js'], function (appEmbed) {appEmbed.loadAll().done(function(embed) {embed = embed[0];embed.el.onload(embed.getConfig());});});</script>
+      <div class="lf-app-embed" data-lf-app="f4ab0960-aa3b-470a-949d-33fc9cdd38f7/tagged/published" data-lf-env="prod"></div><script src="//cdn.livefyre.com/Livefyre.js"></script><script>Livefyre.require(['//cdn.livefyre.com/libs/app-embed/v0.6.4/app-embed.min.js'], function (appEmbed) {appEmbed.loadAll().done(function(embed) {embed = embed[0];embed.el.onload(embed.getConfig());});});</script>
     </div>
   </div>
 
@@ -176,40 +161,6 @@
     <a class="btn btn-default btn-indy" id="wallTweet" href="https://twitter.com/intent/tweet?text=Hello+World">Tweet</a>
     <a class="btn btn-default btn-indy" id="wallShowMore" href="#">View More</a>
   </div>
-
-  <script>
-      $(document).ready(function () {
-
-        Livefyre.require(['streamhub-wall#3.3.2'], function (MediaWall) {
-          var wall = window.wall = new MediaWall({
-            el : document.getElementById("wall"),
-            collection : {
-              "network" : "indycar.fyre.co",
-              "siteId" : "369833",
-              "articleId" : "custom-1434402399842"
-            },
-            initial : 9,
-            showMore : 12
-          });
-
-          wall._collection.on('data', function() {
-            clock._clockInstances[0].increment();
-          });
-
-          wall._wallView.$el.on('removeContentView.hub', function(e) {
-            clock._clockInstances[0].decrement();
-          });
-
-        });
-
-        $('#wallShowMore').click(function(e) {
-          e.preventDefault();
-          wall._wallView.showMore();
-        });
-
-      });
-
-  </script>
   </div>
       <!-- End More Submissions Media Wall -->
 
@@ -265,6 +216,7 @@
       <!-- End Footer Module -->
 
     </div>
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
     <script type="text/javascript" src="./js/bootstrap.js"></script>
     <script type="text/javascript" src="./js/flipclock.min.js"></script>
     <script type="text/javascript" src="./js/Base64.min.js"></script>
@@ -276,5 +228,52 @@
     <script type="text/javascript" src="./js/fb.js"></script>
     <script type="text/javascript" async src="//platform.twitter.com/widgets.js"></script>
     <script type="text/javascript" src="./js/app.js"></script>
+  <script>
+      $(function () {
+
+        Livefyre.require(['streamhub-wall#3.3.2'], function (MediaWall) {
+          var wall = window.wall = new MediaWall({
+            el : document.getElementById("wall"),
+            collection : {
+              "network" : "indycar.fyre.co",
+              "siteId" : "369833",
+              "articleId" : "custom-1434402399842"
+            },
+            initial : 9,
+            showMore : 12
+          });
+
+          wall._collection.on('data', function() {
+            clock._clockInstances[0].increment();
+          });
+
+          wall._wallView.$el.on('removeContentView.hub', function(e) {
+            clock._clockInstances[0].decrement();
+          });
+
+        });
+
+        $('#wallShowMore').click(function(e) {
+          e.preventDefault();
+          wall._wallView.showMore();
+        });
+
+      }());
+
+    $(function () {
+		  Livefyre.require([ 'streamhub-wall#3.3.2' ], function(MediaWall) {
+		    var walltop = window.walltop = new MediaWall({
+		      el : document.getElementById("top-wall"),
+		      collection : {
+		        "network" : "indycar.fyre.co",
+		        "siteId" : "369833",
+		        "articleId" : "custom-1434401721002"
+		      },
+		      initial : 3
+		    }).pause();
+		  });
+  	}());
+  </script>
+
   </body>
 </html>
