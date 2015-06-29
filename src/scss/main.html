@@ -1014,25 +1014,13 @@ body .markdown-body
     page-break-after: avoid;
   }
 }
-</style><title>main</title></head><body><article class="markdown-body"><p>/<em><br />
- * Web Starter Kit<br />
-</em><br />
- * Multi-screen layout styles for your page. Brought to you by the<br />
- * Web Starter Kit team.<br />
-<em><br />
-</em>/<br />
-@import &ldquo;./partials/_h5bp&rdquo;;</p>
-<p>// @import &ldquo;./partials/_h5reset&rdquo;;<br />
-@import &ldquo;../../bower_components/bourbon/app/assets/stylesheets/_bourbon&rdquo;;<br />
+</style><title>main</title></head><body><article class="markdown-body"><p>@import &ldquo;./partials/_h5bp&rdquo;;</p>
+<p>@import &ldquo;../../bower_components/bourbon/app/assets/stylesheets/_bourbon&rdquo;;<br />
 @import &ldquo;./partials/_fonts&rdquo;;<br />
 @import &ldquo;./partials/_bootstrap&rdquo;;<br />
 @import &ldquo;./partials/flipclock&rdquo;;<br />
 @import &ldquo;./partials/_mediawall&rdquo;;<br />
 @import &ldquo;./partials/video-js&rdquo;;</p>
-<p>/<em><br />
- * Visual Style Guide styles<br />
- * Remove if you prefer to use a CSS library, like Bootstrap<br />
-</em>/</p>
 <p>@mixin indyButton {<br />
     background-color: $indyRed;<br />
     border-radius: 0;<br />
@@ -1043,6 +1031,11 @@ body .markdown-body
     font-size: 3rem;<br />
     text-transform: uppercase;<br />
     letter-spacing: 3px;<br />
+    -webkit-transition: background-color, letter-spacing 250ms linear;<br />
+    -moz-transition: background-color, letter-spacing 250ms linear;<br />
+    -o-transition: background-color, letter-spacing 250ms linear;<br />
+    -ms-transition: background-color, letter-spacing 250ms linear;<br />
+    transition: background-color, letter-spacing 250ms linear;<br />
 }</p>
 <p>@mixin grain {<br />
     content: &lsquo;&rsquo;;<br />
@@ -1070,13 +1063,22 @@ body .markdown-body
     left: -33px;<br />
     bottom: -65px;<br />
 }</p>
+<p>@mixin boxshadow {<br />
+    -webkit-box-shadow: 0px 6px 0px -2px #ccc;<br />
+    box-shadow: 0px 6px 0px -2px #ccc;<br />
+}</p>
+<p>@mixin boxshadowsmall {<br />
+    -webkit-box-shadow: 0px 4px 0px -2px #ccc !important;<br />
+    box-shadow: 0px 4px 0px -2px #ccc !important;<br />
+}</p>
 <p>$indyBlue: #0022B8;<br />
 $indyRed: #e3172f;<br />
 $indyRedDark: #c91429;</p>
 <p>$helvetica: &ldquo;Helvetica Neue&rdquo;, Helvetica, Arial, sans-serif;<br />
 $thunderhouse: &ldquo;Thunderhouse&rdquo;, sans-serif;<br />
 $thunderhouse: &ldquo;Thunderhouse&rdquo;, sans-serif;<br />
-$sixCaps: &ldquo;Six Caps&rdquo;, sans-serif;</p>
+$sixCaps: &ldquo;Six Caps&rdquo;, sans-serif;<br />
+$oswald700: &ldquo;Oswald&rdquo;, sans-serif;</p>
 <p>html,<br />
 body {<br />
     width: 100%;<br />
@@ -1173,6 +1175,7 @@ body {<br />
 
     &amp;:hover {
         background-color: $indyRedDark !important;
+        letter-spacing: 5px;
     }
 }
 
@@ -1259,13 +1262,13 @@ p {
             }
 
             a {
-                font-size: 1.2rem;
+                font-size: 2rem;
                 letter-spacing: 1px;
                 width: 100%;
                 box-sizing: border-box;
                 display: inline-block;
                 height: auto;
-                font-family: $helvetica;
+                font-family: $sixCaps;
                 padding: 0 4px;
             }
         }
@@ -1283,20 +1286,18 @@ p {
         padding-top: 20px;
 
         .heroes {
-            position: relative;
-            bottom: 0;
+            position: absolute;
+            bottom: -60px !important;
             padding: 0;
             left: 0;
             content: '';
             width: 100%;
-            height: 1062px;
-            background-position: center center;
-            background-repeat: repeat;
+            height: 438px;
+            background-position: 0 center;
+            background-repeat: no-repeat;
             background-image: url("./images/3men.png");
-            background-size: 100% 1062px;
+            background-size: 60%;
             display: block;
-            margin-left: 50%;
-
         }
 
         .left-col {
@@ -1324,7 +1325,7 @@ p {
 
         p {
             font-size: 1.8rem;
-            line-height: 1.4;
+            line-height: 1.5;
             font-family: $helvetica;
             color: $indyRed;
             font-weight: normal;
@@ -1338,15 +1339,15 @@ p {
 
 &amp;#hero-module {
     &gt; div {
-        padding-bottom: 360px;
+        padding-bottom: 240px;
     }
 }
 
 /* FOLLOW THESE STEPS */
 &amp;#support-module {
     background-position: center 0;
-    padding-top: 205px;
-    margin-top: -240px;
+    padding-top: 204px;
+    margin-top: -190px;
     padding-left: 0;
     padding-right: 0;
     position: relative;
@@ -1380,10 +1381,10 @@ p {
         margin-bottom: 20px;
 
         p {
-            font-family: $sixCaps;
-            line-height: 77px;
+            font-family: $oswald700;
+            line-height: 84px;
             position: relative;
-            font-size: 24px;
+            font-size: 2.2rem;
         }
 
         &amp;:before {
@@ -1416,10 +1417,14 @@ p {
 
 &amp;#social-counter-moudle {
     padding: 150px 0 0 0;
-    background-size: 1096px 374px;
-    background-repeat: no-repeat;
-    background-position: 10% bottom;
-    background-image: url("./images/2cars.png");
+    background-color: #f0f4ff;
+
+    #cars {
+        background-size: 1096px 374px;
+        background-repeat: no-repeat;
+        background-position: 10% bottom;
+        background-image: url("./images/2cars.png");
+    }
 
     h2 {
         margin: 0;
@@ -1471,6 +1476,22 @@ p {
         .hub-list {
             .hub-content-container {
                 margin-bottom: 50px;
+
+                &amp;:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}
+
+&amp;#top-submissions-module {
+    [data-lf-package~="streamhub-wall#3.3.2"] {
+        .hub-list {
+            .hub-content-container {
+                &amp;:nth-child(1n+2) {
+                    display: none;
+                }
             }
         }
     }
@@ -1486,7 +1507,7 @@ p {
     h2 {
         color: #fff;
         text-align: left;
-        margin-bottom: 0;
+        margin-bottom: 5px;
     }
 
     p {
@@ -1512,6 +1533,7 @@ p {
     &gt; div &gt; div &gt; h2 {
         margin-top: 100px;
         padding-left: 20px;
+        margin-bottom: 5px;
     }
 
     p {
@@ -1528,6 +1550,11 @@ p {
                 background-color: rgba(0, 0, 0, 0.1);
                 padding: 0 45px 0 0;
                 height: 54px;
+
+                &amp;:hover {
+                    box-shadow: none;
+                    cursor: default;
+                }
 
                 &amp;:first-child {
                     border-radius: 0;
@@ -1550,7 +1577,7 @@ p {
 
                             &amp;:before {
                                 line-height: 54px;
-                                font-family: $sixCaps;
+                                font-family: $oswald700;
                                 font-size: 2.4rem;
                             }
                         }
@@ -1562,10 +1589,10 @@ p {
 
                         .hub-metric-label {
                             color: #fff;
-                            font-size: 1.4rem;
+                            font-size: 1.6rem;
                             line-height: 1.2;
-                            margin: 0 0 6px 12px;
-                            padding-top: 16px;
+                            margin: 0 0 5px 12px;
+                            padding-top: 12px;
                         }
 
                         .hub-metric-bar-container {
@@ -1653,9 +1680,15 @@ p {
         line-height: 1;
         margin: 30px 0 10px 0;
         letter-spacing: 3px;
+        -webkit-transition: border-color, letter-spacing 250ms linear;
+        -moz-transition: border-color, letter-spacing 250ms linear;
+        -o-transition: border-color, letter-spacing 250ms linear;
+        -ms-transition: border-color, letter-spacing 250ms linear;
+        transition: border-color, letter-spacing 250ms linear;
 
         &amp;:hover {
             border-color: #fff;
+            letter-spacing: 5px;
         }
     }
 
@@ -1675,7 +1708,7 @@ p {
             width: 200px;
             margin: 10px 20px 0 0;
             padding: 0;
-            height: 20px;
+            height: auto;
 
             span {
                 background-color: #fff !important;
@@ -1684,11 +1717,11 @@ p {
         }
 
         .lf-poll-result-votes {
-            display:none;
+            display: none;
         }
 
         .lf-poll-result-percent {
-            margin: 8px 15px 0 0;
+            margin: 8px 22px 0 0;
             font: bold 18px "Helvetica Neue", Helvetica, Arial, sans-serif;
             float: right;
         }
@@ -1708,14 +1741,11 @@ p {
             }
         }
     }
-
-
 }
 
 &amp;#buy-module {
     margin-top: 0;
     padding-top: 120px;
-    max-height: 740px;
 
     &gt; div {
         h2 {
@@ -1786,16 +1816,11 @@ p {
                 position: relative;
                 left: 50%;
                 text-transform: uppercase;
-                font-size: 1.2rem;
+                font-size: 2rem;
                 border-right: 1px solid #fff;
                 box-sizing: border-box;
-
-                // li:last-child {
-                //     margin-right: 0;
-                //     padding-right: 0;
-                //     border-right: none;
-                // }
-
+                font-family: $sixCaps;
+                letter-spacing: 1px;
             }
         }
 
@@ -1844,6 +1869,22 @@ width: 100%;
 height: auto;
 max-width: 510px;
 margin: 0 auto 70px auto;
+position: relative;
+
+&amp;:before {
+    content: '';
+    width: 510px;
+    height: 120px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-image: url("./images/shadow.png");
+    background-size: 510px 120px;
+    display: block;
+    position: absolute;
+    bottom: -70px;
+    left: -255px;
+    margin-left: 50%;
+}
 
 img {
     width: 100%;
@@ -1900,13 +1941,14 @@ img {
         height: 206px;
         position: absolute;
         top: 0;
-        left: -50%;
+        left: 50%;
         z-index: 0;
         -webkit-transform: rotate(180deg);
         -moz-transform: rotate(180deg);
         -ms-transform: rotate(180deg);
         -o-transform: rotate(180deg);
         transform: rotate(180deg);
+        margin-left: -1678px;
     }
 }
 </code></pre>
@@ -1923,7 +1965,7 @@ z-index: 1;
     height: 40px;
     line-height: 40px;
     font-family: $helvetica;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
 
     &amp;.hidden-sm {
         text-align: center;
@@ -1998,6 +2040,10 @@ padding-right: 0;
     height: $flip_height_L;
 
     li {
+        &amp;:last-child {
+            @include boxshadow;
+        }
+
         a {
             cursor: default;
 
@@ -2012,20 +2058,81 @@ padding-right: 0;
 }
 </code></pre>
 <p>}</p>
+<p>@media (max-width: 380px) {<br />
+    .container-fluid {<br />
+        .row {<br />
+            &amp;#hero-module {<br />
+                &gt; div {<br />
+                    .right-col {<br />
+                        margin-bottom: 290px !important;</p>
+<pre><code>                    .video-js {
+                        width: 100% !important;
+                        height: 145px !important;
+                    }
+                }
+            }
+        }
+
+        &amp;#support-module {
+            margin-top: -190px !important;
+        }
+    }
+}
+</code></pre>
+<p>}</p>
 <p>@media (max-width: 480px) {<br />
     .row {<br />
         &amp;#hero-module {<br />
             &gt; div {<br />
-                .right-col {<br />
-                    .video-js {<br />
-                        width: 296px !important;<br />
-                        height: 165px !important;<br />
-                        margin: 0 auto;<br />
-                    }<br />
-                }<br />
-            }<br />
-        }</p>
-<pre><code>    &amp;#top-submissions-module,
+                margin-bottom: 0;</p>
+<pre><code>            .right-col {
+                margin-bottom: 350px !important;
+
+                .video-js {
+                    width: 100% !important;
+                    height: 165px !important;
+                    margin: 0 auto;
+                }
+            }
+        }
+    }
+
+    &amp;#support-module {
+        margin-top: -200px;
+    }
+
+    &amp;#social-counter-moudle {
+        .counter {
+            .comma {
+                &amp;:before {
+                    font-size: 6rem;
+                    height: 60px;
+                    left: -17px;
+                    bottom: 20px;
+                }
+            }
+        }
+
+        #counter-wrapper {
+            .flip-clock-wrapper ul {
+                max-width: 48px !important;
+                max-height: 60px !important;
+
+                li {
+                    &amp;:last-child {
+                        @include boxshadowsmall;
+                    }
+
+                    a div div.inn {
+                        line-height: 60px !important;
+                        font-size: 4rem !important;
+                    }
+                }
+            }
+        }
+    }
+
+    &amp;#top-submissions-module,
     &amp;#more-submissions-module {
         &gt; div {
             &amp;:first-child {
@@ -2054,6 +2161,40 @@ padding-right: 0;
         }
     }
 }
+
+#video {
+    &amp;:before {
+        width: 255px;
+        height: 60px;
+        background-size: 255px 60px;
+        bottom: -30px;
+        left: -127px;
+    }
+}
+</code></pre>
+<p>}</p>
+<p>@media (max-width: 600px) {<br />
+    .row {<br />
+        &amp;#hero-module {<br />
+            &gt; div {<br />
+                margin-bottom: 0;</p>
+<pre><code>            .heroes {
+                height: 508px;
+            }
+
+            .right-col {
+                margin-bottom: 380px;
+
+                .video-js {
+                    width: 100% !important;
+                    max-width: 500px;
+                    height: 286px !important;
+                    margin: 0 auto;
+                }
+            }
+        }
+    }
+}
 </code></pre>
 <p>}</p>
 <p>@media (max-width: 767px) {<br />
@@ -2073,15 +2214,16 @@ padding-right: 0;
 
         ul {
             margin-top: 12px;
-            width: 100%;
+            width: auto;
             max-width: 155px;
+            margin-right: 12px;
         }
     }
 
     &amp;#hero-module,
     &amp;#buy-module {
         &gt; div {
-            padding: 30px 12px 290px 12px;
+            padding: 30px 12px 0 12px;
 
             .left-col {
                 img {
@@ -2102,8 +2244,10 @@ padding-right: 0;
             }
 
             .heroes {
-                bottom: -250px;
-                left: 0;
+                background-position: center center;
+                background-size: 100%;
+                height: 508px;
+                bottom: -110px !important;
 
                 img {
                     padding-left: 20px;
@@ -2117,8 +2261,18 @@ padding-right: 0;
         }
     }
 
+    &amp;#hero-module {
+        padding: 30px 12px 0 12px;
+
+        &gt; div {
+            .right-col {
+                margin-bottom: 410px;
+            }
+        }
+    }
+
     &amp;#support-module {
-        margin-top: -150px;
+        margin-top: -200px;
 
         h2 {
             margin-top: 0;
@@ -2144,11 +2298,11 @@ padding-right: 0;
 
             .flip-clock-wrapper ul {
                 max-width: 40px;
-                max-height: 70px;
+                max-height: 50px;
 
                 li {
                     a div div.inn {
-                        line-height: 70px;
+                        line-height: 50px;
                         font-size: 4rem;
                     }
                 }
@@ -2160,9 +2314,13 @@ padding-right: 0;
         padding-top: 100px;
         padding-bottom: 0;
 
+        #more-buttons {
+            padding: 0 40px;
+        }
+
         #wallTweet {
             margin-right: 0;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             width: 100%;
         }
 
@@ -2213,6 +2371,7 @@ padding-right: 0;
 
         p {
             padding-right: 0;
+            margin-top: 15px;
         }
 
         &gt; div &gt; div:first-child {
@@ -2242,14 +2401,13 @@ padding-right: 0;
     }
 
     &amp;#buy-module {
-        padding-top: 70px;
-
         &gt; div {
+            padding: 30px 12px 0 12px;
+
             a {
                 margin-left: auto;
                 margin-right: auto;
                 width: 100%;
-                max-width: 480px;
             }
 
             .right-col {
@@ -2259,6 +2417,8 @@ padding-right: 0;
     }
 
     &amp;#footer-module {
+        margin-top: -393px;
+
         .logo {
             margin: 0 auto 15px auto;
         }
@@ -2273,7 +2433,7 @@ padding-right: 0;
                     box-sizing: border-box;
                     margin-bottom: 20px;
                     margin-right: 0;
-                    padding: 0;
+                    padding: 0 24px;
                     width: 100%;
 
                     &gt; ul {
@@ -2318,6 +2478,7 @@ padding-right: 0;
 <pre><code>    &amp;#header-module {
         &gt; div &gt; * {
             max-width: 668px;
+
             &gt; div &gt; div {
                 padding-left: 12px;
                 margin-right: 0;
@@ -2341,7 +2502,10 @@ padding-right: 0;
             }
 
             .heroes {
-                left: 0;
+                background-position: center center;
+                background-size: 100%;
+                height: 478px;
+                bottom: -80px !important;
             }
         }
 
@@ -2395,11 +2559,11 @@ padding-right: 0;
 
             .flip-clock-wrapper ul {
                 max-width: 70px;
-                max-height: 125px;
+                max-height: 85px;
 
                 li {
                     a div div.inn {
-                        line-height: 125px;
+                        line-height: 85px;
                         font-size: 8rem;
                     }
                 }
@@ -2490,10 +2654,11 @@ padding-right: 0;
             padding-left: 0;<br />
         }</p>
 <pre><code>    &amp;#header-module {
+        ul {}
+
         &gt; div &gt; div &gt; div {
             padding-left: 12px;
             margin-right: 0;
-            padding-right: 0;
         }
 
         &gt; div &gt; div &gt; ul {
@@ -2537,8 +2702,12 @@ padding-right: 0;
     }
 
     &amp;#buy-module {
-        &gt; div a {
-            margin-left: 0;
+        &gt; div {
+            padding-bottom: 0;
+
+            a {
+                margin-left: 0;
+            }
         }
     }
 

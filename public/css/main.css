@@ -1,13 +1,6 @@
 @charset "UTF-8";
 
 /*
- * Web Starter Kit
- *
- * Multi-screen layout styles for your page. Brought to you by the
- * Web Starter Kit team.
- *
- */
-/*
  * HTML5 Boilerplate
  *
  * What follows is the result of much research on cross-browser styling.
@@ -9843,10 +9836,6 @@ body.vjs-full-window {
 /* -----------------------------------------------------------------------------
 The original source of this file lives at
 https://github.com/videojs/video.js/blob/master/src/css/video-js.less */
-/*
- * Visual Style Guide styles
- * Remove if you prefer to use a CSS library, like Bootstrap
- */
 html,
 body {
     width: 100%;
@@ -10100,6 +10089,7 @@ ul li a {
     background-image: url("../images/3men.png");
     background-size: 60%;
     display: block;
+    visibility: hidden;
 }
 
 .row#hero-module > div .left-col, .row#buy-module > div .left-col {
@@ -10108,9 +10098,10 @@ ul li a {
 }
 
 .row#hero-module > div .left-col img, .row#buy-module > div .left-col img {
-    display: block;
     margin-bottom: 40px;
     margin-top: -100px;
+    display: block;
+    visibility: hidden;
 }
 
 .row#hero-module > div .left-col h1, .row#buy-module > div .left-col h1 {
@@ -10223,11 +10214,22 @@ ul li a {
 
 .row#social-counter-moudle {
     padding: 150px 0 0 0;
+    background-color: #f0f4ff;
+    position: relative;
+}
+
+.row#social-counter-moudle #cars {
     background-size: 1096px 374px;
     background-repeat: no-repeat;
     background-position: 10% bottom;
     background-image: url("../images/2cars.png");
-    background-color: #f0f4ff;
+    position: absolute;
+    bottom: 0;
+    width: 1096px;
+    height: 374px;
+    z-index: 0;
+    display: block;
+    visibility: hidden;
 }
 
 .row#social-counter-moudle h2 {
@@ -10277,6 +10279,10 @@ ul li a {
     margin-bottom: 50px;
 }
 
+.row#top-submissions-module [data-lf-package~="streamhub-wall#3.3.2"] .hub-list .hub-content-container:last-child, .row#more-submissions-module [data-lf-package~="streamhub-wall#3.3.2"] .hub-list .hub-content-container:last-child {
+    margin-bottom: 0;
+}
+
 .row#top-submissions-module [data-lf-package~="streamhub-wall#3.3.2"] .hub-list .hub-content-container:nth-child(1n+2) {
     display: none;
 }
@@ -10292,7 +10298,7 @@ ul li a {
 .row#trending-module h2, .row#poll-module h2 {
     color: #fff;
     text-align: left;
-    margin-bottom: 0;
+    margin-bottom: 5px;
 }
 
 .row#trending-module p, .row#poll-module p {
@@ -10327,6 +10333,7 @@ ul li a {
 .row#poll-module > div > div > h2 {
     margin-top: 100px;
     padding-left: 20px;
+    margin-bottom: 5px;
 }
 
 .row#poll-module p {
@@ -10498,7 +10505,7 @@ ul li a {
 }
 
 .row#poll-module .lf-poll-results .lf-poll-result-percent {
-    margin: 8px 15px 0 0;
+    margin: 8px 22px 0 0;
     font: bold 18px "Helvetica Neue", Helvetica, Arial, sans-serif;
     float: right;
 }
@@ -10530,7 +10537,12 @@ ul li a {
     margin: 0;
 }
 
+.row#buy-module > div .left-col {
+    z-index: 1;
+}
+
 .row#buy-module > div .left-col img {
+    visibility: visible;
     margin-top: 0;
 }
 
@@ -10601,9 +10613,11 @@ ul li a {
     position: relative;
     left: 50%;
     text-transform: uppercase;
-    font-size: 1.2rem;
+    font-size: 2rem;
     border-right: 1px solid #fff;
     box-sizing: border-box;
+    font-family: "Six Caps", sans-serif;
+    letter-spacing: 1px;
 }
 
 .row#footer-module > div li {
@@ -11026,10 +11040,15 @@ ul li a {
     }
 
     .row#social-counter-moudle {
+        padding: 100px 0 0 0;
+    }
+
+    .row#social-counter-moudle #cars {
         background-size: 700px 238px;
         background-repeat: no-repeat;
         background-position: center bottom;
-        padding: 100px 0 0 0;
+        left: 50%;
+        margin-left: -570px;
     }
 
     .row#social-counter-moudle #counter-wrapper {
@@ -11136,9 +11155,10 @@ ul li a {
     }
 
     .row#buy-module > div a {
-        margin-left: auto;
-        margin-right: auto;
+        display: block;
         width: 100%;
+        padding: 0 50px;
+        max-width: 330px;
     }
 
     .row#buy-module > div .right-col {
@@ -11273,7 +11293,7 @@ ul li a {
     }
 
     .row#social-counter-moudle #counter-wrapper {
-        padding-bottom: 172px;
+        padding-bottom: 322px;
     }
 
     .row#social-counter-moudle #counter-wrapper .flip-clock-wrapper ul {
@@ -11333,6 +11353,9 @@ ul li a {
         max-width: 300px;
         text-align: center;
         display: block;
+        width: 100%;
+        padding: 0 100px;
+        max-width: 330px;
     }
 
     .row#buy-module > div .right-col {
@@ -11364,7 +11387,6 @@ ul li a {
     .row#header-module > div > div > div {
         padding-left: 12px;
         margin-right: 0;
-        padding-right: 24px;
     }
 
     .row#header-module > div > div > ul {
@@ -11410,7 +11432,10 @@ ul li a {
     }
 
     .row#buy-module > div a {
-        margin-left: 0;
+        display: block;
+        width: 100%;
+        padding: 0 100px;
+        max-width: 330px;
     }
 
     .row#footer-module {
