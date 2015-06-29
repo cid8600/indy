@@ -829,16 +829,11 @@ ul {
                     position: relative;
                     left: 50%;
                     text-transform: uppercase;
-                    font-size: 1.2rem;
+                    font-size: 2rem;
                     border-right: 1px solid #fff;
                     box-sizing: border-box;
-
-                    // li:last-child {
-                    //     margin-right: 0;
-                    //     padding-right: 0;
-                    //     border-right: none;
-                    // }
-
+                    font-family: $sixCaps;
+                    letter-spacing: 1px;
                 }
             }
 
