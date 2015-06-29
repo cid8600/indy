@@ -197,9 +197,7 @@ gulp.task('default', ['clean'], cb => {
     // 'jshint',
     'fileinclude',
     [ 'scripts', 'images', 'fonts', 'html'],
-    'copy'
+    'copy',
     //, 'generate-service-worker',
-    }, cb);
+    cb);
 });
-
-
