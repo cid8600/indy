@@ -13,17 +13,17 @@
             articleIds: ["CURATE"]
         };
 
-        if (!isIE9) {
+        if (!!isIE9) {
             clock = window.clock = new FlipCounter(opts);
         } else {
           function createClock(data) {
             var contentCount = data.data[opts.siteId][opts.articleIds[0]].total // presumes only the first articleId is important
             var string = '<ul class="flip nocomma"><li class="flip-clock-before"><a href="#"><div class="up"><div class="shadow"></div><div class="inn">{{n}}</div></div><div class="down"><div class="shadow"></div><div class="inn">{{n}}</div></div></a></li><li class="flip-clock-active"><a href="#"><div class="up"><div class="shadow"></div><div class="inn">{{n}}</div></div><div class="down"><div class="shadow"></div><div class="inn">{{n}}</div></div></a></li></ul>';
-            contentCount = (""+contentCount).split("").reverse();
+            contentCount = (""+contentCount).split("");
             var markup = "";
             
             for (var i = 0; contentCount.length > 0; ++i) {
-              var digit = string.replace(/{{n}}/g, contentCount.shift());
+              var digit = string.replace(/{{n}}/g, contentCount.pop());
               if ( i % 2 == 0 && i > 0) {
                 digit = digit.replace(/nocomma/g, 'comma');
                 i = -1;
