@@ -11,38 +11,4 @@
     <a class="btn btn-default btn-indy" id="wallTweet" href="https://twitter.com/intent/tweet?text=Hello+World">Tweet</a>
     <a class="btn btn-default btn-indy" id="wallShowMore" href="#">View More</a>
   </div>
-
-  <script>
-      $(document).ready(function () {
-
-        Livefyre.require(['streamhub-wall#3.3.2'], function (MediaWall) {
-          var wall = window.wall = new MediaWall({
-            el : document.getElementById("wall"),
-            collection : {
-              "network" : "indycar.fyre.co",
-              "siteId" : "369833",
-              "articleId" : "custom-1434402399842"
-            },
-            initial : 9,
-            showMore : 12
-          });
-
-          wall._collection.on('data', function() {
-            clock._clockInstances[0].increment();
-          });
-
-          wall._wallView.$el.on('removeContentView.hub', function(e) {
-            clock._clockInstances[0].decrement();
-          });
-
-        });
-
-        $('#wallShowMore').click(function(e) {
-          e.preventDefault();
-          wall._wallView.showMore();
-        });
-
-      });
-
-  </script>
   </div>
