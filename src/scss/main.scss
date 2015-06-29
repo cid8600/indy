@@ -301,6 +301,7 @@ ul {
                 background-image: url("./images/3men.png");
                 background-size: 60%;
                 display: block;
+                visibility: hidden;
             }
 
             .left-col {
@@ -308,9 +309,10 @@ ul {
                 position: relative;
 
                 img {
-                    display: block;
                     margin-bottom: 40px;
                     margin-top: -100px;
+                    display: block;
+                    visibility: hidden;
                 }
 
                 h1 {
@@ -420,11 +422,22 @@ ul {
 
     &#social-counter-moudle {
         padding: 150px 0 0 0;
-        background-size: 1096px 374px;
-        background-repeat: no-repeat;
-        background-position: 10% bottom;
-        background-image: url("./images/2cars.png");
         background-color: #f0f4ff;
+        position: relative;
+
+        #cars {
+            background-size: 1096px 374px;
+            background-repeat: no-repeat;
+            background-position: 10% bottom;
+            background-image: url("./images/2cars.png");
+            position: absolute;
+            bottom: 0;
+            width: 1096px;
+            height: 374px;
+            z-index: 0;
+            display: block;
+            visibility: hidden;
+        }
 
         h2 {
             margin: 0;
@@ -757,6 +770,7 @@ ul {
 
             .left-col {
                 img {
+                    visibility: visible;
                     margin-top: 0;
                 }
             }
@@ -1295,10 +1309,15 @@ $flip_fontsize_L: 12rem;
         }
 
         &#social-counter-moudle {
-            background-size: 700px 238px;
-            background-repeat: no-repeat;
-            background-position: center bottom;
             padding: 100px 0 0 0;
+
+            #cars {
+                background-size: 700px 238px;
+                background-repeat: no-repeat;
+                background-position: center bottom;
+                left: 50%;
+                margin-left: -570px;
+            }
 
             #counter-wrapper {
                 padding-bottom: 202px;
@@ -1563,7 +1582,7 @@ $flip_fontsize_L: 12rem;
             background-position: 20% bottom;
 
             #counter-wrapper {
-                padding-bottom: 172px;
+                padding-bottom: 322px;
 
                 .flip-clock-wrapper ul {
                     max-width: 70px;

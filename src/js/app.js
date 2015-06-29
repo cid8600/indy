@@ -1,10 +1,60 @@
 (function($) {
 
+    // Helper Function for animations
+    function isScrolledIntoView($el, offset) {
+
+        offest = offset || 0;
+      var $window = $(window);
+
+      var docViewTop = $window.scrollTop();
+      var docViewBottom = docViewTop + $window.height();
+
+      var elemTop = $el.offset().top;
+      var elemBottom = elemTop + $el.height() + offset;
+
+      return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+    }
+
+    // animate elements in hero
+    $(function (cb) {
+
+        var $heroEl, $heroLock, $heroImg, classUp, classDown, $window;
+
+        $window = $(window);
+        $heroEl = $('#hero-module');
+        $heroLock = $('.left-col img', $heroEl);
+        $heroImg = $('.heroes', $heroEl);
+
+        classUp = 'animated fadeInUp';
+        classDown = 'animated fadeInDown';
+
+        function checkScroll($el, namespace, classes) {
+            if (cb($el, 0)) {
+                $el.css('visibility', 'visible').addClass(classes);
+                $window.off('scroll[' + namespace + ']');
+            }
+        }
+
+        $window.on('scroll.up', function (e) {
+            checkScroll($heroImg, 'up', classUp);
+        });
+
+        $window.on('scroll.down', function (e) {
+            checkScroll($heroLock, 'down', classDown);
+        });
+
+        $window.on('load', function (e) {
+            checkScroll($heroLock, 'down', classDown);
+            checkScroll($heroImg, 'up', classUp);
+        });
+
+    }(isScrolledIntoView));
+
     // Counter App
-    $(function() {
+    $(function(cb) {
         var isIE9 = (navigator.userAgent.indexOf("MSIE 9") > -1) ? true : false;
 
-        var clock, opts;
+        var clock, opts, $el, classLeft, $window;
 
         opts = {
             targetEls: [".counter"],
@@ -12,12 +62,31 @@
             siteId: "371327",
             articleIds: ["CURATE"]
         };
+        $window = $(window);
+        classLeft = 'animated fadeInLeft';
 
         if (!isIE9) {
             clock = window.clock = new FlipCounter(opts);
+            $el = $('#cars');
+
+
+            $(window).on('scroll.cars', function (e) {
+                if (cb($el.parent(), 200)) {
+                    $el.css('visibility', 'visible').addClass(classLeft);
+                    $(window).off('scroll.cars');
+                }
+            });
+
+            $window.on('load', function (e) {
+                if (cb($el.parent(), 200)) {
+                    $el.css('visibility', 'visible').addClass(classLeft);
+                    $(window).off('scroll.cars');
+                }
+            });
+
         }
 
-    }());
+    }(isScrolledIntoView));
 
     // More Mediawall App
     $(function() {
