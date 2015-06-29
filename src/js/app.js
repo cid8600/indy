@@ -13,7 +13,7 @@
             articleIds: ["CURATE"]
         };
 
-        if (!!isIE9) {
+        if (!isIE9) {
             clock = window.clock = new FlipCounter(opts);
         } else {
           function createClock(data) {
