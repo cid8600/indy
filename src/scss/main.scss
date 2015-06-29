@@ -769,6 +769,8 @@ ul {
             }
 
             .left-col {
+                z-index: 1;
+
                 img {
                     visibility: visible;
                     margin-top: 0;
@@ -1647,6 +1649,9 @@ $flip_fontsize_L: 12rem;
                     max-width: 300px;
                     text-align: center;
                     display: block;
+                    width: 100%;
+                    padding: 0 100px;
+                    max-width: 330px;
                 }
 
                 .right-col {
@@ -1734,7 +1739,10 @@ $flip_fontsize_L: 12rem;
                 padding-bottom: 0;
 
                 a {
-                    margin-left: 0;
+                    display: block;
+                    width: 100%;
+                    padding: 0 100px;
+                    max-width: 330px;
                 }
             }
         }
