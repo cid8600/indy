@@ -19,6 +19,7 @@
     $(function (cb) {
 
         var $heroEl, $heroLock, $heroImg, classUp, classDown, $window;
+        var isIE9 = (navigator.userAgent.indexOf("MSIE 9") > -1) ? true : false;
 
         $window = $(window);
         $heroEl = $('#hero-module');
@@ -35,18 +36,24 @@
             }
         }
 
-        $window.on('scroll.up', function (e) {
-            checkScroll($heroImg, 'up', classUp);
-        });
+        if (!isIE9) {
+            $window.on('scroll.up', function (e) {
+                checkScroll($heroImg, 'up', classUp);
+            });
 
-        $window.on('scroll.down', function (e) {
-            checkScroll($heroLock, 'down', classDown);
-        });
+            $window.on('scroll.down', function (e) {
+                checkScroll($heroLock, 'down', classDown);
+            });
 
-        $window.on('load', function (e) {
-            checkScroll($heroLock, 'down', classDown);
-            checkScroll($heroImg, 'up', classUp);
-        });
+            $window.on('load', function (e) {
+                checkScroll($heroLock, 'down', classDown);
+                checkScroll($heroImg, 'up', classUp);
+            });
+        } else {
+            $heroLock.css('visibility', 'visible');
+            $heroImg.css('visibility', 'visible');
+        }
+
 
     }(isScrolledIntoView));
 
@@ -64,11 +71,10 @@
         };
         $window = $(window);
         classLeft = 'animated fadeInLeft';
+        $el = $('#cars');
 
         if (!isIE9) {
             clock = window.clock = new FlipCounter(opts);
-            $el = $('#cars');
-
 
             $(window).on('scroll.cars', function (e) {
                 if (cb($el.parent(), 200)) {
@@ -86,7 +92,13 @@
 
         } else {
 
-          function createClock(data) {
+            $el.css('visibility', 'visible');
+            var counter = new LfCommentCounts(opts, createClock);
+
+        }
+
+        function createClock(data) {
+
             var contentCount = data.data[opts.siteId][opts.articleIds[0]].total // presumes only the first articleId is important
             var string = '<ul class="flip nocomma"><li class="flip-clock-before"><a href="#"><div class="up"><div class="shadow"></div><div class="inn">{{n}}</div></div><div class="down"><div class="shadow"></div><div class="inn">{{n}}</div></div></a></li><li class="flip-clock-active"><a href="#"><div class="up"><div class="shadow"></div><div class="inn">{{n}}</div></div><div class="down"><div class="shadow"></div><div class="inn">{{n}}</div></div></a></li></ul>';
             contentCount = (""+contentCount).split("");
@@ -102,11 +114,6 @@
             }
 
             $(opts.targetEls[0]).addClass('flip-clock-wrapper').append(markup);
-          }
-          $(document).ready(function() {
-            var counter = new LfCommentCounts(opts, createClock);
-          });
-
         }
 
     }(isScrolledIntoView));
