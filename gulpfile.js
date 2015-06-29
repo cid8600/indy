@@ -85,7 +85,9 @@ _gulp2['default'].task('styles', function () {
     precision: 10
   }).on('error', $.sass.logError)).pipe($.autoprefixer(AUTOPREFIXER_BROWSERS)).pipe(_gulp2['default'].dest('.tmp'))
   // Concatenate and minify styles
-  .pipe($['if']('*.css', $.csso())).pipe($.sourcemaps.write()).pipe(_gulp2['default'].dest('./dist/css')).pipe($.size({ title: 'css' }));
+  .pipe($['if']('*.css', $.csso()))
+  // .pipe($.sourcemaps.write())
+  .pipe(_gulp2['default'].dest('./dist/css')).pipe($.size({ title: 'css' }));
 });
 
 // Concatenate and minify JavaScript
