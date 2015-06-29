@@ -2,6 +2,8 @@
 
     // Counter App
     $(function() {
+        var isIE9 = (navigator.userAgent.indexOf("MSIE 9") > -1) ? true : false;
+
         var clock, opts;
 
         opts = {
@@ -11,7 +13,9 @@
             articleIds: ["CURATE"]
         };
 
-        clock = window.clock = new FlipCounter(opts);
+        if (!isIE9) {
+            clock = window.clock = new FlipCounter(opts);
+        }
 
     }());
 
@@ -70,7 +74,7 @@
                 siteId: "369833",
                 pollId: "e6cd815213af11e5b62e12b19652bf83",
                 env: "prod"
-            })).render(document.getElementById("lf-poll-e6cd815213af11e5b62e12b19652bf83"))
+            })).render(document.getElementById("lf-poll-e6cd815213af11e5b62e12b19652bf83"));
         });
     }());
 
