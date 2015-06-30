@@ -1,67 +1,96 @@
 (function($) {
 
-    // Helper Function for animations
-    function isScrolledIntoView($el, offset) {
+    function checkScrollPos($el, namespace, classes, offset) {
 
-        offest = offset || 0;
-      var $window = $(window);
+        var $window = $(window);
+        var offest = this.offset || 0;
 
-      var docViewTop = $window.scrollTop();
-      var docViewBottom = docViewTop + $window.height();
+        if (_isScrolledIntoView($el, offset)) {
+            $el.css('visibility', 'visible').addClass(classes);
+            $window.off('scroll[' + namespace + ']');
+            $window.off('load[' + namespace + ']');
+        }
 
-      var elemTop = $el.offset().top;
-      var elemBottom = elemTop + $el.height() + offset;
+        // Helper Function for animations
+        function _isScrolledIntoView($el, offset) {
 
-      return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+            var docViewTop = $window.scrollTop();
+            var docViewBottom = docViewTop + $window.height();
+
+            var elemTop = $el.offset().top;
+            var elemBottom = elemTop + $el.height() - offset;
+
+            return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+        }
     }
 
-    // animate elements in hero
+    // animate elements
     $(function (cb) {
 
-        var $heroEl, $heroLock, $heroImg, classUp, classDown, $window;
+        var $heroEl, $heroLock, $heroImg, $carsEl, classUp, classDown, classLeft, $window;
         var isIE9 = (navigator.userAgent.indexOf("MSIE 9") > -1) ? true : false;
 
         $window = $(window);
         $heroEl = $('#hero-module');
         $heroLock = $('.left-col img', $heroEl);
         $heroImg = $('.heroes', $heroEl);
+        $carsEl = $('#cars');
+        $dudeEl = $('#buy-module .right-col').children('img');
 
         classUp = 'animated fadeInUp';
         classDown = 'animated fadeInDown';
+        classLeft = 'animated fadeInLeft';
 
-        function checkScroll($el, namespace, classes) {
-            if (cb($el, 0)) {
-                $el.css('visibility', 'visible').addClass(classes);
-                $window.off('scroll[' + namespace + ']');
-            }
-        }
+        var heroOffset = 0;
+        var menOffset = 0;
+        var carsOffset = 200;
+        var dudeOffset = 0;
 
         if (!isIE9) {
-            $window.on('scroll.up', function (e) {
-                checkScroll($heroImg, 'up', classUp);
+
+            $window.on('scroll.down', $.throttle(20, function (e) {
+                cb($heroLock, 'down', classDown, heroOffset);
+            }));
+
+            $window.on('scroll.up', $.throttle(20, function (e) {
+                cb($heroImg, 'up', classUp, menOffset);
+            }));
+
+            $window.on('scroll.cars', $.throttle(20, function () {
+                cb($carsEl, 'cars', classLeft, carsOffset);
+            }));
+
+            $window.on('scroll.dude', $.throttle(20, function (e) {
+                cb($dudeEl, 'up', classUp, dudeOffset);
+            }));
+
+            $window.on('load.hero', function (e) {
+                cb($heroLock, 'down', classDown, heroOffset);
+                cb($heroImg, 'up', classUp, menOffset);
             });
 
-            $window.on('scroll.down', function (e) {
-                checkScroll($heroLock, 'down', classDown);
+            $window.on('load.cars', function (e) {
+                cb($carsEl, 'cars', classLeft, carsOffset);
             });
 
-            $window.on('load', function (e) {
-                checkScroll($heroLock, 'down', classDown);
-                checkScroll($heroImg, 'up', classUp);
+            $window.on('load.dude', function (e) {
+                cb($dudeEl, 'up', classUp, dudeOffset);
             });
+
         } else {
+            $carsEl.css('visibility', 'visible');
             $heroLock.css('visibility', 'visible');
             $heroImg.css('visibility', 'visible');
         }
 
 
-    }(isScrolledIntoView));
+    }(checkScrollPos));
 
     // Counter App
     $(function(cb) {
         var isIE9 = (navigator.userAgent.indexOf("MSIE 9") > -1) ? true : false;
 
-        var clock, opts, $el, classLeft, $window;
+        var clock, opts, counter;
 
         opts = {
             targetEls: [".counter"],
@@ -69,35 +98,15 @@
             siteId: "371327",
             articleIds: ["CURATE"]
         };
-        $window = $(window);
-        classLeft = 'animated fadeInLeft';
-        $el = $('#cars');
 
         if (!isIE9) {
             clock = window.clock = new FlipCounter(opts);
 
-            $window.on('scroll.cars', function (e) {
-                if (cb($el.parent(), 200)) {
-                    $el.css('visibility', 'visible').addClass(classLeft);
-                    $window.off('scroll.cars');
-                }
-            });
-
-            $window.on('load', function (e) {
-                if (cb($el.parent(), 200)) {
-                    $el.css('visibility', 'visible').addClass(classLeft);
-                    $window.off('scroll.cars');
-                }
-            });
-
         } else {
-
-            $el.css('visibility', 'visible');
-            var counter = new LfCommentCounts(opts, createClock);
-
+            counter = new LfCommentCounts(opts, createClock);
         }
 
-        function createClock(data) {
+        function createClock (data) {
 
             var contentCount = data.data[opts.siteId][opts.articleIds[0]].total; // presumes only the first articleId is important
             var string = '<ul class="flip nocomma"><li class="flip-clock-before"><a href="#"><div class="up"><div class="shadow"></div><div class="inn">{{n}}</div></div><div class="down"><div class="shadow"></div><div class="inn">{{n}}</div></div></a></li><li class="flip-clock-active"><a href="#"><div class="up"><div class="shadow"></div><div class="inn">{{n}}</div></div><div class="down"><div class="shadow"></div><div class="inn">{{n}}</div></div></a></li></ul>';
@@ -117,7 +126,7 @@
 
         }
 
-    }(isScrolledIntoView));
+    }(checkScrollPos));
 
     // More Mediawall App
     $(function() {
@@ -181,26 +190,15 @@
     // Trending App
     $(function() {
         Livefyre.require(['//cdn.livefyre.com/libs/app-embed/v0.6.4/app-embed.min.js'], function(appEmbed) {
-            appEmbed.loadAll().done(function(embed) {
-                embed = embed[0];
-                embed.el.onload(embed.getConfig());
-            });
+            appEmbed.loadAll().done(function(appEmbed) {});
         });
     }());
 
     // Video Player
     $(function() {
-        videojs.options.flash.swf = "/js/videojs/video-js.swf";
-
         videojs('vid1', {
-            "techOrder": ["youtube"],
-            "src": "http://www.youtube.com/watch?v=L0s63Jdbwk0"
+            "techOrder": ["youtube"]
         }).ready(function() {
-
-            this.one('ended', function() {
-                this.src('http://www.youtube.com/watch?v=jofNR_WkoCE');
-                this.play();
-            });
         });
     }());
 
