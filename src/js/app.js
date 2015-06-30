@@ -41,10 +41,10 @@
         classDown = 'animated fadeInDown';
         classLeft = 'animated fadeInLeft';
 
-        var heroOffset = 100;
-        var menOffset = 100;
+        var heroOffset = 0;
+        var menOffset = 0;
         var carsOffset = 200;
-        var dudeOffset = 200;
+        var dudeOffset = 0;
 
         if (!isIE9) {
 
@@ -190,26 +190,15 @@
     // Trending App
     $(function() {
         Livefyre.require(['//cdn.livefyre.com/libs/app-embed/v0.6.4/app-embed.min.js'], function(appEmbed) {
-            appEmbed.loadAll().done(function(embed) {
-                embed = embed[0];
-                embed.el.onload(embed.getConfig());
-            });
+            appEmbed.loadAll().done(function(appEmbed) {});
         });
     }());
 
     // Video Player
     $(function() {
-        videojs.options.flash.swf = "/js/videojs/video-js.swf";
-
         videojs('vid1', {
-            "techOrder": ["youtube"],
-            "src": "http://www.youtube.com/watch?v=L0s63Jdbwk0"
+            "techOrder": ["youtube"]
         }).ready(function() {
-
-            this.one('ended', function() {
-                this.src('http://www.youtube.com/watch?v=jofNR_WkoCE');
-                this.play();
-            });
         });
     }());
 
