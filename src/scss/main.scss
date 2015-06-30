@@ -780,6 +780,10 @@ ul {
             .right-col {
                 padding: 0;
                 margin-top: -90px;
+
+                img {
+                    visibility: hidden;
+                }
             }
 
             a {
@@ -1306,6 +1310,7 @@ $flip_fontsize_L: 12rem;
 
         &#social-counter-moudle {
             padding: 100px 0 0 0;
+            overflow: hidden;
 
             #cars {
                 background-size: 700px 238px;
@@ -1577,6 +1582,7 @@ $flip_fontsize_L: 12rem;
             background-size: 700px 238px;
             background-repeat: no-repeat;
             background-position: 20% bottom;
+            overflow: hidden;
 
             #counter-wrapper {
                 padding-bottom: 322px;
@@ -1670,12 +1676,18 @@ $flip_fontsize_L: 12rem;
 }
 
 @media (width: 1024px) {
-    .row#header-module > div > div > div {
-        padding-right: 12px;
-    }
+    .row {
+        &#header-module > div > div > div {
+            padding-right: 12px;
+        }
 
-    #social-wrapper {
-        right: 0;
+        #social-wrapper {
+            right: 0;
+        }
+
+        &.social-counter-module {
+            overflow: hidden;
+        }
     }
 }
 
