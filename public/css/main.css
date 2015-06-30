@@ -10008,7 +10008,7 @@ ul li a {
     display: block;
     position: absolute;
     top: 0;
-    left: -710px;
+    left: -1202px;
     margin-left: 50%;
 }
 
@@ -10129,7 +10129,7 @@ ul li a {
 }
 
 .row#hero-module > div {
-    padding-bottom: 240px;
+    padding-bottom: 290px;
 }
 
 .row#support-module {
@@ -10208,7 +10208,7 @@ ul li a {
     display: block;
     position: absolute;
     top: 0;
-    left: -710px;
+    left: -1202px;
     margin-left: 50%;
 }
 
@@ -10321,7 +10321,7 @@ ul li a {
     display: block;
     position: absolute;
     top: 0;
-    left: -710px;
+    left: -1202px;
     margin-left: 50%;
 }
 
@@ -10551,6 +10551,10 @@ ul li a {
     margin-top: -90px;
 }
 
+.row#buy-module > div .right-col img {
+    visibility: hidden;
+}
+
 .row#buy-module > div a {
     margin-left: 10px;
     margin-top: 30px;
@@ -10581,7 +10585,7 @@ ul li a {
     display: block;
     position: absolute;
     top: 0;
-    left: -710px;
+    left: -1202px;
     margin-left: 50%;
 }
 
@@ -10850,13 +10854,17 @@ ul li a {
 }
 
 @media (max-width: 380px) {
+    .container-fluid {
+        overflow: hidden;
+    }
+
     .container-fluid .row#hero-module > div .right-col {
         margin-bottom: 290px !important;
     }
 
     .container-fluid .row#hero-module > div .right-col .video-js {
         width: 100% !important;
-        height: 145px !important;
+        height: 215px !important;
     }
 
     .container-fluid .row#support-module {
@@ -10865,6 +10873,10 @@ ul li a {
 }
 
 @media (max-width: 480px) {
+    .container-fluid {
+        overflow: hidden;
+    }
+
     .row#hero-module > div {
         margin-bottom: 0;
     }
@@ -10943,6 +10955,10 @@ ul li a {
 }
 
 @media (max-width: 600px) {
+    .container-fluid {
+        overflow: hidden;
+    }
+
     .row#hero-module > div {
         margin-bottom: 0;
     }
@@ -10964,6 +10980,10 @@ ul li a {
 }
 
 @media (max-width: 767px) {
+    .container-fluid {
+        overflow: hidden;
+    }
+
     .row h2 {
         font-size: 4.2rem;
         margin-bottom: 100px;
@@ -10996,7 +11016,7 @@ ul li a {
 
     .row#hero-module > div .right-col,
     .row#buy-module > div .right-col {
-        padding-top: 70px;
+        padding-top: 50px;
         margin-bottom: 60px;
     }
 
@@ -11041,6 +11061,7 @@ ul li a {
 
     .row#social-counter-moudle {
         padding: 100px 0 0 0;
+        overflow: hidden;
     }
 
     .row#social-counter-moudle #cars {
@@ -11159,6 +11180,8 @@ ul li a {
         width: 100%;
         padding: 0 50px;
         max-width: 330px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .row#buy-module > div .right-col {
@@ -11207,6 +11230,10 @@ ul li a {
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
+    .container-fluid {
+        overflow: hidden;
+    }
+
     .row#hero-module,
     .row#buy-module,
     .row#top-submissions-module,
@@ -11290,6 +11317,7 @@ ul li a {
         background-size: 700px 238px;
         background-repeat: no-repeat;
         background-position: 20% bottom;
+        overflow: hidden;
     }
 
     .row#social-counter-moudle #counter-wrapper {
@@ -11370,6 +11398,24 @@ ul li a {
 
     .row#footer-module .logo {
         margin-top: 0;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1024px) {
+    .container-fluid {
+        overflow: hidden;
+    }
+
+    .row#header-module > div > div > div {
+        padding-right: 12px;
+    }
+
+    .row #social-wrapper {
+        right: 0;
+    }
+
+    .row#social-counter-module {
+        overflow: hidden;
     }
 }
 

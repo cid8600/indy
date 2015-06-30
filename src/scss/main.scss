@@ -35,7 +35,7 @@
     display: block;
     position: absolute;
     top: 0;
-    left: -710px;
+    left: -1202px;
     margin-left: 50%;
 }
 
@@ -344,7 +344,7 @@ ul {
 
     &#hero-module {
         > div {
-            padding-bottom: 240px;
+            padding-bottom: 290px;
         }
     }
 
@@ -780,6 +780,10 @@ ul {
             .right-col {
                 padding: 0;
                 margin-top: -90px;
+
+                img {
+                    visibility: hidden;
+                }
             }
 
             a {
@@ -1079,6 +1083,8 @@ $flip_fontsize_L: 12rem;
 
 @media (max-width: 380px) {
     .container-fluid {
+        overflow: hidden;
+
         .row {
             &#hero-module {
                 > div {
@@ -1087,7 +1093,7 @@ $flip_fontsize_L: 12rem;
 
                         .video-js {
                             width: 100% !important;
-                            height: 145px !important;
+                            height: 215px !important;
                         }
                     }
                 }
@@ -1101,6 +1107,10 @@ $flip_fontsize_L: 12rem;
 }
 
 @media (max-width: 480px) {
+    .container-fluid {
+        overflow: hidden;
+    }
+
     .row {
         &#hero-module {
             > div {
@@ -1195,6 +1205,10 @@ $flip_fontsize_L: 12rem;
 }
 
 @media (max-width: 600px) {
+    .container-fluid {
+        overflow: hidden;
+    }
+
     .row {
         &#hero-module {
             > div {
@@ -1220,6 +1234,10 @@ $flip_fontsize_L: 12rem;
 }
 
 @media (max-width: 767px) {
+    .container-fluid {
+        overflow: hidden;
+    }
+
     .row {
         h2 {
             font-size: 4.2rem;
@@ -1255,15 +1273,9 @@ $flip_fontsize_L: 12rem;
                 }
 
                 .right-col {
-                    padding-top: 70px;
+                    padding-top: 50px;
                     margin-bottom: 60px;
-
-                    .video-js {
-                        // width: 296px !important;
-                        // height: 165px !important;
-                        // margin: 0 auto
-
-                    }
+                    .video-js {}
                 }
 
                 .heroes {
@@ -1312,6 +1324,7 @@ $flip_fontsize_L: 12rem;
 
         &#social-counter-moudle {
             padding: 100px 0 0 0;
+            overflow: hidden;
 
             #cars {
                 background-size: 700px 238px;
@@ -1437,6 +1450,8 @@ $flip_fontsize_L: 12rem;
                     width: 100%;
                     padding: 0 50px;
                     max-width: 330px;
+                    margin-left: auto;
+                    margin-right: auto;
                 }
 
                 .right-col {
@@ -1494,6 +1509,10 @@ $flip_fontsize_L: 12rem;
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
+    .container-fluid {
+        overflow: hidden;
+    }
+
     .row {
         &#hero-module,
         &#buy-module,
@@ -1583,6 +1602,7 @@ $flip_fontsize_L: 12rem;
             background-size: 700px 238px;
             background-repeat: no-repeat;
             background-position: 20% bottom;
+            overflow: hidden;
 
             #counter-wrapper {
                 padding-bottom: 322px;
@@ -1671,6 +1691,26 @@ $flip_fontsize_L: 12rem;
             .logo {
                 margin-top: 0;
             }
+        }
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1024px) {
+    .container-fluid {
+        overflow: hidden;
+    }
+
+    .row {
+        &#header-module > div > div > div {
+            padding-right: 12px;
+        }
+
+        #social-wrapper {
+            right: 0;
+        }
+
+        &#social-counter-module {
+            overflow: hidden;
         }
     }
 }
