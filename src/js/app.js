@@ -1,18 +1,26 @@
 (function($) {
 
-    // Helper Function for animations
-    function isScrolledIntoView($el, offset) {
+    function checkScrollPos($el, namespace, classes) {
+        var $window = $(window);
 
-        offest = offset || 0;
-      var $window = $(window);
+        // Helper Function for animations
+        function _isScrolledIntoView($el, offset) {
+            var offest = offset || 0;
 
-      var docViewTop = $window.scrollTop();
-      var docViewBottom = docViewTop + $window.height();
+            var docViewTop = $window.scrollTop();
+            var docViewBottom = docViewTop + $window.height();
 
-      var elemTop = $el.offset().top;
-      var elemBottom = elemTop + $el.height() + offset;
+            var elemTop = $el.offset().top;
+            var elemBottom = elemTop + $el.height() + offset;
 
-      return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+            return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+        }
+
+        if (_isScrolledIntoView($el, 0)) {
+            $el.css('visibility', 'visible').addClass(classes);
+            $window.off('scroll[' + namespace + ']');
+            $window.off('load[' + namespace + ']');
+        }
     }
 
     // animate elements in hero
@@ -29,25 +37,18 @@
         classUp = 'animated fadeInUp';
         classDown = 'animated fadeInDown';
 
-        function checkScroll($el, namespace, classes) {
-            if (cb($el, 0)) {
-                $el.css('visibility', 'visible').addClass(classes);
-                $window.off('scroll[' + namespace + ']');
-            }
-        }
-
         if (!isIE9) {
-            $window.on('scroll.up', function (e) {
-                checkScroll($heroImg, 'up', classUp);
-            });
+            $window.on('scroll.up', $.throttle(50, function (e) {
+                cb($heroImg, 'up', classUp);
+            }));
 
-            $window.on('scroll.down', function (e) {
-                checkScroll($heroLock, 'down', classDown);
-            });
+            $window.on('scroll.down', $.throttle(50, function (e) {
+                cb($heroLock, 'down', classDown);
+            }));
 
-            $window.on('load', function (e) {
-                checkScroll($heroLock, 'down', classDown);
-                checkScroll($heroImg, 'up', classUp);
+            $window.on('load.hero', function (e) {
+                cb($heroLock, 'down', classDown);
+                cb($heroImg, 'up', classUp);
             });
         } else {
             $heroLock.css('visibility', 'visible');
@@ -55,13 +56,13 @@
         }
 
 
-    }(isScrolledIntoView));
+    }(checkScrollPos));
 
     // Counter App
     $(function(cb) {
         var isIE9 = (navigator.userAgent.indexOf("MSIE 9") > -1) ? true : false;
 
-        var clock, opts, $el, classLeft, $window;
+        var clock, opts, $el, classLeft, $window, $elParent;
 
         opts = {
             targetEls: [".counter"],
@@ -72,22 +73,18 @@
         $window = $(window);
         classLeft = 'animated fadeInLeft';
         $el = $('#cars');
+        $elParent = $el.parent();
 
         if (!isIE9) {
+
             clock = window.clock = new FlipCounter(opts);
 
-            $window.on('scroll.cars', function (e) {
-                if (cb($el.parent(), 200)) {
-                    $el.css('visibility', 'visible').addClass(classLeft);
-                    $window.off('scroll.cars');
-                }
-            });
+            $window.on('scroll.cars', $.throttle(50, function () {
+                cb($el, 'cars', classLeft);
+            }));
 
-            $window.on('load', function (e) {
-                if (cb($el.parent(), 200)) {
-                    $el.css('visibility', 'visible').addClass(classLeft);
-                    $window.off('scroll.cars');
-                }
+            $window.on('load.cars', function (e) {
+                cb($el, 'cars', classLeft);
             });
 
         } else {
@@ -117,7 +114,7 @@
 
         }
 
-    }(isScrolledIntoView));
+    }(checkScrollPos));
 
     // More Mediawall App
     $(function() {

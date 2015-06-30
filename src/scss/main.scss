@@ -344,7 +344,7 @@ ul {
 
     &#hero-module {
         > div {
-            padding-bottom: 240px;
+            padding-bottom: 290px;
         }
     }
 
@@ -1087,7 +1087,7 @@ $flip_fontsize_L: 12rem;
 
                         .video-js {
                             width: 100% !important;
-                            height: 145px !important;
+                            height: 215px !important;
                         }
                     }
                 }
@@ -1255,15 +1255,9 @@ $flip_fontsize_L: 12rem;
                 }
 
                 .right-col {
-                    padding-top: 70px;
+                    padding-top: 50px;
                     margin-bottom: 60px;
-
-                    .video-js {
-                        // width: 296px !important;
-                        // height: 165px !important;
-                        // margin: 0 auto
-
-                    }
+                    .video-js {}
                 }
 
                 .heroes {
@@ -1672,6 +1666,16 @@ $flip_fontsize_L: 12rem;
                 margin-top: 0;
             }
         }
+    }
+}
+
+@media (width: 1024px) {
+    .row#header-module > div > div > div {
+        padding-right: 12px;
+    }
+
+    #social-wrapper {
+        right: 0;
     }
 }
 
