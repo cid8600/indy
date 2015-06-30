@@ -1083,6 +1083,8 @@ $flip_fontsize_L: 12rem;
 
 @media (max-width: 380px) {
     .container-fluid {
+        overflow: hidden;
+
         .row {
             &#hero-module {
                 > div {
@@ -1105,6 +1107,10 @@ $flip_fontsize_L: 12rem;
 }
 
 @media (max-width: 480px) {
+    .container-fluid {
+        overflow: hidden;
+    }
+
     .row {
         &#hero-module {
             > div {
@@ -1199,6 +1205,10 @@ $flip_fontsize_L: 12rem;
 }
 
 @media (max-width: 600px) {
+    .container-fluid {
+        overflow: hidden;
+    }
+
     .row {
         &#hero-module {
             > div {
@@ -1224,6 +1234,10 @@ $flip_fontsize_L: 12rem;
 }
 
 @media (max-width: 767px) {
+    .container-fluid {
+        overflow: hidden;
+    }
+
     .row {
         h2 {
             font-size: 4.2rem;
@@ -1493,6 +1507,10 @@ $flip_fontsize_L: 12rem;
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
+    .container-fluid {
+        overflow: hidden;
+    }
+
     .row {
         &#hero-module,
         &#buy-module,
@@ -1675,7 +1693,11 @@ $flip_fontsize_L: 12rem;
     }
 }
 
-@media (width: 1024px) {
+@media (min-width: 1024px) and (max-width: 1024px) {
+    .container-fluid {
+        overflow: hidden;
+    }
+
     .row {
         &#header-module > div > div > div {
             padding-right: 12px;
@@ -1685,7 +1707,7 @@ $flip_fontsize_L: 12rem;
             right: 0;
         }
 
-        &.social-counter-module {
+        &#social-counter-module {
             overflow: hidden;
         }
     }
