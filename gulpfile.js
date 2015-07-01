@@ -92,7 +92,7 @@ _gulp2['default'].task('styles', function () {
 
 // Concatenate and minify JavaScript
 _gulp2['default'].task('scripts', function () {
-  return _gulp2['default'].src(['./src/js/main.js']).pipe($.concat('main.min.js')).pipe($.uglify({ preserveComments: 'some' }))
+  return _gulp2['default'].src(['./src/js/*.js', './src/js/**/*.js']).pipe($.concat('app.min.js')).pipe($.uglify({ preserveComments: 'some' }))
   // Output files
   .pipe(_gulp2['default'].dest('./dist/js')).pipe($.size({ title: 'scripts' }));
 });
@@ -104,18 +104,25 @@ _gulp2['default'].task('fileinclude', function () {
   })).pipe(_gulp2['default'].dest('.tmp/'));
 });
 
-_gulp2['default'].task('build', function () {
-  _gulp2['default'].src(['src/index.html']).pipe((0, _gulpFileInclude2['default'])({
-    prefix: '@@',
-    basepath: '@file'
-  })).pipe(_gulp2['default'].dest('dist/'));
+_gulp2['default'].task('build', ['clean'], function (cb) {
+
+  (0, _runSequence2['default'])('styles',
+  // 'jshint',
+  'fileinclude', ['scripts', 'images', 'fonts', 'html'], 'copy', cb);
 });
 
 // Scan your HTML for assets & optimize them
 _gulp2['default'].task('html', function () {
   var assets = $.useref.assets({ searchPath: '{.tmp, ./src}' });
 
-  _gulp2['default'].src('./src/partialviews/*.html').pipe(_gulp2['default'].dest('./dist/partialviews/'));
+  // gulp.src('./src/partialviews/*.html').pipe(gulp.dest('./dist/partialviews/'));
+
+  // gulp.src(['src/index.html'])
+  //   .pipe(fileinclude({
+  //     prefix: '@@',
+  //     basepath: '@file'
+  //   }))
+  //   .pipe(gulp.dest('dist/'));
 
   _gulp2['default'].src('./src/*.html').pipe((0, _gulpFileInclude2['default'])({
     prefix: '@@',
@@ -188,9 +195,7 @@ _gulp2['default'].task('serve:dist', ['default'], function () {
 
 // Build production files, the default task
 _gulp2['default'].task('default', ['clean'], function (cb) {
-  (0, _runSequence2['default'])('styles',
-  // 'jshint',
-  'fileinclude', ['scripts', 'images', 'fonts', 'html'], 'copy',
+  (0, _runSequence2['default'])('styles', 'jshint', 'fileinclude', ['scripts', 'images', 'fonts', 'html'], 'copy',
   //, 'generate-service-worker',
   cb);
 });
