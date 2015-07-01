@@ -3,9 +3,9 @@
     function checkScrollPos($el, namespace, classes, offset) {
 
         var $window = $(window);
-        var offest = this.offset || 0;
-
-        if (_isScrolledIntoView($el, offset)) {
+        var o = offset || 0;
+        console.log($el, namespace, classes, o);
+        if (_isScrolledIntoView($el, o)) {
             $el.css('visibility', 'visible').addClass(classes);
             $window.off('scroll[' + namespace + ']');
             $window.off('load[' + namespace + ']');
@@ -44,7 +44,7 @@
         var heroOffset = 0;
         var menOffset = 0;
         var carsOffset = 200;
-        var dudeOffset = 0;
+        var dudeOffset = 1000;
 
         if (!isIE9) {
 
