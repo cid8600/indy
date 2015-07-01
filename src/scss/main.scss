@@ -128,7 +128,7 @@
 }
 
 
-@keyframes fadeInUpIndy {
+@keyframes fadeInUpDudes {
     @include dudes;
 }
 
@@ -138,64 +138,48 @@
 }
 
 
-@mixin afid {
+@mixin keyframename($name) {
+    animation-name: $name;
+    -webkit-animation-name: $name;
+}
+
+@mixin animateDown {
     animation-timing-function: ease-out;
     animation-duration: .75s;
-    animation-delay: 10s;
+    animation-delay: 0s;
     animation-fill-mode: both;
     animation-iteration-count: 1;
-    animation-name: fadeInDownIndy;
     -webkit-animation-timing-function: ease-out;
     -webkit-animation-duration: .75s;
-    -webkit-animation-delay: 10s;
+    -webkit-animation-delay: 0s;
     -webkit-animation-fill-mode: both;
     -webkit-animation-iteration-count: 1;
-    -webkit-animation-name: fadeInDownIndy;
 }
 
-@mixin afiu {
+@mixin animateUp {
     animation-timing-function: ease-out;
     animation-duration: .75s;
-    animation-delay: 10.5s;
+    animation-delay: 0s;
     animation-fill-mode: both;
     animation-iteration-count: 1;
-    animation-name: fadeInUpIndy;
     -webkit-animation-timing-function: ease-out;
     -webkit-animation-duration: .75s;
-    -webkit-animation-delay: 10.5s;
+    -webkit-animation-delay: 0s;
     -webkit-animation-fill-mode: both;
     -webkit-animation-iteration-count: 1;
-    -webkit-animation-name: fadeInUpIndy;
 }
 
-@mixin afislide {
+@mixin animateRight {
     animation-timing-function: ease-out;
     animation-duration: .5s;
-    animation-delay: 11s;
+    animation-delay: 0s;
     animation-fill-mode: both;
     animation-iteration-count: 1;
-    animation-name: fadeInSlideIndy;
     -webkit-animation-timing-function: ease-out;
     -webkit-animation-duration: .5s;
-    -webkit-animation-delay: 11s;
+    -webkit-animation-delay: 0s;
     -webkit-animation-fill-mode: both;
     -webkit-animation-iteration-count: 1;
-    -webkit-animation-name: fadeInSlideIndy;
-}
-
-@mixin afiul {
-    animation-timing-function: ease;
-    animation-duration: .5s;
-    animation-delay: 11s;
-    animation-fill-mode: both;
-    animation-iteration-count: 1;
-    animation-name: fadeInUpLoner;
-    -webkit-animation-timing-function: ease;
-    -webkit-animation-duration: .5s;
-    -webkit-animation-delay: 11s;
-    -webkit-animation-fill-mode: both;
-    -webkit-animation-iteration-count: 1;
-    -webkit-animation-name: fadeInUpLoner;
 }
 
 $indyBlue: #0022B8;
@@ -432,7 +416,6 @@ ul {
                     margin-bottom: 40px;
                     margin-top: -100px;
                     display: block;
-                    visibility: hidden;
                 }
 
                 h1 {
@@ -468,7 +451,7 @@ ul {
 
             .heroes {
                 position: absolute;
-                bottom: -60px !important;
+                bottom: -60px;
                 padding: 0;
                 left: 0;
                 content: '';
@@ -480,13 +463,26 @@ ul {
                 background-size: 60%;
                 display: block;
                 visibility: hidden;
-                @include afiu;
+                opacity: 0;
+
+                &.animate-up {
+                    @include keyframename(fadeInUpDudes);
+                    @include animateUp;
+                }
             }
 
             .left-col {
                 img {
                     position: relative;
-                    @include afid;
+                    top: 0;
+                    left: 0;
+                    visibility: hidden;
+                    opacity: 0;
+
+                    &.animate-down {
+                        @include keyframename(fadeInDownIndy);
+                        @include animateDown;
+                    }
                 }
             }
         }
@@ -581,7 +577,12 @@ ul {
             height: 374px;
             z-index: 0;
             display: block;
-            @include afislide;
+            visibility: hidden;
+
+            &.animate-right {
+                @include keyframename(fadeInSlideIndy);
+                @include animateRight;
+            }
         }
 
         h2 {
@@ -926,12 +927,17 @@ ul {
                 padding: 0;
                 margin-top: -90px;
                 position: relative;
-                bottom: 0;
-                left: 0;
-                @include afiul;
 
                 img {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
                     visibility: hidden;
+
+                    &.animate-up {
+                        @include animateUp;
+                        @include keyframename(fadeInUpLoner);
+                    }
                 }
             }
 
@@ -1833,7 +1839,6 @@ $flip_fontsize_L: 12rem;
                         position: relative;
                         top: 0;
                         left: 0;
-                        @include afiul;
                     }
                 }
             }

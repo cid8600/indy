@@ -28,26 +28,26 @@
         $heroLock = $('.left-col img', $heroEl);
         $heroImg = $('.heroes', $heroEl);
         $carsEl = $('#cars');
-        $dudeEl = $('#buy-module .right-col').children('img');
+        $dudeEl = $('#buy-module .right-col').find('img');
 
-        classUp = 'animated fadeInUp';
-        classDown = 'animated fadeInDown';
-        classLeft = 'animated fadeInLeft';
+        classUp = 'animate-up';
+        classDown = 'animate-down';
+        classLeft = 'animate-right';
 
         heroOffset = 200;
         menOffset = 300;
-        carsOffset = 300;
-        dudeOffset = 500;
+        carsOffset = 400;
+        dudeOffset = 20000;
 
 
-        // if (!isIE9) {
-        //     window.onorientationchange = readDeviceOrientation;
-        //     readDeviceOrientation();
-        //     loadEvents();
-        //     scrollEvents();
-        // } else {
+        if (!isIE9) {
+            window.onorientationchange = readDeviceOrientation;
+            readDeviceOrientation();
+            loadEvents();
+            scrollEvents();
+        } else {
             animElsVisible();
-        //}
+        }
 
         function loadEvents() {
 
@@ -94,7 +94,7 @@
             $carsEl.css('visibility', 'hidden');
             $heroLock.css('visibility', 'hidden');
             $heroImg.css('visibility', 'hidden');
-            $dudeEl.css('visibility', 'visible');
+            $dudeEl.css('visibility', 'hidden');
         }
 
         function checkScrollPos($el, namespace, classes, offset, orientation) {
@@ -234,12 +234,12 @@
     }());
 
     // Video Player
-    $(function() {
-        videojs('vid1', {
-            "techOrder": ["youtube"]
-        }).ready(function() {
-        });
-    }());
+    // $(function() {
+    //     videojs('vid1', {
+    //         "techOrder": ["youtube"]
+    //     }).ready(function() {
+    //     });
+    // }());
 
     //  FB Share
     $(function() {
