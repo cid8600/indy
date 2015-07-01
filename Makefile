@@ -26,3 +26,7 @@ clean-deps:
 
 babel:
 	babel gulpfile.babel.js --out-file gulpfile.js
+	
+build:
+	babel gulpfile.babel.js --out-file gulpfile.js && gulp build
+	
