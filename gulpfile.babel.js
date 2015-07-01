@@ -109,6 +109,17 @@ gulp.task('fileinclude', () => {
     .pipe(gulp.dest('.tmp/'));
 });
 
+gulp.task('build', () => {
+  gulp.src(['src/index.html'])
+
+    .pipe(fileinclude({
+      prefix: '@@',
+      basepath: '@file'
+    }))
+    .pipe(gulp.dest('dist/'));
+});
+
+
 // Scan your HTML for assets & optimize them
 gulp.task('html', () => {
   const assets = $.useref.assets({searchPath: '{.tmp, ./src}'});
