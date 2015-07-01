@@ -91,8 +91,8 @@ gulp.task('styles', () => {
 
 // Concatenate and minify JavaScript
 gulp.task('scripts', () => {
-  return gulp.src(['./src/js/*.js', './src/js/**/*.js'])
-    .pipe($.concat('app.min.js'))
+  return gulp.src(['./src/js/main.js'])
+    .pipe($.concat('main.min.js'))
     .pipe($.uglify({preserveComments: 'some'}))
     // Output files
     .pipe(gulp.dest('./dist/js'))
@@ -109,15 +109,19 @@ gulp.task('fileinclude', () => {
     .pipe(gulp.dest('.tmp/'));
 });
 
-gulp.task('build',  ['clean'], cb => {
-
+gulp.task('build', () => {
+  
   runSequence(
-    'styles',
-    // 'jshint',
-    'fileinclude',
-    ['scripts', 'images', 'fonts', 'html'],
-    'copy',
-    cb);
+        'styles', 
+        ['scripts','images', 'fonts']
+    )
+    gulp.src(['src/index.html'])
+    .pipe(fileinclude({
+      prefix: '@@',
+      basepath: '@file'
+    }))
+    .pipe(gulp.dest('dist/'));
+     
 });
 
 
@@ -125,14 +129,8 @@ gulp.task('build',  ['clean'], cb => {
 gulp.task('html', () => {
   const assets = $.useref.assets({searchPath: '{.tmp, ./src}'});
 
-  // gulp.src('./src/partialviews/*.html').pipe(gulp.dest('./dist/partialviews/'));
+  gulp.src('./src/partialviews/*.html').pipe(gulp.dest('./dist/partialviews/'));
 
-  // gulp.src(['src/index.html'])
-  //   .pipe(fileinclude({
-  //     prefix: '@@',
-  //     basepath: '@file'
-  //   }))
-  //   .pipe(gulp.dest('dist/'));
 
     gulp.src('./src/*.html')
     .pipe(fileinclude({
@@ -212,9 +210,9 @@ gulp.task('serve:dist', ['default'], () => {
 gulp.task('default', ['clean'], cb => {
   runSequence(
     'styles',
-    'jshint',
+    // 'jshint',
     'fileinclude',
-    [ 'scripts', 'images', 'fonts', 'html'],
+    [ 'scripts', 'images', 'fonts'],
     'copy',
     //, 'generate-service-worker',
     cb);
