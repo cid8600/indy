@@ -929,8 +929,8 @@ ul {
                 position: relative;
 
                 img {
-                    position: absolute;
-                    top: 0;
+                    position: relative;
+                    bottom: 0;
                     left: 0;
                     visibility: hidden;
 
@@ -1044,6 +1044,8 @@ ul {
     max-width: 510px;
     margin: 0 auto 70px auto;
     position: relative;
+    width: 512px;
+    height: 286px;
 
     &:before {
         content: '';
@@ -1242,12 +1244,16 @@ $flip_fontsize_L: 12rem;
         .row {
             &#hero-module {
                 > div {
+                    .heroes {
+                        background-position: center bottom !important;
+                    }
+
                     .right-col {
                         margin-bottom: 290px !important;
 
                         .video-js {
                             width: 100% !important;
-                            height: 215px !important;
+                            height: 145px !important;
                         }
                     }
                 }
@@ -1272,6 +1278,17 @@ $flip_fontsize_L: 12rem;
 
                 .right-col {
                     margin-bottom: 350px !important;
+
+                    #video {
+                        &:before {
+                            width: 400px;
+                            height: 90px;
+                            background-size: 400px 90px;
+                            bottom: 0px;
+                            left: 50%;
+                            margin-left: -200px;
+                        }
+                    }
 
                     .video-js {
                         width: 100% !important;
@@ -1346,16 +1363,6 @@ $flip_fontsize_L: 12rem;
             }
         }
     }
-
-    #video {
-        &:before {
-            width: 255px;
-            height: 60px;
-            background-size: 255px 60px;
-            bottom: -30px;
-            left: -127px;
-        }
-    }
 }
 
 @media (max-width: 600px) {
@@ -1378,7 +1385,7 @@ $flip_fontsize_L: 12rem;
                     .video-js {
                         width: 100% !important;
                         max-width: 500px;
-                        height: 286px !important;
+                        height: 235px !important;
                         margin: 0 auto;
                     }
                 }
@@ -1456,12 +1463,17 @@ $flip_fontsize_L: 12rem;
             > div {
                 .right-col {
                     margin-bottom: 410px;
+
+                    #video {
+                        width: 100%;
+                        height: auto;
+                    }
                 }
             }
         }
 
         &#support-module {
-            margin-top: -200px;
+            margin-top: -220px;
 
             h2 {
                 margin-top: 0;
@@ -1730,7 +1742,7 @@ $flip_fontsize_L: 12rem;
 
             .video-js {
                 width: 100% !important;
-                height: 436px !important;
+                height: 286px !important;
             }
 
             #social-wrapper > ul > li {
