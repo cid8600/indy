@@ -1,34 +1,27 @@
 (function($) {
 
-    function checkScrollPos($el, namespace, classes, offset) {
-
-        var $window = $(window);
-        var offest = this.offset || 0;
-
-        if (_isScrolledIntoView($el, offset)) {
-            $el.css('visibility', 'visible').addClass(classes);
-            $window.off('scroll[' + namespace + ']');
-            $window.off('load[' + namespace + ']');
-        }
-
-        // Helper Function for animations
-        function _isScrolledIntoView($el, offset) {
-
-            var docViewTop = $window.scrollTop();
-            var docViewBottom = docViewTop + $window.height();
-
-            var elemTop = $el.offset().top;
-            var elemBottom = elemTop + $el.height() - offset;
-
-            return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
-        }
-    }
-
     // animate elements
-    $(function (cb) {
+    $(function () {
 
-        var $heroEl, $heroLock, $heroImg, $carsEl, classUp, classDown, classLeft, $window;
-        var isIE9 = (navigator.userAgent.indexOf("MSIE 9") > -1) ? true : false;
+        var $heroEl,
+            $heroLock,
+            $heroImg,
+            $dudeEl,
+            $carsEl,
+            classUp,
+            classDown,
+            classLeft,
+            $window,
+            isIE9,
+            mobiUA,
+            heroOffset,
+            menOffset,
+            carsOffset,
+            dudeOffset,
+            orientation;
+
+        isIE9 = (navigator.userAgent.indexOf("MSIE 9") > -1) ? true : false;
+        mobiUA = (navigator.userAgent.indexOf("Mobi") > -1) ? true : false;
 
         $window = $(window);
         $heroEl = $('#hero-module');
@@ -41,53 +34,97 @@
         classDown = 'animated fadeInDown';
         classLeft = 'animated fadeInLeft';
 
-        var heroOffset = 0;
-        var menOffset = 0;
-        var carsOffset = 200;
-        var dudeOffset = 0;
+        heroOffset = 200;
+        menOffset = 300;
+        carsOffset = 300;
+        dudeOffset = 500;
+
 
         if (!isIE9) {
+            window.onorientationchange = readDeviceOrientation;
+            readDeviceOrientation();
+            loadEvents();
+            scrollEvents();
+        } else {
+            animElsVisible();
+        }
 
-            $window.on('scroll.down', $.throttle(20, function (e) {
-                cb($heroLock, 'down', classDown, heroOffset);
-            }));
+        function loadEvents() {
 
-            $window.on('scroll.up', $.throttle(20, function (e) {
-                cb($heroImg, 'up', classUp, menOffset);
-            }));
-
-            $window.on('scroll.cars', $.throttle(20, function () {
-                cb($carsEl, 'cars', classLeft, carsOffset);
-            }));
-
-            $window.on('scroll.dude', $.throttle(20, function (e) {
-                cb($dudeEl, 'up', classUp, dudeOffset);
-            }));
-
-            $window.on('load.hero', function (e) {
-                cb($heroLock, 'down', classDown, heroOffset);
-                cb($heroImg, 'up', classUp, menOffset);
+            $window.on('load.herolock', function (e) {
+                checkScrollPos($heroLock, 'herolock', classDown, heroOffset, orientation);
+                checkScrollPos($heroImg, 'men', classUp, menOffset, orientation);
             });
 
             $window.on('load.cars', function (e) {
-                cb($carsEl, 'cars', classLeft, carsOffset);
+                checkScrollPos($carsEl, 'cars', classLeft, carsOffset, orientation);
             });
 
             $window.on('load.dude', function (e) {
-                cb($dudeEl, 'up', classUp, dudeOffset);
+                checkScrollPos($dudeEl, 'dude', classUp, dudeOffset, orientation);
             });
+        }
 
-        } else {
+        function scrollEvents () {
+            $window.on('scroll.herolock', $.throttle(20, function (e) {
+                checkScrollPos($heroLock, 'herolock', classDown, heroOffset, orientation);
+            }));
+
+            $window.on('scroll.men', $.throttle(20, function (e) {
+                checkScrollPos($heroImg, 'men', classUp, menOffset, orientation);
+            }));
+
+            $window.on('scroll.cars', $.throttle(20, function () {
+                checkScrollPos($carsEl, 'cars', classLeft, carsOffset, orientation);
+            }));
+
+            $window.on('scroll.dude', $.throttle(20, function (e) {
+                checkScrollPos($dudeEl, 'dude', classUp, dudeOffset, orientation);
+            }));
+        }
+
+        function animElsVisible() {
             $carsEl.css('visibility', 'visible');
             $heroLock.css('visibility', 'visible');
             $heroImg.css('visibility', 'visible');
         }
 
+        function animElsHidden() {
+            $carsEl.css('visibility', 'hidden');
+            $heroLock.css('visibility', 'hidden');
+            $heroImg.css('visibility', 'hidden');
+        }
 
-    }(checkScrollPos));
+        function checkScrollPos($el, namespace, classes, offset, orientation) {
+
+            var $window = $(window);
+            var o = offset || 0;
+
+            if (_isScrolledIntoView($el, o, orientation)) {
+                $el.css('visibility', 'visible').addClass(classes);
+                $window.off('scroll[' + namespace + ']');
+                $window.off('load[' + namespace + ']');
+            }
+
+            // Helper Function for animations
+            function _isScrolledIntoView($el, offset, orientation) {
+
+                var docViewTop = $window.scrollTop();
+                var elemTop = ($el.offset().top - offset);
+
+                return (elemTop <= docViewTop);
+            }
+        }
+
+        function readDeviceOrientation() {
+             orientation = (Math.abs(window.orientation) === 90) ? 'Landscape' : 'Portrait';
+            return orientation;
+        }
+
+    }());
 
     // Counter App
-    $(function(cb) {
+    $(function() {
         var isIE9 = (navigator.userAgent.indexOf("MSIE 9") > -1) ? true : false;
 
         var clock, opts, counter;
@@ -126,7 +163,7 @@
 
         }
 
-    }(checkScrollPos));
+    }());
 
     // More Mediawall App
     $(function() {
