@@ -40,14 +40,14 @@
         dudeOffset = 500;
 
 
-        if (!isIE9) {
-            window.onorientationchange = readDeviceOrientation;
-            readDeviceOrientation();
-            loadEvents();
-            scrollEvents();
-        } else {
+        // if (!isIE9) {
+        //     window.onorientationchange = readDeviceOrientation;
+        //     readDeviceOrientation();
+        //     loadEvents();
+        //     scrollEvents();
+        // } else {
             animElsVisible();
-        }
+        //}
 
         function loadEvents() {
 
@@ -87,12 +87,14 @@
             $carsEl.css('visibility', 'visible');
             $heroLock.css('visibility', 'visible');
             $heroImg.css('visibility', 'visible');
+            $dudeEl.css('visibility', 'visible');
         }
 
         function animElsHidden() {
             $carsEl.css('visibility', 'hidden');
             $heroLock.css('visibility', 'hidden');
             $heroImg.css('visibility', 'hidden');
+            $dudeEl.css('visibility', 'visible');
         }
 
         function checkScrollPos($el, namespace, classes, offset, orientation) {
