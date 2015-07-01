@@ -30,3 +30,5 @@ babel:
 build:
 	babel gulpfile.babel.js --out-file gulpfile.js && gulp build
 	
+buildserve:
+	babel gulpfile.babel.js --out-file gulpfile.js && gulp build && gulp serve	
