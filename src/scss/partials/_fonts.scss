@@ -2,24 +2,19 @@
 
 @import url(http://fonts.googleapis.com/css?family=Oswald:700);
 
-//font-family: 'Six Caps', sans-serif !important;
-//
 @font-face {
     font-family: 'Thunderhouse';
     font-style: normal;
     font-weight: 500;
-    src: url(/fonts/thunderhouse.eot);
-    src: local("Thunderhouse"), local("Thunderhouse"), url(/fonts/thunderhouse.eot) format("embedded-opentype"), url(/fonts/thunderhouse.woff) format("woff");
+    src: url("./fonts/thunderhouse.eot");
+    src: local("Thunderhouse"), local("Thunderhouse"), url("./fonts/thunderhouse.eot") format("embedded-opentype"), url("./fonts/thunderhouse.woff") format("woff");
 }
 
 
 @font-face {
     font-family: 'VideoJS';
-    src: url("/fonts/vjs.eot");
-    src: url("/fonts/vjs.eot?#iefix") format("embedded-opentype"), url("/fonts/vjs.woff") format("woff"), url("/fonts/vjs.ttf") format("truetype"), url("/fonts/vjs.svg#icomoon") format("svg");
+    src: url("./fonts/vjs.eot");
+    src: url("./fonts/vjs.eot?#iefix") format("embedded-opentype"), url("./fonts/vjs.woff") format("woff"), url("./fonts/vjs.ttf") format("truetype"), url("./fonts/vjs.svg#icomoon") format("svg");
     font-weight: normal;
     font-style: normal;
 }
-
-
-//font-family: 'Thunderhouse', sans-serif !important;

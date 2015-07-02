@@ -28,31 +28,48 @@ gulp.task('jshint', () => {
 
 // Optimize images
 gulp.task('images', () => {
-  return gulp.src('./src/images/**/*')
+
+  gulp.src('./src/images')
     .pipe($.cache($.imagemin({
       progressive: true,
       interlaced: true
     })))
-    .pipe(gulp.dest('./dist/images'))
+    .pipe(gulp.dest('.tmp/css/images'))
     .pipe($.size({title: 'images'}));
+
+    gulp.src('.tmp/css/images')
+    .pipe(gulp.dest('.dist/css/images'))
+    .pipe($.size({title: 'images'}));
+
 });
 
 // Copy all files at the root level (app)
 gulp.task('copy', () => {
-  return gulp.src([
-    './src/*',
-    '!./src/scss',
-    'node_modules/apache-server-configs/dist/.htaccess'
-  ], {
+
+  gulp.src(['.tmp/*']).pipe(gulp.dest('./dist/'))
+    .pipe($.size({title: 'copy'}));
+
+  gulp.src(['./src/fonts/*'], {
+    dot: true
+  }).pipe(gulp.dest('./dist/css/fonts/'))
+  .pipe($.size({title: 'fonts'}));
+
+  gulp.src(['./src/images/**/*'], {
+    dot: true
+  }).pipe(gulp.dest('./dist/css/images/'))
+  .pipe($.size({title: 'images'}));
+
+  gulp.src(['.tmp/index.html'], {
     dot: true
   }).pipe(gulp.dest('./dist'))
-    .pipe($.size({title: 'copy'}));
+  .pipe($.size({title: 'html'}));
+
 });
 
 // Copy web fonts to dist
 gulp.task('fonts', () => {
   return gulp.src(['./src/fonts/*'])
-    .pipe(gulp.dest('./dist/fonts'))
+    .pipe(gulp.dest('./dist/css/fonts'))
     .pipe($.size({title: 'fonts'}));
 });
 
@@ -75,13 +92,13 @@ gulp.task('styles', () => {
     './src/scss/*.scss',
     './src/scss/**/*.css'
   ])
-    .pipe($.changed('.tmp/css/', {extension: '.css'}))
+    .pipe($.changed('.tmp/', {extension: '.css'}))
     .pipe($.sourcemaps.init())
     .pipe($.sass({
       precision: 10
     }).on('error', $.sass.logError))
     .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
-    .pipe(gulp.dest('.tmp'))
+    .pipe(gulp.dest('.tmp/css'))
     // Concatenate and minify styles
     .pipe($.if('*.css', $.csso()))
     // .pipe($.sourcemaps.write())
@@ -91,37 +108,28 @@ gulp.task('styles', () => {
 
 // Concatenate and minify JavaScript
 gulp.task('scripts', () => {
-  return gulp.src(['./src/js/main.js'])
-    .pipe($.concat('main.min.js'))
+  return gulp.src(['./src/js/vendor/jquery-1.11.3.min.js', './src/js/vendor/jquery-throttle-debounce-min.js', './src/js/vendor/flipclock.min.js',
+    './src/js/vendor/Base64.min.js', './src/js/vendor/fb.js', './src/js/vendor/videojs/video.dev.js', './src/js/vendor/videojs/vjs.youtube.js', './src/js/app.js'])
+    .pipe($.concat('main.js'))
+    .pipe(gulp.dest('.tmp/js/'))
     .pipe($.uglify({preserveComments: 'some'}))
     // Output files
-    .pipe(gulp.dest('./dist/js'))
+    .pipe(gulp.dest('./dist/js/'))
     .pipe($.size({title: 'scripts'}));
 });
 
 gulp.task('fileinclude', () => {
-  gulp.src(['./src/index.html'])
 
+  gulp.src('./src/*.html')
     .pipe(fileinclude({
       prefix: '@@',
       basepath: '@file'
-    }))
-    .pipe(gulp.dest('.tmp/'));
+    })
+    .pipe(gulp.dest('.tmp/')));
 });
 
 gulp.task('build', () => {
-  
-  runSequence(
-        'styles', 
-        ['scripts','images', 'fonts']
-    )
-    gulp.src(['src/index.html'])
-    .pipe(fileinclude({
-      prefix: '@@',
-      basepath: '@file'
-    }))
-    .pipe(gulp.dest('dist/'));
-     
+  runSequence(['copy']);
 });
 
 
@@ -129,7 +137,7 @@ gulp.task('build', () => {
 gulp.task('html', () => {
   const assets = $.useref.assets({searchPath: '{.tmp, ./src}'});
 
-  gulp.src('./src/partialviews/*.html').pipe(gulp.dest('./dist/partialviews/'));
+  // gulp.src('./src/partialviews/*.html').pipe(gulp.dest('./dist/partialviews/'));
 
 
     gulp.src('./src/*.html')
@@ -154,10 +162,9 @@ gulp.task('html', () => {
     .pipe($.if('*.css', $.csso()))
     .pipe(assets.restore())
     .pipe($.useref())
-
     // Minify any HTML
     .pipe($.if('*.html', $.minifyHtml({
-      empty: false,
+      empty: true,
       cdata: false,
       comments: false,
       conditionals: true,
@@ -166,7 +173,7 @@ gulp.task('html', () => {
       loose: true
     })))
     // Output files
-    .pipe(gulp.dest('./dist'))
+    .pipe(gulp.dest('./dist/'))
     .pipe($.size({title: 'html'}));
 });
 
@@ -174,7 +181,14 @@ gulp.task('html', () => {
 gulp.task('clean', () => del(['.tmp', './dist/*', '!dist/.git'], {dot: true}));
 
 // Watch files for changes & reload
-gulp.task('serve', ['styles', 'fileinclude'], () => {
+gulp.task('serve', ['clean', 'styles', 'scripts'], () => {
+
+    gulp.src('./src/*.html')
+    .pipe(fileinclude({
+      prefix: '@@',
+      basepath: '@file'
+    })).pipe(gulp.dest('.tmp/'));
+
   browserSync({
     notify: true,
     // Customize the BrowserSync console logging prefix
@@ -183,14 +197,15 @@ gulp.task('serve', ['styles', 'fileinclude'], () => {
     // Note: this uses an unsigned certificate which on first access
     //       will present a certificate warning in the browser.
     https: false,
-    server: ['.tmp', './src']
+    server: ['.tmp/', './src']
   });
 
-  gulp.watch(['.tmp/*.html'], reload);
-  gulp.watch(['./src/**/*.html'], ['fileinclude', reload]);
+  gulp.watch(['./src/*.html'], ['html', reload]);
   gulp.watch(['./src/scss/**/*.{scss, css}'], ['styles', reload]);
-  gulp.watch(['./src/js/**/*.js'], ['jshint']);
+  gulp.watch(['./src/js/*.js'], ['jshint']);
   gulp.watch(['./src/images/**/*'], reload);
+  gulp.watch(['./src/fonts/*'], reload);
+
 });
 
 // Build and serve the output from the dist build
@@ -207,13 +222,6 @@ gulp.task('serve:dist', ['default'], () => {
 });
 
 // Build production files, the default task
-gulp.task('default', ['clean'], cb => {
-  runSequence(
-    'styles',
-    // 'jshint',
-    'fileinclude',
-    [ 'scripts', 'images', 'fonts'],
-    'copy',
-    //, 'generate-service-worker',
-    cb);
+gulp.task('default', ['clean'], () => {
+  runSequence(['styles','scripts','images', 'fonts', 'html']);
 });
