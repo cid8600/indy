@@ -253,12 +253,7 @@
             //  FB Share
             $('.btn-fb a').click(function(e) {
                 e.preventDefault();
-                try {
-                    FB.ui({
-                        method: 'share',
-                        href: 'https://developers.facebook.com/docs/',
-                    }, function(response) {});
-                } catch (err) {}
+                var fbWindow = window.open(e.target.href, "", "width=500, height=200");
             });
         }
     };
