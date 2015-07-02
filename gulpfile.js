@@ -68,9 +68,9 @@ _gulp2['default'].task('images', function () {
 });
 
 // Copy all files at the root level (app)
-_gulp2['default'].task('copy', function () {
+_gulp2['default'].task('deploy', function () {
 
-  _gulp2['default'].src(['.tmp/*']).pipe(_gulp2['default'].dest('./dist/')).pipe($.size({ title: 'copy' }));
+  _gulp2['default'].src(['.tmp/*']).pipe(_gulp2['default'].dest('./dist/')).pipe($.size({ title: 'deploy' }));
 
   _gulp2['default'].src(['./src/fonts/*'], {
     dot: true
@@ -120,7 +120,7 @@ _gulp2['default'].task('fileinclude', function () {
 });
 
 _gulp2['default'].task('build', function () {
-  (0, _runSequence2['default'])(['copy']);
+  (0, _runSequence2['default'])(['deploy']);
 });
 
 // Scan your HTML for assets & optimize them

@@ -44,10 +44,10 @@ gulp.task('images', () => {
 });
 
 // Copy all files at the root level (app)
-gulp.task('copy', () => {
+gulp.task('deploy', () => {
 
   gulp.src(['.tmp/*']).pipe(gulp.dest('./dist/'))
-    .pipe($.size({title: 'copy'}));
+    .pipe($.size({title: 'deploy'}));
 
   gulp.src(['./src/fonts/*'], {
     dot: true
@@ -129,7 +129,7 @@ gulp.task('fileinclude', () => {
 });
 
 gulp.task('build', () => {
-  runSequence(['copy']);
+  runSequence(['deploy']);
 });
 
 
