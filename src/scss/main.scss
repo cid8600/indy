@@ -62,6 +62,126 @@
     box-shadow: 0px 4px 0px -2px #ccc !important;
 }
 
+@mixin hero {
+    0% {
+        opacity: 0;
+        left: 0;
+        top: -50px;
+    }
+
+    100% {
+        opacity: 1;
+        left: 0;
+        top: 0;
+    }
+}
+
+@mixin dudes {
+    0% {
+        opacity: 0;
+        left: 0;
+        bottom: -75px;
+    }
+
+    100% {
+        opacity: 1;
+        left: 0;
+        bottom: -60px;
+    }
+}
+
+@mixin cars {
+    0% {
+        opacity: 0;
+        left: -150px;
+        bottom: 0;
+    }
+
+    100% {
+        opacity: 1;
+        left: 50px;
+        bottom: 0;
+    }
+}
+
+@mixin loner {
+    0% {
+        opacity: 0;
+        left: 0;
+        bottom: -100px;
+    }
+
+    100% {
+        opacity: 1;
+        left: 0;
+        bottom: 0;
+    }
+}
+
+@keyframes fadeInDownIndy {
+    @include hero;
+}
+
+
+@keyframes fadeInSlideIndy {
+    @include cars;
+}
+
+
+@keyframes fadeInUpDudes {
+    @include dudes;
+}
+
+
+@keyframes fadeInUpLoner {
+    @include loner;
+}
+
+
+@mixin keyframename($name) {
+    animation-name: $name;
+    -webkit-animation-name: $name;
+}
+
+@mixin animateDown {
+    animation-timing-function: ease-out;
+    animation-duration: .75s;
+    animation-delay: 0s;
+    animation-fill-mode: both;
+    animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease-out;
+    -webkit-animation-duration: .75s;
+    -webkit-animation-delay: 0s;
+    -webkit-animation-fill-mode: both;
+    -webkit-animation-iteration-count: 1;
+}
+
+@mixin animateUp {
+    animation-timing-function: ease-out;
+    animation-duration: .75s;
+    animation-delay: 0s;
+    animation-fill-mode: both;
+    animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease-out;
+    -webkit-animation-duration: .75s;
+    -webkit-animation-delay: 0s;
+    -webkit-animation-fill-mode: both;
+    -webkit-animation-iteration-count: 1;
+}
+
+@mixin animateRight {
+    animation-timing-function: ease-out;
+    animation-duration: .5s;
+    animation-delay: 0s;
+    animation-fill-mode: both;
+    animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease-out;
+    -webkit-animation-duration: .5s;
+    -webkit-animation-delay: 0s;
+    -webkit-animation-fill-mode: both;
+    -webkit-animation-iteration-count: 1;
+}
+
 $indyBlue: #0022B8;
 $indyRed: #e3172f;
 $indyRedDark: #c91429;
@@ -288,22 +408,6 @@ ul {
             padding-bottom: 290px;
             padding-top: 20px;
 
-            .heroes {
-                position: absolute;
-                bottom: -60px !important;
-                padding: 0;
-                left: 0;
-                content: '';
-                width: 100%;
-                height: 438px;
-                background-position: 0 center;
-                background-repeat: no-repeat;
-                background-image: url("./images/3men.png");
-                background-size: 60%;
-                display: block;
-                visibility: hidden;
-            }
-
             .left-col {
                 padding: 0;
                 position: relative;
@@ -312,7 +416,6 @@ ul {
                     margin-bottom: 40px;
                     margin-top: -100px;
                     display: block;
-                    visibility: hidden;
                 }
 
                 h1 {
@@ -345,6 +448,43 @@ ul {
     &#hero-module {
         > div {
             padding-bottom: 290px;
+
+            .heroes {
+                position: absolute;
+                bottom: -60px;
+                padding: 0;
+                left: 0;
+                content: '';
+                width: 100%;
+                height: 438px;
+                background-position: 0 center;
+                background-repeat: no-repeat;
+                background-image: url("./images/3men.png");
+                background-size: 60%;
+                display: block;
+                visibility: hidden;
+                opacity: 0;
+
+                &.animate-up {
+                    @include keyframename(fadeInUpDudes);
+                    @include animateUp;
+                }
+            }
+
+            .left-col {
+                img {
+                    position: relative;
+                    top: 0;
+                    left: 0;
+                    visibility: hidden;
+                    opacity: 0;
+
+                    &.animate-down {
+                        @include keyframename(fadeInDownIndy);
+                        @include animateDown;
+                    }
+                }
+            }
         }
     }
 
@@ -432,11 +572,17 @@ ul {
             background-image: url("./images/2cars.png");
             position: absolute;
             bottom: 0;
+            left: -440px;
             width: 1096px;
             height: 374px;
             z-index: 0;
             display: block;
             visibility: hidden;
+
+            &.animate-right {
+                @include keyframename(fadeInSlideIndy);
+                @include animateRight;
+            }
         }
 
         h2 {
@@ -780,14 +926,22 @@ ul {
             .right-col {
                 padding: 0;
                 margin-top: -90px;
+                position: relative;
 
                 img {
+                    position: relative;
+                    bottom: 0;
+                    left: 0;
                     visibility: hidden;
+
+                    &.animate-up {
+                        @include animateUp;
+                        @include keyframename(fadeInUpLoner);
+                    }
                 }
             }
 
             a {
-                margin-left: 10px;
                 margin-top: 30px;
                 padding: 0 100px;
             }
@@ -890,6 +1044,9 @@ ul {
     max-width: 510px;
     margin: 0 auto 70px auto;
     position: relative;
+    width: 512px;
+    height: 286px;
+    background-color: #000;
 
     &:before {
         content: '';
@@ -1088,12 +1245,16 @@ $flip_fontsize_L: 12rem;
         .row {
             &#hero-module {
                 > div {
+                    .heroes {
+                        background-position: center bottom !important;
+                    }
+
                     .right-col {
                         margin-bottom: 290px !important;
 
                         .video-js {
                             width: 100% !important;
-                            height: 215px !important;
+                            height: 145px !important;
                         }
                     }
                 }
@@ -1118,6 +1279,17 @@ $flip_fontsize_L: 12rem;
 
                 .right-col {
                     margin-bottom: 350px !important;
+
+                    #video {
+                        &:before {
+                            width: 400px;
+                            height: 90px;
+                            background-size: 400px 90px;
+                            bottom: 0px;
+                            left: 50%;
+                            margin-left: -200px;
+                        }
+                    }
 
                     .video-js {
                         width: 100% !important;
@@ -1192,16 +1364,6 @@ $flip_fontsize_L: 12rem;
             }
         }
     }
-
-    #video {
-        &:before {
-            width: 255px;
-            height: 60px;
-            background-size: 255px 60px;
-            bottom: -30px;
-            left: -127px;
-        }
-    }
 }
 
 @media (max-width: 600px) {
@@ -1224,7 +1386,7 @@ $flip_fontsize_L: 12rem;
                     .video-js {
                         width: 100% !important;
                         max-width: 500px;
-                        height: 286px !important;
+                        height: 235px !important;
                         margin: 0 auto;
                     }
                 }
@@ -1302,12 +1464,17 @@ $flip_fontsize_L: 12rem;
             > div {
                 .right-col {
                     margin-bottom: 410px;
+
+                    #video {
+                        width: 100%;
+                        height: auto;
+                    }
                 }
             }
         }
 
         &#support-module {
-            margin-top: -200px;
+            margin-top: -220px;
 
             h2 {
                 margin-top: 0;
@@ -1576,7 +1743,7 @@ $flip_fontsize_L: 12rem;
 
             .video-js {
                 width: 100% !important;
-                height: 436px !important;
+                height: 286px !important;
             }
 
             #social-wrapper > ul > li {
@@ -1682,6 +1849,9 @@ $flip_fontsize_L: 12rem;
                         max-width: 510px;
                         display: block;
                         margin: 0 auto;
+                        position: relative;
+                        top: 0;
+                        left: 0;
                     }
                 }
             }

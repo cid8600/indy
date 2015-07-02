@@ -104,6 +104,15 @@ _gulp2['default'].task('fileinclude', function () {
   })).pipe(_gulp2['default'].dest('.tmp/'));
 });
 
+_gulp2['default'].task('build', function () {
+
+  (0, _runSequence2['default'])('styles', ['scripts', 'images', 'fonts']);
+  _gulp2['default'].src(['src/index.html']).pipe((0, _gulpFileInclude2['default'])({
+    prefix: '@@',
+    basepath: '@file'
+  })).pipe(_gulp2['default'].dest('dist/'));
+});
+
 // Scan your HTML for assets & optimize them
 _gulp2['default'].task('html', function () {
   var assets = $.useref.assets({ searchPath: '{.tmp, ./src}' });
@@ -183,7 +192,7 @@ _gulp2['default'].task('serve:dist', ['default'], function () {
 _gulp2['default'].task('default', ['clean'], function (cb) {
   (0, _runSequence2['default'])('styles',
   // 'jshint',
-  'fileinclude', ['scripts', 'images', 'fonts', 'html'], 'copy',
+  'fileinclude', ['scripts', 'images', 'fonts'], 'copy',
   //, 'generate-service-worker',
   cb);
 });

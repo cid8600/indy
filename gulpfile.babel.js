@@ -109,6 +109,22 @@ gulp.task('fileinclude', () => {
     .pipe(gulp.dest('.tmp/'));
 });
 
+gulp.task('build', () => {
+  
+  runSequence(
+        'styles', 
+        ['scripts','images', 'fonts']
+    )
+    gulp.src(['src/index.html'])
+    .pipe(fileinclude({
+      prefix: '@@',
+      basepath: '@file'
+    }))
+    .pipe(gulp.dest('dist/'));
+     
+});
+
+
 // Scan your HTML for assets & optimize them
 gulp.task('html', () => {
   const assets = $.useref.assets({searchPath: '{.tmp, ./src}'});
@@ -196,7 +212,7 @@ gulp.task('default', ['clean'], cb => {
     'styles',
     // 'jshint',
     'fileinclude',
-    [ 'scripts', 'images', 'fonts', 'html'],
+    [ 'scripts', 'images', 'fonts'],
     'copy',
     //, 'generate-service-worker',
     cb);
