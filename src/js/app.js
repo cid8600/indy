@@ -208,6 +208,7 @@ FlipCounter.prototype._addCommas = function (clockInstance) {
                 classDown,
                 classLeft,
                 $window,
+                $windowH,
                 heroOffset,
                 menOffset,
                 carsOffset,
@@ -217,6 +218,8 @@ FlipCounter.prototype._addCommas = function (clockInstance) {
                 cssHidden;
 
             $window = $(window);
+            $windowH = $window.height();
+
             $heroEl = $('#hero-module');
             $heroLock = $('.left-col img', $heroEl);
             $heroImg = $('.heroes', $heroEl);
@@ -232,7 +235,7 @@ FlipCounter.prototype._addCommas = function (clockInstance) {
             heroOffset = 200;
             menOffset = 400;
             carsOffset = 400;
-            dudeOffset = 300;
+            dudeOffset = ($windowH > 1000) ? $windowH : 300;
 
 
             if (!self.isIE9()) {
