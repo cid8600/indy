@@ -27,6 +27,7 @@
                 classDown,
                 classLeft,
                 $window,
+                $windowH,
                 heroOffset,
                 menOffset,
                 carsOffset,
@@ -36,6 +37,8 @@
                 cssHidden;
 
             $window = $(window);
+            $windowH = $window.height();
+
             $heroEl = $('#hero-module');
             $heroLock = $('.left-col img', $heroEl);
             $heroImg = $('.heroes', $heroEl);
@@ -51,7 +54,7 @@
             heroOffset = 200;
             menOffset = 400;
             carsOffset = 400;
-            dudeOffset = 300;
+            dudeOffset = ($windowH > 1000) ? $windowH : 300;
 
 
             if (!self.isIE9()) {
