@@ -9110,7 +9110,7 @@ ul li a {
 .row#poll-module .lf-poll li {
     width: 100%;
     padding: 0;
-    height: auto;
+    height: 45px;
     position: relative;
 }
 
