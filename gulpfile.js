@@ -58,22 +58,36 @@ _gulp2['default'].task('jshint', function () {
 
 // Optimize images
 _gulp2['default'].task('images', function () {
-  return _gulp2['default'].src('./src/images/**/*').pipe($.cache($.imagemin({
+
+  _gulp2['default'].src('./src/images').pipe($.cache($.imagemin({
     progressive: true,
     interlaced: true
-  }))).pipe(_gulp2['default'].dest('./dist/images')).pipe($.size({ title: 'images' }));
+  }))).pipe(_gulp2['default'].dest('.tmp/css/images')).pipe($.size({ title: 'images' }));
+
+  _gulp2['default'].src('.tmp/css/images').pipe(_gulp2['default'].dest('.dist/css/images')).pipe($.size({ title: 'images' }));
 });
 
 // Copy all files at the root level (app)
-_gulp2['default'].task('copy', function () {
-  return _gulp2['default'].src(['./src/*', '!./src/scss', 'node_modules/apache-server-configs/dist/.htaccess'], {
+_gulp2['default'].task('deploy', function () {
+
+  _gulp2['default'].src(['.tmp/*']).pipe(_gulp2['default'].dest('./dist/')).pipe($.size({ title: 'deploy' }));
+
+  _gulp2['default'].src(['./src/fonts/*'], {
     dot: true
-  }).pipe(_gulp2['default'].dest('./dist')).pipe($.size({ title: 'copy' }));
+  }).pipe(_gulp2['default'].dest('./dist/css/fonts/')).pipe($.size({ title: 'fonts' }));
+
+  _gulp2['default'].src(['./src/images/**/*'], {
+    dot: true
+  }).pipe(_gulp2['default'].dest('./dist/css/images/')).pipe($.size({ title: 'images' }));
+
+  _gulp2['default'].src(['.tmp/index.html'], {
+    dot: true
+  }).pipe(_gulp2['default'].dest('./dist')).pipe($.size({ title: 'html' }));
 });
 
 // Copy web fonts to dist
 _gulp2['default'].task('fonts', function () {
-  return _gulp2['default'].src(['./src/fonts/*']).pipe(_gulp2['default'].dest('./dist/fonts')).pipe($.size({ title: 'fonts' }));
+  return _gulp2['default'].src(['./src/fonts/*']).pipe(_gulp2['default'].dest('./dist/css/fonts')).pipe($.size({ title: 'fonts' }));
 });
 
 // Compile and automatically prefix stylesheets
@@ -81,9 +95,9 @@ _gulp2['default'].task('styles', function () {
   var AUTOPREFIXER_BROWSERS = ['ie >= 10', 'ie_mob >= 10', 'ff >= 30', 'chrome >= 34', 'safari >= 7', 'opera >= 23', 'ios >= 7', 'android >= 4.4', 'bb >= 10'];
 
   // For best performance, don't add Sass partials to `gulp.src`
-  return _gulp2['default'].src(['./src/scss/*.scss', './src/scss/**/*.css']).pipe($.changed('.tmp/css/', { extension: '.css' })).pipe($.sourcemaps.init()).pipe($.sass({
+  return _gulp2['default'].src(['./src/scss/*.scss', './src/scss/**/*.css']).pipe($.changed('.tmp/', { extension: '.css' })).pipe($.sourcemaps.init()).pipe($.sass({
     precision: 10
-  }).on('error', $.sass.logError)).pipe($.autoprefixer(AUTOPREFIXER_BROWSERS)).pipe(_gulp2['default'].dest('.tmp'))
+  }).on('error', $.sass.logError)).pipe($.autoprefixer(AUTOPREFIXER_BROWSERS)).pipe(_gulp2['default'].dest('.tmp/css'))
   // Concatenate and minify styles
   .pipe($['if']('*.css', $.csso()))
   // .pipe($.sourcemaps.write())
@@ -92,32 +106,28 @@ _gulp2['default'].task('styles', function () {
 
 // Concatenate and minify JavaScript
 _gulp2['default'].task('scripts', function () {
-  return _gulp2['default'].src(['./src/js/main.js']).pipe($.concat('main.min.js')).pipe($.uglify({ preserveComments: 'some' }))
+  return _gulp2['default'].src(['./src/js/vendor/jquery-1.11.3.min.js', './src/js/vendor/jquery-throttle-debounce-min.js', './src/js/vendor/flipclock.min.js', './src/js/vendor/Base64.min.js', './src/js/vendor/fb.js', './src/js/vendor/videojs/video.dev.js', './src/js/vendor/videojs/vjs.youtube.js', './src/js/app.js']).pipe($.concat('main.js')).pipe(_gulp2['default'].dest('.tmp/js/')).pipe($.uglify({ preserveComments: 'some' }))
   // Output files
-  .pipe(_gulp2['default'].dest('./dist/js')).pipe($.size({ title: 'scripts' }));
+  .pipe(_gulp2['default'].dest('./dist/js/')).pipe($.size({ title: 'scripts' }));
 });
 
 _gulp2['default'].task('fileinclude', function () {
-  _gulp2['default'].src(['./src/index.html']).pipe((0, _gulpFileInclude2['default'])({
+
+  _gulp2['default'].src('./src/*.html').pipe((0, _gulpFileInclude2['default'])({
     prefix: '@@',
     basepath: '@file'
-  })).pipe(_gulp2['default'].dest('.tmp/'));
+  }).pipe(_gulp2['default'].dest('.tmp/')));
 });
 
 _gulp2['default'].task('build', function () {
-
-  (0, _runSequence2['default'])('styles', ['scripts', 'images', 'fonts']);
-  _gulp2['default'].src(['src/index.html']).pipe((0, _gulpFileInclude2['default'])({
-    prefix: '@@',
-    basepath: '@file'
-  })).pipe(_gulp2['default'].dest('dist/'));
+  (0, _runSequence2['default'])(['deploy']);
 });
 
 // Scan your HTML for assets & optimize them
 _gulp2['default'].task('html', function () {
   var assets = $.useref.assets({ searchPath: '{.tmp, ./src}' });
 
-  _gulp2['default'].src('./src/partialviews/*.html').pipe(_gulp2['default'].dest('./dist/partialviews/'));
+  // gulp.src('./src/partialviews/*.html').pipe(gulp.dest('./dist/partialviews/'));
 
   _gulp2['default'].src('./src/*.html').pipe((0, _gulpFileInclude2['default'])({
     prefix: '@@',
@@ -135,10 +145,9 @@ _gulp2['default'].task('html', function () {
   // Concatenate and minify styles
   // In case you are still using useref build blocks
   .pipe($['if']('*.css', $.csso())).pipe(assets.restore()).pipe($.useref())
-
   // Minify any HTML
   .pipe($['if']('*.html', $.minifyHtml({
-    empty: false,
+    empty: true,
     cdata: false,
     comments: false,
     conditionals: true,
@@ -147,7 +156,7 @@ _gulp2['default'].task('html', function () {
     loose: true
   })))
   // Output files
-  .pipe(_gulp2['default'].dest('./dist')).pipe($.size({ title: 'html' }));
+  .pipe(_gulp2['default'].dest('./dist/')).pipe($.size({ title: 'html' }));
 });
 
 // Clean output directory
@@ -156,7 +165,13 @@ _gulp2['default'].task('clean', function () {
 });
 
 // Watch files for changes & reload
-_gulp2['default'].task('serve', ['styles', 'fileinclude'], function () {
+_gulp2['default'].task('serve', ['clean', 'styles', 'scripts'], function () {
+
+  _gulp2['default'].src('./src/*.html').pipe((0, _gulpFileInclude2['default'])({
+    prefix: '@@',
+    basepath: '@file'
+  })).pipe(_gulp2['default'].dest('.tmp/'));
+
   (0, _browserSync2['default'])({
     notify: true,
     // Customize the BrowserSync console logging prefix
@@ -165,14 +180,14 @@ _gulp2['default'].task('serve', ['styles', 'fileinclude'], function () {
     // Note: this uses an unsigned certificate which on first access
     //       will present a certificate warning in the browser.
     https: false,
-    server: ['.tmp', './src']
+    server: ['.tmp/', './src']
   });
 
-  _gulp2['default'].watch(['.tmp/*.html'], reload);
-  _gulp2['default'].watch(['./src/**/*.html'], ['fileinclude', reload]);
+  _gulp2['default'].watch(['./src/*.html'], ['html', reload]);
   _gulp2['default'].watch(['./src/scss/**/*.{scss, css}'], ['styles', reload]);
-  _gulp2['default'].watch(['./src/js/**/*.js'], ['jshint']);
+  _gulp2['default'].watch(['./src/js/*.js'], ['jshint']);
   _gulp2['default'].watch(['./src/images/**/*'], reload);
+  _gulp2['default'].watch(['./src/fonts/*'], reload);
 });
 
 // Build and serve the output from the dist build
@@ -189,10 +204,6 @@ _gulp2['default'].task('serve:dist', ['default'], function () {
 });
 
 // Build production files, the default task
-_gulp2['default'].task('default', ['clean'], function (cb) {
-  (0, _runSequence2['default'])('styles',
-  // 'jshint',
-  'fileinclude', ['scripts', 'images', 'fonts'], 'copy',
-  //, 'generate-service-worker',
-  cb);
+_gulp2['default'].task('default', ['clean'], function () {
+  (0, _runSequence2['default'])(['styles', 'scripts', 'images', 'fonts', 'html']);
 });

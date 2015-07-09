@@ -26,9 +26,12 @@ clean-deps:
 
 babel:
 	babel gulpfile.babel.js --out-file gulpfile.js
-	
+
 build:
 	babel gulpfile.babel.js --out-file gulpfile.js && gulp build
-	
+
 buildserve:
-	babel gulpfile.babel.js --out-file gulpfile.js && gulp build && gulp serve	
+	babel gulpfile.babel.js --out-file gulpfile.js && gulp build && gulp serve
+
+deploy:
+	babel gulpfile.babel.js --out-file gulpfile.js && gulp deploy
