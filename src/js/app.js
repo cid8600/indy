@@ -427,7 +427,7 @@ FlipCounter.prototype._addCommas = function (clockInstance) {
 
         evHandlers: function(self) {
 
-            $('body').on('click', '#wallShowMore', function(e) {
+            $('body').on('click', '.wallShowMore', function(e) {
                 e.preventDefault();
                 try {
                     window.wall._wallView.showMore();

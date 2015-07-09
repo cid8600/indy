@@ -182,6 +182,15 @@
     -webkit-animation-iteration-count: 1;
 }
 
+@mixin tweetmore {
+        @include indyButton;
+
+        &:hover {
+            background-color: $indyRedDark !important;
+            letter-spacing: 5px;
+        }
+}
+
 $indyBlue: #0022B8;
 $indyRed: #e3172f;
 $indyRedDark: #c91429;
@@ -292,14 +301,10 @@ ul {
 
     .btn-indy,
     [data-lf-package~="streamhub-wall#3.5.0"] .hub-list-more,
-    #wallTweet,
-    #wallShowMore {
-        @include indyButton;
-
-        &:hover {
-            background-color: $indyRedDark !important;
-            letter-spacing: 5px;
-        }
+    .wallTweet,
+    .wallShowMore,
+    .buyTickets {
+        @include tweetmore;
     }
 
     h2 {
@@ -498,6 +503,25 @@ ul {
         position: relative;
         overflow: hidden;
 
+        .more-buttons {
+            text-align: center;
+            margin-top: 80px;
+
+            .wallTweet {
+                margin-right: 10px;
+            }
+
+            .wallShowMore {
+                display: none;
+            }
+
+            .wallShowMore,
+            .buyTickets {
+                margin-left: 10px;
+            }
+
+        }
+
         h2 {
             color: white;
             margin: 100px 0 40px 0;
@@ -593,17 +617,26 @@ ul {
     &.mediawall-module {
         padding: 140px 0;
 
-        #wallTweet {
+        .wallTweet {
             margin-right: 10px;
         }
 
-        #wallShowMore {
+        .wallShowMore {
             margin-left: 10px;
+        }
+
+        .buyTickets {
+            display: none;
         }
     }
 
     /* TOP SUBMISSIONS MEDIA WALL */
     &#top-submissions-module, &#more-submissions-module {
+
+        .buyTickets {
+            display: none;
+        }
+
         > div {
             text-align: center;
         }
@@ -1285,7 +1318,7 @@ $flip_fontsize_L: 12rem;
                             width: 400px;
                             height: 90px;
                             background-size: 400px 90px;
-                            bottom: 0px;
+                            bottom: -50px;
                             left: 50%;
                             margin-left: -200px;
                         }
@@ -1302,6 +1335,23 @@ $flip_fontsize_L: 12rem;
 
         &#support-module {
             margin-top: -200px;
+
+            .more-buttons {
+                padding: 0 40px !important;
+                margin-top: 10px !important;
+
+                .wallTweet {
+                    margin-right: 0 !important;
+                    margin-bottom: 30px !important;
+                    width: 100% !important;
+                }
+
+                .wallShowMore {
+                    margin-left: 0 !important;
+                    margin-bottom: 0 !important;
+                    width: 100% !important;
+                }
+            }
         }
 
         &#social-counter-moudle {
@@ -1487,6 +1537,23 @@ $flip_fontsize_L: 12rem;
             > div {
                 padding-bottom: 90px;
             }
+
+            .more-buttons {
+                padding: 0 40px;
+
+                .wallTweet {
+                    margin-right: 0;
+                    margin-bottom: 30px;
+                    width: 100%;
+                }
+
+                .wallShowMore,
+                .buyTickets,{
+                    margin-left: 0;
+                    margin-bottom: 100px;
+                    width: 100%;
+                }
+            }
         }
 
         &#social-counter-moudle {
@@ -1522,17 +1589,17 @@ $flip_fontsize_L: 12rem;
             padding-top: 100px;
             padding-bottom: 0;
 
-            #more-buttons {
+            .more-buttons {
                 padding: 0 40px;
             }
 
-            #wallTweet {
+            .wallTweet {
                 margin-right: 0;
                 margin-bottom: 30px;
                 width: 100%;
             }
 
-            #wallShowMore {
+            .wallShowMore {
                 margin-left: 0;
                 margin-bottom: 100px;
                 width: 100%;
@@ -1580,6 +1647,7 @@ $flip_fontsize_L: 12rem;
             p {
                 padding-right: 0;
                 margin-top: 15px;
+                padding-left: 0;
             }
 
             > div > div:first-child {
@@ -1591,7 +1659,13 @@ $flip_fontsize_L: 12rem;
         &#poll-module {
             padding-top: 0;
             padding-bottom: 100px;
-
+            > div {
+                > div {
+                    h2 {
+                        padding-left: 0;
+                    }
+                }
+            }
             .lf-poll {
                 float: none;
                 margin: 0 auto;
@@ -1940,7 +2014,7 @@ $flip_fontsize_L: 12rem;
                 width: 100% !important;
             }
 
-            #more-buttons {
+            .more-buttons {
                 margin-top: 80px;
             }
         }
